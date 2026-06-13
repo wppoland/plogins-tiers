@@ -18,12 +18,11 @@ use Tiers\Service\TiersService;
 
 defined('ABSPATH') || exit;
 
-$hooks = [
-    TiersService::class,
-];
-
-if (is_admin()) {
-    $hooks[] = Settings::class;
-}
-
-return $hooks;
+return is_admin()
+    ? [
+        TiersService::class,
+        Settings::class,
+    ]
+    : [
+        TiersService::class,
+    ];
