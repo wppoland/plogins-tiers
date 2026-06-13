@@ -49,6 +49,13 @@ final class Settings implements HasHooks
                 'sanitize_callback' => [$this, 'sanitize'],
             ],
         );
+
+        // The menu uses manage_woocommerce; align the options.php save capability
+        // so shop managers (not just admins with manage_options) can save.
+        add_filter(
+            'option_page_capability_' . self::PAGE,
+            static fn (): string => 'manage_woocommerce',
+        );
     }
 
     public function renderPage(): void
