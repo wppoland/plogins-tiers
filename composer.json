@@ -1,6 +1,6 @@
 {
-    "name": "wppoland/plugin-slug",
-    "description": "PLUGIN_DESCRIPTION",
+    "name": "wppoland/tiers",
+    "description": "Volume and quantity-based tiered pricing for WooCommerce",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
     "repositories": [
@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "PluginNamespace\\": "src/"
+            "Tiers\\": "src/"
         }
     },
     "scripts": {

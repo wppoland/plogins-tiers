@@ -1,4 +1,4 @@
-=== PLUGIN_NAME ===
+=== Tiers ===
 Contributors: wppoland
 Tags: woocommerce
 Requires at least: 6.5
@@ -8,15 +8,15 @@ Stable tag: 0.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-PLUGIN_SHORT_DESCRIPTION
+Volume and quantity-based tiered pricing for WooCommerce
 
 == Description ==
 
-PLUGIN_DESCRIPTION
+Volume and quantity-based tiered pricing for WooCommerce
 
 == Installation ==
 
-1. Upload the plugin to `/wp-content/plugins/plugin-slug`, or install via Plugins → Add New.
+1. Upload the plugin to `/wp-content/plugins/tiers`, or install via Plugins → Add New.
 2. Activate it. WooCommerce must be active.
 
 == Frequently Asked Questions ==
@@ -27,7 +27,7 @@ Yes.
 
 == Screenshots ==
 
-1. PLUGIN_SCREENSHOT_1_CAPTION
+1. Tiers in action.
 
 == Changelog ==
 

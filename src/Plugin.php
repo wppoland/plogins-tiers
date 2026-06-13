@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PluginNamespace;
+namespace Tiers;
 
-use PluginNamespace\Contract\HasHooks;
+use Tiers\Contract\HasHooks;
 
 defined('ABSPATH') || exit;
 

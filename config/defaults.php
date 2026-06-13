@@ -1,8 +1,8 @@
 <?php
 /**
- * Default settings, merged under the option key `plugin_slug_settings`.
+ * Default settings, merged under the option key `tiers_settings`.
  *
- * @package PluginNamespace
+ * @package Tiers
  *
  * @return array<string, mixed>
  */
