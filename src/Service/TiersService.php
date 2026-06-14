@@ -78,12 +78,6 @@ final class TiersService implements HasHooks {
 			return;
 		}
 
-		$tiers = $this->get_active_tiers();
-
-		if ( empty( $tiers ) ) {
-			return;
-		}
-
 		foreach ( $cart->get_cart() as $item ) {
 			$product = $item['data'] ?? null;
 
@@ -94,6 +88,12 @@ final class TiersService implements HasHooks {
 			$qty = (int) ( $item['quantity'] ?? 0 );
 
 			if ( $qty <= 0 ) {
+				continue;
+			}
+
+			$tiers = $this->get_active_tiers_for_product( $product );
+
+			if ( empty( $tiers ) ) {
 				continue;
 			}
 
@@ -182,11 +182,21 @@ final class TiersService implements HasHooks {
 				continue;
 			}
 
-			$tiers[] = array(
+			$sanitized_tier = array(
 				'min_qty'          => $min_qty,
 				'discount_percent' => $percent,
 				'label'            => sanitize_text_field( (string) ( $tier['label'] ?? '' ) ),
 			);
+
+			/**
+			 * Filter a single active pricing tier row.
+			 *
+			 * PRO uses this to load extra parameters (e.g. allowed_roles).
+			 *
+			 * @param array{min_qty: int, discount_percent: float, label: string} $sanitized_tier Sanitized tier.
+			 * @param array<string, mixed>                                         $tier           Raw tier data.
+			 */
+			$tiers[] = apply_filters( 'tiers_active_tier', $sanitized_tier, $tier );
 		}
 
 		usort( $tiers, static fn( array $a, array $b ): int => $a['min_qty'] <=> $b['min_qty'] );
@@ -221,7 +231,6 @@ final class TiersService implements HasHooks {
 	 * @return array{min_qty: int, discount_percent: float, label: string}|null
 	 */
 	private function find_matching_tier( array $tiers, int $qty, \WC_Product $product ): ?array {
-		$tiers = $this->get_active_tiers_for_product( $product );
 		$match = null;
 
 		foreach ( $tiers as $tier ) {

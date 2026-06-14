@@ -155,6 +155,7 @@ final class Settings implements HasHooks {
 						<th><?php esc_html_e( 'Min. quantity', 'tiers' ); ?></th>
 						<th><?php esc_html_e( 'Discount %', 'tiers' ); ?></th>
 						<th><?php esc_html_e( 'Label (optional)', 'tiers' ); ?></th>
+						<?php do_action( 'tiers_admin_settings_table_header' ); ?>
 						<th></th>
 					</tr>
 				</thead>
@@ -192,6 +193,7 @@ final class Settings implements HasHooks {
 									class="regular-text"
 								/>
 							</td>
+							<?php do_action( 'tiers_admin_settings_table_row', $tier, $i ); ?>
 							<td>
 								<button type="button" class="button tiers-remove-row">
 									<?php esc_html_e( 'Remove', 'tiers' ); ?>
@@ -264,11 +266,21 @@ final class Settings implements HasHooks {
 					continue;
 				}
 
-				$sanitized['tiers'][] = array(
+				$sanitized_tier = array(
 					'min_qty'          => $min_qty,
 					'discount_percent' => $percent,
 					'label'            => $label,
 				);
+
+				/**
+				 * Filter a single pricing tier row during settings sanitization.
+				 *
+				 * PRO uses this to sanitize and preserve the allowed_roles parameter.
+				 *
+				 * @param array{min_qty: int, discount_percent: float, label: string} $sanitized_tier Sanitized tier.
+				 * @param array<string, mixed>                                         $tier           Raw tier data.
+				 */
+				$sanitized['tiers'][] = apply_filters( 'tiers_sanitize_tier', $sanitized_tier, $tier );
 			}
 		}
 
