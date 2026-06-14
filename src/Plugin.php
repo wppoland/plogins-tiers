@@ -3,8 +3,8 @@
  * Main plugin orchestrator.
  *
  * Wires the DI container and boots every HasHooks service listed in
- * config/hooks.php, then fires the `tiers/booted` action so that
- * companion plugins (Tiers PRO) can extend without modifying core files.
+ * config/hooks.php, then fires the `tiers/booted` action so other code can
+ * extend the plugin without modifying core files.
  *
  * @package Tiers
  */
@@ -114,7 +114,8 @@ final class Plugin {
 		/**
 		 * Fires after Tiers has fully booted.
 		 *
-		 * Tiers PRO hooks onto this action to extend without modifying core files.
+		 * Other code can hook onto this action to extend the plugin without
+		 * modifying core files.
 		 *
 		 * @since 0.1.0
 		 * @param Plugin $plugin The booted plugin instance.
