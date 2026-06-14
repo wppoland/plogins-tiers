@@ -46,3 +46,14 @@
 .tiers-pricing-table .amount {
     font-weight: 600;
 }
+
+.tiers-pricing-table__heading {
+    margin: 0 0 0.5em;
+    font-weight: 600;
+}
+
+.tiers-cart-savings {
+    display: inline-block;
+    margin-top: 0.25em;
+    opacity: 0.85;
+}
