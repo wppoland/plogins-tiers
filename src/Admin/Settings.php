@@ -114,11 +114,58 @@ final class Settings implements HasHooks {
 		);
 
 		add_settings_field(
+			'placement',
+			__( 'Table placement', 'tiers' ),
+			array( $this, 'render_placement' ),
+			self::PAGE,
+			self::SECTION,
+		);
+
+		add_settings_field(
+			'table_heading',
+			__( 'Table heading', 'tiers' ),
+			array( $this, 'render_table_heading' ),
+			self::PAGE,
+			self::SECTION,
+		);
+
+		add_settings_field(
+			'show_savings',
+			__( 'Savings column', 'tiers' ),
+			array( $this, 'render_show_savings' ),
+			self::PAGE,
+			self::SECTION,
+		);
+
+		add_settings_field(
+			'cart_savings_note',
+			__( 'Cart savings note', 'tiers' ),
+			array( $this, 'render_cart_savings_note' ),
+			self::PAGE,
+			self::SECTION,
+		);
+
+		add_settings_field(
 			'tiers',
 			__( 'Pricing tiers', 'tiers' ),
 			array( $this, 'render_tiers_field' ),
 			self::PAGE,
 			self::SECTION,
+		);
+	}
+
+	/**
+	 * Available placement choices, label keyed by stored value.
+	 *
+	 * @return array<string, string>
+	 */
+	private function placement_choices(): array {
+		return array(
+			'summary'      => __( 'Product summary (below price)', 'tiers' ),
+			'before_cart'  => __( 'Before the add-to-cart form', 'tiers' ),
+			'after_cart'   => __( 'After the add-to-cart form', 'tiers' ),
+			'product_meta' => __( 'Product meta area', 'tiers' ),
+			'shortcode'    => __( 'Only where I place it (shortcode / block)', 'tiers' ),
 		);
 	}
 
@@ -138,6 +185,87 @@ final class Settings implements HasHooks {
 				<?php checked( $checked, true ); ?>
 			/>
 			<?php esc_html_e( 'Display a volume pricing table on single product pages.', 'tiers' ); ?>
+		</label>
+		<?php
+	}
+
+	/**
+	 * Render the placement select field.
+	 */
+	public function render_placement(): void {
+		$options = (array) get_option( self::OPTION, array() );
+		$current = (string) ( $options['placement'] ?? 'summary' );
+		?>
+		<select id="tiers_placement" name="<?php echo esc_attr( self::OPTION ); ?>[placement]">
+			<?php foreach ( $this->placement_choices() as $value => $label ) : ?>
+				<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $current, $value ); ?>>
+					<?php echo esc_html( $label ); ?>
+				</option>
+			<?php endforeach; ?>
+		</select>
+		<p class="description">
+			<?php esc_html_e( 'Where the pricing table appears on the product page. Choose the last option to place it manually with the [tiers_table] shortcode or the "Volume pricing table" block.', 'tiers' ); ?>
+		</p>
+		<?php
+	}
+
+	/**
+	 * Render the optional table heading text field.
+	 */
+	public function render_table_heading(): void {
+		$options = (array) get_option( self::OPTION, array() );
+		$heading = (string) ( $options['table_heading'] ?? '' );
+		?>
+		<input
+			type="text"
+			id="tiers_table_heading"
+			name="<?php echo esc_attr( self::OPTION ); ?>[table_heading]"
+			value="<?php echo esc_attr( $heading ); ?>"
+			class="regular-text"
+			placeholder="<?php esc_attr_e( 'e.g. Buy more, save more', 'tiers' ); ?>"
+		/>
+		<p class="description">
+			<?php esc_html_e( 'Optional heading shown above the pricing table. Leave blank to hide it.', 'tiers' ); ?>
+		</p>
+		<?php
+	}
+
+	/**
+	 * Render the show_savings checkbox field.
+	 */
+	public function render_show_savings(): void {
+		$options = (array) get_option( self::OPTION, array() );
+		$checked = (bool) ( $options['show_savings'] ?? false );
+		?>
+		<label for="tiers_show_savings">
+			<input
+				type="checkbox"
+				id="tiers_show_savings"
+				name="<?php echo esc_attr( self::OPTION ); ?>[show_savings]"
+				value="1"
+				<?php checked( $checked, true ); ?>
+			/>
+			<?php esc_html_e( 'Add a "You save" column to the pricing table.', 'tiers' ); ?>
+		</label>
+		<?php
+	}
+
+	/**
+	 * Render the cart_savings_note checkbox field.
+	 */
+	public function render_cart_savings_note(): void {
+		$options = (array) get_option( self::OPTION, array() );
+		$checked = (bool) ( $options['cart_savings_note'] ?? false );
+		?>
+		<label for="tiers_cart_savings_note">
+			<input
+				type="checkbox"
+				id="tiers_cart_savings_note"
+				name="<?php echo esc_attr( self::OPTION ); ?>[cart_savings_note]"
+				value="1"
+				<?php checked( $checked, true ); ?>
+			/>
+			<?php esc_html_e( 'Show a per-line "You save" note under each discounted cart item.', 'tiers' ); ?>
 		</label>
 		<?php
 	}
@@ -247,9 +375,18 @@ final class Settings implements HasHooks {
 			return array();
 		}
 
+		$placement = isset( $raw['placement'] ) ? sanitize_key( (string) $raw['placement'] ) : 'summary';
+		if ( ! array_key_exists( $placement, $this->placement_choices() ) ) {
+			$placement = 'summary';
+		}
+
 		$sanitized = array(
-			'show_table' => ! empty( $raw['show_table'] ),
-			'tiers'      => array(),
+			'show_table'        => ! empty( $raw['show_table'] ),
+			'placement'         => $placement,
+			'table_heading'     => sanitize_text_field( (string) ( $raw['table_heading'] ?? '' ) ),
+			'show_savings'      => ! empty( $raw['show_savings'] ),
+			'cart_savings_note' => ! empty( $raw['cart_savings_note'] ),
+			'tiers'             => array(),
 		);
 
 		if ( is_array( $raw['tiers'] ?? null ) ) {
