@@ -71,12 +71,60 @@ final class Settings implements HasHooks {
 			return;
 		}
 
+		wp_enqueue_style(
+			'tiers-admin',
+			\Tiers\Plugin::instance()->url( 'assets/css/admin.css' ),
+			array(),
+			\Tiers\VERSION,
+		);
+
 		wp_enqueue_script(
 			'tiers-admin',
 			\Tiers\Plugin::instance()->url( 'assets/js/admin-tiers.js' ),
 			array(),
 			\Tiers\VERSION,
-			array( 'in_footer' => true ),
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			),
+		);
+
+		wp_localize_script(
+			'tiers-admin',
+			'tiersAdmin',
+			array(
+				'i18n' => array(
+					'remove'        => __( 'Remove', 'tiers' ),
+					'minQtyLabel'   => __( 'Minimum quantity', 'tiers' ),
+					'discountLabel' => __( 'Discount percent', 'tiers' ),
+					'labelLabel'    => __( 'Label', 'tiers' ),
+					'previewEmpty'  => __( 'Add a tier above to preview how it reads to shoppers.', 'tiers' ),
+					/* translators: %d: minimum quantity (kept as a literal token for JS substitution). */
+					'previewQty'    => __( 'Buy %d+', 'tiers' ),
+				),
+			),
+		);
+	}
+
+	/**
+	 * Render an accessible inline help affordance ("?") paired with a tooltip.
+	 *
+	 * The tooltip body is a real element wired via the Popover API / title
+	 * fallback in JS, and linked with aria-describedby. Escapes all output.
+	 *
+	 * @param string $id   Unique tooltip id (also used as the popover target).
+	 * @param string $text Help text shown in the tooltip.
+	 */
+	private function help_icon( string $id, string $text ): void {
+		printf(
+			'<button type="button" class="tiers-help" data-tip="%1$s" aria-label="%2$s">?</button>',
+			esc_attr( $id ),
+			esc_attr__( 'More information', 'tiers' ),
+		);
+		printf(
+			'<span id="%1$s" class="tiers-tip" role="tooltip" popover="auto">%2$s</span>',
+			esc_attr( $id ),
+			esc_html( $text ),
 		);
 	}
 
@@ -97,10 +145,13 @@ final class Settings implements HasHooks {
 			self::SECTION,
 			__( 'Global Volume Pricing Tiers', 'tiers' ),
 			static function (): void {
+				echo '<div class="tiers-settings__intro">';
+				echo '<h2>' . esc_html__( 'Reward bigger orders, automatically', 'tiers' ) . '</h2>';
 				echo '<p>' . esc_html__(
-					'Define quantity thresholds and the discount to apply when a cart line reaches that quantity. Tiers apply globally to all products. Per-product overrides are available in Tiers PRO.',
+					'Set quantity thresholds and the discount each one unlocks. When a shopper adds enough of a product to their cart, the matching discount is applied automatically — no coupon codes needed. Tiers apply to every product; per-product overrides are available in Tiers PRO.',
 					'tiers',
 				) . '</p>';
+				echo '</div>';
 			},
 			self::PAGE,
 		);
@@ -187,6 +238,10 @@ final class Settings implements HasHooks {
 			<?php esc_html_e( 'Display a volume pricing table on single product pages.', 'tiers' ); ?>
 		</label>
 		<?php
+		$this->help_icon(
+			'tiers-tip-show-table',
+			__( 'Shows shoppers the quantity breaks and the price they unlock at each level — a proven nudge to buy more. The discount still applies in the cart even with this turned off.', 'tiers' ),
+		);
 	}
 
 	/**
@@ -203,6 +258,12 @@ final class Settings implements HasHooks {
 				</option>
 			<?php endforeach; ?>
 		</select>
+		<?php
+		$this->help_icon(
+			'tiers-tip-placement',
+			__( 'Controls where the table is auto-inserted on the product page. Pick "Only where I place it" to position it yourself with the [tiers_table] shortcode or the Volume pricing table block.', 'tiers' ),
+		);
+		?>
 		<p class="description">
 			<?php esc_html_e( 'Where the pricing table appears on the product page. Choose the last option to place it manually with the [tiers_table] shortcode or the "Volume pricing table" block.', 'tiers' ); ?>
 		</p>
@@ -224,6 +285,12 @@ final class Settings implements HasHooks {
 			class="regular-text"
 			placeholder="<?php esc_attr_e( 'e.g. Buy more, save more', 'tiers' ); ?>"
 		/>
+		<?php
+		$this->help_icon(
+			'tiers-tip-heading',
+			__( 'A short title rendered directly above the table, e.g. "Buy more, save more". Leave it blank to show just the table.', 'tiers' ),
+		);
+		?>
 		<p class="description">
 			<?php esc_html_e( 'Optional heading shown above the pricing table. Leave blank to hide it.', 'tiers' ); ?>
 		</p>
@@ -248,6 +315,10 @@ final class Settings implements HasHooks {
 			<?php esc_html_e( 'Add a "You save" column to the pricing table.', 'tiers' ); ?>
 		</label>
 		<?php
+		$this->help_icon(
+			'tiers-tip-show-savings',
+			__( 'Adds a column showing the cash saved per unit at each tier. Concrete savings figures convert better than a percentage alone.', 'tiers' ),
+		);
 	}
 
 	/**
@@ -268,16 +339,24 @@ final class Settings implements HasHooks {
 			<?php esc_html_e( 'Show a per-line "You save" note under each discounted cart item.', 'tiers' ); ?>
 		</label>
 		<?php
+		$this->help_icon(
+			'tiers-tip-cart-note',
+			__( 'Reassures shoppers in the cart by printing the exact amount saved under each qualifying line item. Reinforces the discount right before checkout.', 'tiers' ),
+		);
 	}
 
 	/**
 	 * Render the dynamic tier-builder table field.
 	 */
 	public function render_tiers_field(): void {
-		$tiers = $this->tiers_service->get_active_tiers();
+		$tiers     = $this->tiers_service->get_active_tiers();
+		$has_tiers = ! empty( $tiers );
 		?>
 		<div id="tiers-builder">
-			<table class="widefat" id="tiers-table">
+			<p id="tiers-empty" class="tiers-empty"<?php echo $has_tiers ? ' hidden' : ''; ?>>
+				<?php esc_html_e( 'No tiers yet. Add your first quantity break below — for example, 10% off when a shopper buys 5 or more.', 'tiers' ); ?>
+			</p>
+			<table class="widefat" id="tiers-table"<?php echo $has_tiers ? '' : ' hidden'; ?>>
 				<thead>
 					<tr>
 						<th><?php esc_html_e( 'Min. quantity', 'tiers' ); ?></th>
@@ -298,6 +377,7 @@ final class Settings implements HasHooks {
 									min="1"
 									step="1"
 									class="small-text"
+									aria-label="<?php esc_attr_e( 'Minimum quantity', 'tiers' ); ?>"
 									required
 								/>
 							</td>
@@ -310,6 +390,7 @@ final class Settings implements HasHooks {
 									max="100"
 									step="0.01"
 									class="small-text"
+									aria-label="<?php esc_attr_e( 'Discount percent', 'tiers' ); ?>"
 									required
 								/>
 							</td>
@@ -319,6 +400,7 @@ final class Settings implements HasHooks {
 									name="<?php echo esc_attr( self::OPTION ); ?>[tiers][<?php echo esc_attr( (string) $i ); ?>][label]"
 									value="<?php echo esc_attr( $tier['label'] ); ?>"
 									class="regular-text"
+									aria-label="<?php esc_attr_e( 'Tier label (optional)', 'tiers' ); ?>"
 								/>
 							</td>
 							<?php do_action( 'tiers_admin_settings_table_row', $tier, $i ); ?>
@@ -336,9 +418,23 @@ final class Settings implements HasHooks {
 					<?php esc_html_e( '+ Add tier', 'tiers' ); ?>
 				</button>
 			</p>
+			<div class="tiers-preview" aria-live="polite">
+				<p class="tiers-preview__title">
+					<?php esc_html_e( 'Live preview', 'tiers' ); ?>
+				</p>
+				<div id="tiers-preview-list"></div>
+			</div>
 		</div>
 		<p class="description">
-			<?php esc_html_e( 'The highest matching tier wins. E.g., buying 12 units gets the "10+" discount, not the "5+" discount.', 'tiers' ); ?>
+			<?php
+			esc_html_e( 'The highest matching tier wins. E.g., buying 12 units gets the "10+" discount, not the "5+" discount.', 'tiers' );
+			?>
+			<?php
+			$this->help_icon(
+				'tiers-tip-tiers',
+				__( 'Minimum quantity is the smallest cart amount that unlocks the tier. Discount % is taken off the regular price. Label is optional copy a shopper sees (e.g. "Bulk deal"). Tiers are sorted automatically by quantity.', 'tiers' ),
+			);
+			?>
 		</p>
 		<?php
 	}
@@ -351,7 +447,7 @@ final class Settings implements HasHooks {
 			return;
 		}
 		?>
-		<div class="wrap">
+		<div class="wrap tiers-settings">
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 			<form method="post" action="options.php">
 				<?php
