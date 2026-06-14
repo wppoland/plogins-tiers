@@ -14,12 +14,33 @@ declare(strict_types=1);
 
 defined( 'ABSPATH' ) || exit;
 
-if ( empty( $tiers_tiers ) ) {
-	return;
-}
-
 $tiers_heading      = isset( $tiers_heading ) ? (string) $tiers_heading : '';
 $tiers_show_savings = ! empty( $tiers_show_savings );
+
+if ( empty( $tiers_tiers ) ) :
+	?>
+	<div class="tiers-pricing-table">
+		<?php if ( '' !== $tiers_heading ) : ?>
+			<p class="tiers-pricing-table__heading"><?php echo esc_html( $tiers_heading ); ?></p>
+		<?php endif; ?>
+		<p class="tiers-pricing-table__empty">
+			<?php esc_html_e( 'No volume discounts are available for this product yet.', 'tiers' ); ?>
+		</p>
+	</div>
+	<?php
+	return;
+endif;
+
+// Identify the tier with the deepest discount so we can flag it as the best deal.
+$tiers_best_i       = 0;
+$tiers_best_percent = 0.0;
+foreach ( $tiers_tiers as $tiers_idx => $tiers_row ) {
+	$tiers_row_pct = (float) $tiers_row['discount_percent'];
+	if ( $tiers_row_pct > $tiers_best_percent ) {
+		$tiers_best_percent = $tiers_row_pct;
+		$tiers_best_i       = $tiers_idx;
+	}
+}
 ?>
 <div class="tiers-pricing-table" aria-label="<?php esc_attr_e( 'Volume pricing', 'tiers' ); ?>">
 	<?php if ( '' !== $tiers_heading ) : ?>
@@ -52,8 +73,9 @@ $tiers_show_savings = ! empty( $tiers_show_savings );
 				$tiers_saved      = round( $tiers_base_price - $tiers_tier_price, wc_get_price_decimals() );
 				$tiers_is_last    = ( count( $tiers_tiers ) - 1 === $tiers_i );
 				$tiers_next_min   = $tiers_is_last ? null : $tiers_tiers[ $tiers_i + 1 ]['min_qty'] - 1;
+				$tiers_is_best    = ( $tiers_i === $tiers_best_i && count( $tiers_tiers ) > 1 );
 				?>
-				<tr>
+				<tr<?php echo $tiers_is_best ? ' class="is-best-tier"' : ''; ?>>
 					<td>
 						<?php
 						if ( null !== $tiers_next_min ) {
@@ -70,9 +92,16 @@ $tiers_show_savings = ! empty( $tiers_show_savings );
 								esc_html( (string) $tiers_tier['min_qty'] ),
 							);
 						}
+
+						if ( $tiers_is_best ) :
+							?>
+							<span class="tiers-best-badge"><?php esc_html_e( 'Best price', 'tiers' ); ?></span>
+							<?php
+						endif;
 						?>
 					</td>
 					<td>
+						<span class="tiers-discount">
 						<?php
 						printf(
 							/* translators: %s: discount percentage */
@@ -80,8 +109,9 @@ $tiers_show_savings = ! empty( $tiers_show_savings );
 							esc_html( (string) $tiers_percent )
 						);
 						?>
+						</span>
 					</td>
-					<td><?php echo wp_kses_post( wc_price( $tiers_tier_price ) ); ?></td>
+					<td class="tiers-price"><?php echo wp_kses_post( wc_price( $tiers_tier_price ) ); ?></td>
 					<?php if ( $tiers_show_savings ) : ?>
 						<td><?php echo wp_kses_post( wc_price( $tiers_saved ) ); ?></td>
 					<?php endif; ?>
