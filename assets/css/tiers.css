@@ -1,0 +1,48 @@
+/* ==========================================================================
+   Tiers – Volume Pricing Table
+   Accessible, no-layout-shift styles. Integrates with WC themes.
+   ========================================================================== */
+
+.tiers-pricing-table {
+    margin: 1em 0 1.25em;
+    font-size: 0.9em;
+}
+
+.tiers-pricing-table table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tiers-pricing-table thead {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.tiers-pricing-table th,
+.tiers-pricing-table td {
+    padding: 0.5em 0.75em;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.tiers-pricing-table th {
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #555;
+}
+
+.tiers-pricing-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tiers-pricing-table tbody tr:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.tiers-pricing-table .amount {
+    font-weight: 600;
+}

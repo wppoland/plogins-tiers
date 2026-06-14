@@ -1,29 +1,15 @@
 <?php
-/**
- * Constants needed by PHPStan to analyse the plugin without bootstrapping WordPress.
- *
- * @package Tiers
- */
 
 declare(strict_types=1);
 
-namespace {
-    if (! defined('ABSPATH')) {
-        define('ABSPATH', '/tmp/wordpress/');
-    }
-    if (! defined('TIERS_DIR')) {
-        define('TIERS_DIR', '/tmp/tiers/');
-    }
-    if (! defined('TIERS_URL')) {
-        define('TIERS_URL', 'https://example.test/wp-content/plugins/tiers/');
-    }
-}
+/**
+ * PHPStan bootstrap: define plugin constants so tiers.php and src/ can be analysed
+ * without a running WordPress environment.
+ */
 
-namespace Tiers {
-    if (! defined('Tiers\\VERSION')) {
-        define('Tiers\\VERSION', '0.1.0');
-    }
-    if (! defined('Tiers\\PLUGIN_FILE')) {
-        define('Tiers\\PLUGIN_FILE', '/tmp/tiers/tiers.php');
-    }
-}
+define( 'ABSPATH', '/tmp/' );
+define( 'Tiers\VERSION', '0.1.0' );
+define( 'Tiers\PLUGIN_FILE', '/tmp/tiers.php' );
+define( 'Tiers\PLUGIN_DIR', '/tmp' );
+define( 'Tiers\MIN_PHP_VERSION', '8.1.0' );
+define( 'Tiers\MIN_WC_VERSION', '8.0.0' );

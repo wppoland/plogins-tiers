@@ -1,17 +1,10 @@
 {
     "name": "wppoland/tiers",
-    "description": "Volume and quantity-based tiered pricing for WooCommerce",
+    "description": "Tiers – simple, accessible volume / quantity-based pricing tiers for WooCommerce.",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/wppoland/storefront-kit"
-        }
-    ],
     "require": {
-        "php": ">=8.1",
-        "wppoland/storefront-kit": "^1.0"
+        "php": ">=8.1"
     },
     "require-dev": {
         "wp-coding-standards/wpcs": "^3.0",

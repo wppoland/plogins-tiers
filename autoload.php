@@ -1,39 +1,28 @@
 <?php
 /**
- * Autoloading: prefer Composer's vendor autoloader (ships the storefront-kit and
- * the optimized classmap). Fall back to a minimal PSR-4 autoloader so the plugin
- * still boots if vendor/ is somehow absent.
+ * PSR-4 autoloader for the Tiers plugin.
+ *
+ * Maps the Tiers\ namespace to src/, with no Composer overhead.
  *
  * @package Tiers
  */
 
 declare(strict_types=1);
 
-namespace Tiers;
+defined( 'ABSPATH' ) || exit;
 
-defined('ABSPATH') || exit;
+spl_autoload_register(
+	static function ( string $class_name ): void {
+		if ( 0 !== strncmp( $class_name, 'Tiers\\', 6 ) ) {
+			return;
+		}
 
-if (is_readable(__DIR__ . '/vendor/autoload.php')) {
-    require_once __DIR__ . '/vendor/autoload.php';
-    return;
-}
+		$relative = str_replace( '\\', '/', substr( $class_name, 6 ) );
+		$base_dir = __DIR__ . '/src/';
+		$file     = $base_dir . $relative . '.php';
 
-spl_autoload_register(static function (string $class): void {
-    $prefixes = [
-        'Tiers\\'           => __DIR__ . '/src/',
-        'WPPoland\\StorefrontKit\\'    => __DIR__ . '/vendor/wppoland/storefront-kit/src/',
-    ];
-
-    foreach ($prefixes as $prefix => $baseDir) {
-        $len = strlen($prefix);
-        if (strncmp($prefix, $class, $len) !== 0) {
-            continue;
-        }
-        $relative = substr($class, $len);
-        $file     = $baseDir . str_replace('\\', '/', $relative) . '.php';
-        if (is_readable($file)) {
-            require_once $file;
-        }
-        return;
-    }
-});
+		if ( file_exists( $file ) ) {
+			require_once $file;
+		}
+	}
+);

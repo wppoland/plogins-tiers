@@ -1,28 +1,26 @@
 <?php
 /**
- * Boot order: services listed here are resolved from the container and have
- * their registerHooks() called during Plugin::boot(). Each must implement
- * Tiers\Contract\HasHooks.
+ * Tiers hooks configuration.
  *
- * Admin-only classes are included only when running in wp-admin context.
+ * Ordered list of HasHooks services to boot during plugin initialisation.
+ * Admin-only services are appended only when running in wp-admin.
  *
  * @package Tiers
- *
- * @return array<class-string>
  */
 
 declare(strict_types=1);
 
+defined( 'ABSPATH' ) || exit;
+
 use Tiers\Admin\Settings;
 use Tiers\Service\TiersService;
 
-defined('ABSPATH') || exit;
+$tiers_hooks = array(
+	TiersService::class,
+);
 
-return is_admin()
-    ? [
-        TiersService::class,
-        Settings::class,
-    ]
-    : [
-        TiersService::class,
-    ];
+if ( is_admin() ) {
+	$tiers_hooks[] = Settings::class;
+}
+
+return $tiers_hooks;

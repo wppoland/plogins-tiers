@@ -1,263 +1,277 @@
 <?php
+/**
+ * Admin settings page for Tiers.
+ *
+ * @package Tiers\Admin
+ */
 
 declare(strict_types=1);
 
 namespace Tiers\Admin;
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 use Tiers\Contract\HasHooks;
+use Tiers\Service\TiersService;
 
 /**
- * Admin settings page registered as a top-level "Tiers" menu.
+ * Admin settings page for Tiers, registered under the WooCommerce menu.
  *
- * Stores settings in the `tiers_settings` option (array): a feature toggle
- * plus a repeatable list of tiers, each a min quantity + discount percent.
- * All output is escaped; all input sanitised, clamped and sorted on save.
+ * Settings are stored in `tiers_settings` (array):
+ *  - tiers:       array of {min_qty, discount_percent, label}
+ *  - show_table:  bool — show pricing table on product page
+ *
+ * @package Tiers\Admin
  */
-final class Settings implements HasHooks
-{
-    private const OPTION = 'tiers_settings';
-    private const PAGE   = 'tiers-settings';
+final class Settings implements HasHooks {
 
-    public function registerHooks(): void
-    {
-        add_action('admin_menu', [$this, 'addMenuPage']);
-        add_action('admin_init', [$this, 'registerSettings']);
-    }
+	private const OPTION  = 'tiers_settings';
+	private const PAGE    = 'tiers-settings';
+	private const SECTION = 'tiers_general';
 
-    public function addMenuPage(): void
-    {
-        add_menu_page(
-            __('Tiers Settings', 'tiers'),
-            __('Tiers', 'tiers'),
-            'manage_woocommerce',
-            self::PAGE,
-            [$this, 'renderPage'],
-            'dashicons-chart-bar',
-            58,
-        );
-    }
+	/**
+	 * Constructor.
+	 *
+	 * @param TiersService $tiers_service The core tiers service.
+	 */
+	public function __construct(
+		private readonly TiersService $tiers_service,
+	) {}
 
-    public function registerSettings(): void
-    {
-        register_setting(
-            self::PAGE,
-            self::OPTION,
-            [
-                'type'              => 'array',
-                'sanitize_callback' => [$this, 'sanitize'],
-            ],
-        );
+	/**
+	 * Register WordPress hooks.
+	 */
+	public function registerHooks(): void {
+		add_action( 'admin_menu', array( $this, 'add_menu_page' ) );
+		add_action( 'admin_init', array( $this, 'register_settings' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
+	}
 
-        // The menu uses manage_woocommerce; align the options.php save capability
-        // so shop managers (not just admins with manage_options) can save.
-        add_filter(
-            'option_page_capability_' . self::PAGE,
-            static fn (): string => 'manage_woocommerce',
-        );
-    }
+	/**
+	 * Register the WooCommerce submenu page.
+	 */
+	public function add_menu_page(): void {
+		add_submenu_page(
+			'woocommerce',
+			__( 'Tiers Settings', 'tiers' ),
+			__( 'Tiers', 'tiers' ),
+			'manage_woocommerce',
+			self::PAGE,
+			array( $this, 'render_page' ),
+		);
+	}
 
-    public function renderPage(): void
-    {
-        if (! current_user_can('manage_woocommerce')) {
-            return;
-        }
+	/**
+	 * Enqueue the admin tier-builder JS on the settings page only.
+	 *
+	 * @param string $hook The current admin page hook suffix.
+	 */
+	public function enqueue_admin_assets( string $hook ): void {
+		if ( false === strpos( $hook, self::PAGE ) ) {
+			return;
+		}
 
-        $settings = $this->settings();
-        $enabled  = (bool) ($settings['enabled'] ?? false);
+		wp_enqueue_script(
+			'tiers-admin',
+			\Tiers\Plugin::instance()->url( 'assets/js/admin-tiers.js' ),
+			array(),
+			\Tiers\VERSION,
+			array( 'in_footer' => true ),
+		);
+	}
 
-        /** @var list<array{min_qty:int,discount_percent:float}> $tiers */
-        $tiers = $this->normaliseRows($settings['tiers'] ?? []);
+	/**
+	 * Register the settings, sections, and fields.
+	 */
+	public function register_settings(): void {
+		register_setting(
+			self::PAGE,
+			self::OPTION,
+			array(
+				'type'              => 'array',
+				'sanitize_callback' => array( $this, 'sanitize' ),
+			),
+		);
 
-        // Always offer at least one (empty) editable row.
-        if ($tiers === []) {
-            $tiers[] = ['min_qty' => 0, 'discount_percent' => 0.0];
-        }
-        ?>
-        <div class="wrap">
-            <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
-            <form method="post" action="options.php">
-                <?php settings_fields(self::PAGE); ?>
+		add_settings_section(
+			self::SECTION,
+			__( 'Global Volume Pricing Tiers', 'tiers' ),
+			static function (): void {
+				echo '<p>' . esc_html__(
+					'Define quantity thresholds and the discount to apply when a cart line reaches that quantity. Tiers apply globally to all products. Per-product overrides are available in Tiers PRO.',
+					'tiers',
+				) . '</p>';
+			},
+			self::PAGE,
+		);
 
-                <table class="form-table" role="presentation">
-                    <tbody>
-                        <tr>
-                            <th scope="row"><?php esc_html_e('Enable tiered pricing', 'tiers'); ?></th>
-                            <td>
-                                <label for="tiers_enabled">
-                                    <input
-                                        type="checkbox"
-                                        id="tiers_enabled"
-                                        name="<?php echo esc_attr(self::OPTION); ?>[enabled]"
-                                        value="1"
-                                        <?php checked($enabled, true); ?>
-                                    />
-                                    <?php esc_html_e('Apply quantity/volume discounts and show the price table on product pages.', 'tiers'); ?>
-                                </label>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+		add_settings_field(
+			'show_table',
+			__( 'Show pricing table', 'tiers' ),
+			array( $this, 'render_show_table' ),
+			self::PAGE,
+			self::SECTION,
+		);
 
-                <h2><?php esc_html_e('Pricing tiers', 'tiers'); ?></h2>
-                <p class="description">
-                    <?php esc_html_e('Each tier discounts the line price once the cart quantity reaches the given minimum. The highest matching tier wins. Empty or invalid rows are dropped on save.', 'tiers'); ?>
-                </p>
+		add_settings_field(
+			'tiers',
+			__( 'Pricing tiers', 'tiers' ),
+			array( $this, 'render_tiers_field' ),
+			self::PAGE,
+			self::SECTION,
+		);
+	}
 
-                <table class="widefat striped" id="tiers-rows" style="max-width:640px;">
-                    <thead>
-                        <tr>
-                            <th scope="col"><?php esc_html_e('Minimum quantity', 'tiers'); ?></th>
-                            <th scope="col"><?php esc_html_e('Discount (%)', 'tiers'); ?></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($tiers as $i => $tier) : ?>
-                            <tr>
-                                <td>
-                                    <input
-                                        type="number"
-                                        min="1"
-                                        step="1"
-                                        name="<?php echo esc_attr(self::OPTION); ?>[tiers][<?php echo esc_attr((string) $i); ?>][min_qty]"
-                                        value="<?php echo esc_attr($tier['min_qty'] > 0 ? (string) $tier['min_qty'] : ''); ?>"
-                                        class="small-text"
-                                    />
-                                </td>
-                                <td>
-                                    <input
-                                        type="number"
-                                        min="0"
-                                        max="100"
-                                        step="0.01"
-                                        name="<?php echo esc_attr(self::OPTION); ?>[tiers][<?php echo esc_attr((string) $i); ?>][discount_percent]"
-                                        value="<?php echo esc_attr($tier['discount_percent'] > 0 ? (string) $tier['discount_percent'] : ''); ?>"
-                                        class="small-text"
-                                    />
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                        <?php
-                        // Three extra blank rows so merchants can add tiers without JS.
-                        $next = count($tiers);
-                        for ($j = 0; $j < 3; $j++) :
-                            $index = $next + $j;
-                            ?>
-                            <tr>
-                                <td>
-                                    <input
-                                        type="number"
-                                        min="1"
-                                        step="1"
-                                        name="<?php echo esc_attr(self::OPTION); ?>[tiers][<?php echo esc_attr((string) $index); ?>][min_qty]"
-                                        value=""
-                                        class="small-text"
-                                    />
-                                </td>
-                                <td>
-                                    <input
-                                        type="number"
-                                        min="0"
-                                        max="100"
-                                        step="0.01"
-                                        name="<?php echo esc_attr(self::OPTION); ?>[tiers][<?php echo esc_attr((string) $index); ?>][discount_percent]"
-                                        value=""
-                                        class="small-text"
-                                    />
-                                </td>
-                            </tr>
-                        <?php endfor; ?>
-                    </tbody>
-                </table>
+	/**
+	 * Render the show_table checkbox field.
+	 */
+	public function render_show_table(): void {
+		$options = (array) get_option( self::OPTION, array() );
+		$checked = (bool) ( $options['show_table'] ?? true );
+		?>
+		<label for="tiers_show_table">
+			<input
+				type="checkbox"
+				id="tiers_show_table"
+				name="<?php echo esc_attr( self::OPTION ); ?>[show_table]"
+				value="1"
+				<?php checked( $checked, true ); ?>
+			/>
+			<?php esc_html_e( 'Display a volume pricing table on single product pages.', 'tiers' ); ?>
+		</label>
+		<?php
+	}
 
-                <?php submit_button(); ?>
-            </form>
-        </div>
-        <?php
-    }
+	/**
+	 * Render the dynamic tier-builder table field.
+	 */
+	public function render_tiers_field(): void {
+		$tiers = $this->tiers_service->get_active_tiers();
+		?>
+		<div id="tiers-builder">
+			<table class="widefat" id="tiers-table">
+				<thead>
+					<tr>
+						<th><?php esc_html_e( 'Min. quantity', 'tiers' ); ?></th>
+						<th><?php esc_html_e( 'Discount %', 'tiers' ); ?></th>
+						<th><?php esc_html_e( 'Label (optional)', 'tiers' ); ?></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody id="tiers-rows">
+					<?php foreach ( $tiers as $i => $tier ) : ?>
+						<tr>
+							<td>
+								<input
+									type="number"
+									name="<?php echo esc_attr( self::OPTION ); ?>[tiers][<?php echo esc_attr( (string) $i ); ?>][min_qty]"
+									value="<?php echo esc_attr( (string) $tier['min_qty'] ); ?>"
+									min="1"
+									step="1"
+									class="small-text"
+									required
+								/>
+							</td>
+							<td>
+								<input
+									type="number"
+									name="<?php echo esc_attr( self::OPTION ); ?>[tiers][<?php echo esc_attr( (string) $i ); ?>][discount_percent]"
+									value="<?php echo esc_attr( (string) $tier['discount_percent'] ); ?>"
+									min="0.01"
+									max="100"
+									step="0.01"
+									class="small-text"
+									required
+								/>
+							</td>
+							<td>
+								<input
+									type="text"
+									name="<?php echo esc_attr( self::OPTION ); ?>[tiers][<?php echo esc_attr( (string) $i ); ?>][label]"
+									value="<?php echo esc_attr( $tier['label'] ); ?>"
+									class="regular-text"
+								/>
+							</td>
+							<td>
+								<button type="button" class="button tiers-remove-row">
+									<?php esc_html_e( 'Remove', 'tiers' ); ?>
+								</button>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+			<p>
+				<button type="button" id="tiers-add-row" class="button">
+					<?php esc_html_e( '+ Add tier', 'tiers' ); ?>
+				</button>
+			</p>
+		</div>
+		<p class="description">
+			<?php esc_html_e( 'The highest matching tier wins. E.g., buying 12 units gets the "10+" discount, not the "5+" discount.', 'tiers' ); ?>
+		</p>
+		<?php
+	}
 
-    /**
-     * Sanitises, validates and normalises the submitted settings before save:
-     * coerces the toggle to bool, drops empty/invalid tier rows, clamps the
-     * discount to 0–100, and sorts tiers by ascending minimum quantity.
-     *
-     * @param mixed $raw
-     * @return array{enabled:bool,tiers:list<array{min_qty:int,discount_percent:float}>}
-     */
-    public function sanitize(mixed $raw): array
-    {
-        if (! is_array($raw)) {
-            return ['enabled' => false, 'tiers' => []];
-        }
+	/**
+	 * Render the settings page.
+	 */
+	public function render_page(): void {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+			return;
+		}
+		?>
+		<div class="wrap">
+			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+			<form method="post" action="options.php">
+				<?php
+				settings_fields( self::PAGE );
+				do_settings_sections( self::PAGE );
+				submit_button();
+				?>
+			</form>
+		</div>
+		<?php
+	}
 
-        $rawTiers = isset($raw['tiers']) && is_array($raw['tiers']) ? $raw['tiers'] : [];
+	/**
+	 * Sanitise and normalise the incoming settings array before saving.
+	 *
+	 * @param mixed $raw Raw POST data.
+	 * @return array<string, mixed>
+	 */
+	public function sanitize( mixed $raw ): array {
+		if ( ! is_array( $raw ) ) {
+			return array();
+		}
 
-        return [
-            'enabled' => ! empty($raw['enabled']),
-            'tiers'   => $this->normaliseRows($rawTiers),
-        ];
-    }
+		$sanitized = array(
+			'show_table' => ! empty( $raw['show_table'] ),
+			'tiers'      => array(),
+		);
 
-    /**
-     * Coerce a loose list of rows into valid, clamped, sorted tier rows.
-     *
-     * @param mixed $rows
-     * @return list<array{min_qty:int,discount_percent:float}>
-     */
-    private function normaliseRows(mixed $rows): array
-    {
-        if (! is_array($rows)) {
-            return [];
-        }
+		if ( is_array( $raw['tiers'] ?? null ) ) {
+			foreach ( (array) $raw['tiers'] as $tier ) {
+				if ( ! is_array( $tier ) ) {
+					continue;
+				}
 
-        $clean = [];
+				$min_qty = (int) ( $tier['min_qty'] ?? 0 );
+				$percent = (float) ( $tier['discount_percent'] ?? 0 );
+				$label   = sanitize_text_field( (string) ( $tier['label'] ?? '' ) );
 
-        foreach ($rows as $row) {
-            if (! is_array($row)) {
-                continue;
-            }
+				if ( $min_qty <= 0 || $percent <= 0 || $percent > 100 ) {
+					continue;
+				}
 
-            $minQty   = isset($row['min_qty']) ? (int) $row['min_qty'] : 0;
-            $discount = isset($row['discount_percent']) ? (float) $row['discount_percent'] : 0.0;
+				$sanitized['tiers'][] = array(
+					'min_qty'          => $min_qty,
+					'discount_percent' => $percent,
+					'label'            => $label,
+				);
+			}
+		}
 
-            if ($minQty <= 0 || $discount <= 0) {
-                continue;
-            }
-
-            // Clamp percent to a sane 0–100 range.
-            $discount = max(0.0, min(100.0, $discount));
-
-            $clean[] = [
-                'min_qty'          => $minQty,
-                'discount_percent' => $discount,
-            ];
-        }
-
-        usort(
-            $clean,
-            static fn (array $a, array $b): int => $a['min_qty'] <=> $b['min_qty'],
-        );
-
-        return array_values($clean);
-    }
-
-    /**
-     * Stored settings merged over packaged defaults.
-     *
-     * @return array<string, mixed>
-     */
-    private function settings(): array
-    {
-        $stored = get_option(self::OPTION, []);
-
-        if (! is_array($stored)) {
-            $stored = [];
-        }
-
-        /** @var array<string, mixed> $defaults */
-        $defaults = require TIERS_DIR . 'config/defaults.php';
-
-        return array_merge($defaults, $stored);
-    }
+		return $sanitized;
+	}
 }

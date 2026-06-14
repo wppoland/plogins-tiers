@@ -1,29 +1,42 @@
 <?php
 /**
- * Service wiring. Returns a closure that registers every service in the
- * container. Keep services thin; product logic lives in storefront-kit engines
- * instantiated here with this plugin's text-domain / option prefix / asset URLs.
+ * Tiers service container registration.
+ *
+ * Returns a callable that binds every service into the container.
+ * Bindings are lazy; admin services are guarded by is_admin().
  *
  * @package Tiers
  */
 
 declare(strict_types=1);
 
+namespace Tiers;
+
+defined( 'ABSPATH' ) || exit;
+
 use Tiers\Admin\Settings;
-use Tiers\Container;
-use Tiers\Migrator;
 use Tiers\Service\TiersService;
+use Tiers\Util\TemplateLoader;
 
-defined('ABSPATH') || exit;
+return static function ( Container $c ): void {
+	// Utilities.
+	$c->singleton( TemplateLoader::class, static fn(): TemplateLoader => new TemplateLoader() );
 
-return static function (Container $c): void {
-    $c->singleton(Migrator::class, static fn (): Migrator => new Migrator());
+	// Core service.
+	$c->singleton(
+		TiersService::class,
+		static fn(): TiersService => new TiersService(
+			$c->get( TemplateLoader::class ),
+		)
+	);
 
-    // Thin adapter over the storefront-kit DynamicPricingEngine.
-    $c->singleton(TiersService::class, static fn (): TiersService => new TiersService());
-
-    // Admin (only needed in wp-admin context).
-    if (is_admin()) {
-        $c->singleton(Settings::class, static fn (): Settings => new Settings());
-    }
+	// Admin (only in wp-admin context).
+	if ( is_admin() ) {
+		$c->singleton(
+			Settings::class,
+			static fn(): Settings => new Settings(
+				$c->get( TiersService::class ),
+			)
+		);
+	}
 };

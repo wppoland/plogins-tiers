@@ -1,15 +1,25 @@
 <?php
+/**
+ * HasHooks contract interface.
+ *
+ * Marks a service as having WordPress action/filter registrations.
+ *
+ * @package Tiers\Contract
+ */
 
 declare(strict_types=1);
 
 namespace Tiers\Contract;
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
- * A service that registers its own WordPress hooks during boot.
+ * Interface for services that register WordPress hooks.
  */
-interface HasHooks
-{
-    public function registerHooks(): void;
+interface HasHooks {
+
+	/**
+	 * Register all WordPress actions and filters for this service.
+	 */
+	public function registerHooks(): void;
 }
