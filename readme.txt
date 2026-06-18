@@ -1,5 +1,5 @@
 === Tiers ===
-Contributors: wppoland
+Contributors: motylanogha
 Tags: woocommerce, volume pricing, quantity discount, bulk pricing, tiered pricing
 Requires at least: 6.5
 Tested up to: 7.0
