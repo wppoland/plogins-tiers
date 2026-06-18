@@ -44,6 +44,15 @@ Tiers declares compatibility with WooCommerce HPOS and the Cart/Checkout Blocks.
 
 == Frequently Asked Questions ==
 
+= Documentation and links =
+
+* **Documentation** - https://plogins.com/tiers/docs/
+* **Plugin page** - https://plogins.com/tiers/
+* **Source code** - https://github.com/wppoland/tiers
+* **Bug reports and feature requests** - https://github.com/wppoland/tiers/issues
+* **Discussions and questions** - https://github.com/wppoland/tiers/discussions
+
+
 = Does Tiers require WooCommerce? =
 Yes. Tiers is a WooCommerce extension and requires WooCommerce 8.0 or later.
 
