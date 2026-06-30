@@ -332,7 +332,7 @@ final class TiersService implements HasHooks {
 
 		return $subtotal . '<br /><small class="tiers-cart-savings">' . sprintf(
 			/* translators: %s: formatted saved amount */
-			esc_html__( 'You save %s', 'tiers' ),
+			esc_html__( 'You save %s', 'plogins-tiers' ),
 			wp_kses_post( wc_price( $saved ) )
 		) . '</small>';
 	}
