@@ -1,5 +1,5 @@
 {
-    "name": "wppoland/plogins-tiers",
+    "name": "wppoland/tiers",
     "description": "Tiers – simple, accessible volume / quantity-based pricing tiers for WooCommerce.",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Plogins\\Tiers\\": "src/"
+            "Tiers\\": "src/"
         }
     },
     "scripts": {

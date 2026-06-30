@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Plogins\Tiers;
+namespace Tiers;
 
 defined( 'ABSPATH' ) || exit;
 
-use Plogins\Tiers\Contract\HasHooks;
+use Tiers\Contract\HasHooks;
 
 /**
  * Plugin singleton.
