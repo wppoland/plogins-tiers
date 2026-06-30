@@ -22,7 +22,7 @@
 
 			var control = el(components.TextControl, {
 				type: 'number',
-				label: __('Product ID (0 = current product)', 'plogins-tiers'),
+				label: __('Product ID (0 = current product)', 'tiers'),
 				value: productId,
 				min: 0,
 				onChange: function (value) {
@@ -34,10 +34,10 @@
 				components.Placeholder,
 				{
 					icon: 'editor-table',
-					label: __('Volume pricing table', 'plogins-tiers'),
+					label: __('Volume pricing table', 'tiers'),
 					instructions: __(
 						'The tier table renders on the front end for the selected product.',
-						'plogins-tiers'
+						'tiers'
 					),
 				},
 				control
