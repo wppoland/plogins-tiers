@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 defined( 'ABSPATH' ) || exit;
 
-use Plogins\Tiers\Admin\Settings;
-use Plogins\Tiers\Service\TiersService;
+use Tiers\Admin\Settings;
+use Tiers\Service\TiersService;
 
 $tiers_hooks = array(
 	TiersService::class,

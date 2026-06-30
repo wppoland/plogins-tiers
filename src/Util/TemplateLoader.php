@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace Plogins\Tiers\Util;
+namespace Tiers\Util;
 
 defined( 'ABSPATH' ) || exit;
 
