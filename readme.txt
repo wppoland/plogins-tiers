@@ -76,6 +76,11 @@ The uninstall routine removes the `tiers_settings` option. No custom tables are 
 = Does it work with taxes? =
 Yes. Tiers modifies prices before WooCommerce's tax calculation, so WooCommerce's own tax logic applies to the discounted price.
 
+
+= Does this plugin work on WordPress Multisite? =
+
+Yes. This plugin is compatible with WordPress Multisite. Network activate it or activate it on individual sites; each site keeps its own settings and data.
+
 == Screenshots ==
 
 1. Volume pricing table on a product page, shows quantity ranges, discount percentages, and resulting prices.
