@@ -1,4 +1,4 @@
-=== Plogins Tiers for WooCommerce ===
+=== Plogins Tiers - Tiered Pricing for WooCommerce ===
 Contributors: motylanogha
 Tags: woocommerce, volume pricing, quantity discount, bulk pricing, tiered pricing
 Requires at least: 6.5
