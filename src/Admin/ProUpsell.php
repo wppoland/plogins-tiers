@@ -97,13 +97,13 @@ final class ProUpsell {
 
 		if ( $this->isPolish() && ! empty( $d['price_pln'] ) ) {
 			/* translators: %d: yearly price in PLN */
-			return sprintf( __( 'od %d zł/rok', 'plogins-tiers' ), (int) $d['price_pln'] );
+			return sprintf( __( 'od %d zł/rok', 'tiers' ), (int) $d['price_pln'] );
 		}
 
 		if ( ! empty( $d['price_from'] ) ) {
 			$cur = ( $d['currency'] ?? 'EUR' ) === 'EUR' ? '€' : (string) $d['currency'] . ' ';
 			/* translators: 1: currency symbol, 2: yearly price */
-			return sprintf( __( 'from %1$s%2$d/yr', 'plogins-tiers' ), $cur, (int) $d['price_from'] );
+			return sprintf( __( 'from %1$s%2$d/yr', 'tiers' ), $cur, (int) $d['price_from'] );
 		}
 
 		return '';
@@ -151,7 +151,7 @@ final class ProUpsell {
 	 */
 	public function handleDismiss(): void {
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
-			wp_die( esc_html__( 'Permission denied.', 'plogins-tiers' ) );
+			wp_die( esc_html__( 'Permission denied.', 'tiers' ) );
 		}
 
 		check_admin_referer( self::ACTION );
@@ -190,7 +190,7 @@ final class ProUpsell {
 				<strong>
 				<?php
 				/* translators: %s: PRO edition name */
-				printf( esc_html__( 'Do more with %s', 'plogins-tiers' ), esc_html( $name ) );
+				printf( esc_html__( 'Do more with %s', 'tiers' ), esc_html( $name ) );
 				?>
 				</strong>
 				<?php
@@ -203,9 +203,9 @@ final class ProUpsell {
 					<span class="tiers-pro-banner__price"><?php echo esc_html( $price ); ?></span><?php endif; ?>
 			</p>
 			<a class="button button-primary tiers-pro-banner__cta" href="<?php echo esc_url( $this->url() ); ?>" target="_blank" rel="noopener noreferrer">
-				<?php esc_html_e( 'Upgrade to PRO', 'plogins-tiers' ); ?>
+				<?php esc_html_e( 'Upgrade to PRO', 'tiers' ); ?>
 			</a>
-			<a class="tiers-pro-banner__dismiss" href="<?php echo esc_url( $this->dismissUrl() ); ?>" aria-label="<?php esc_attr_e( 'Dismiss this notice', 'plogins-tiers' ); ?>">&times;</a>
+			<a class="tiers-pro-banner__dismiss" href="<?php echo esc_url( $this->dismissUrl() ); ?>" aria-label="<?php esc_attr_e( 'Dismiss this notice', 'tiers' ); ?>">&times;</a>
 		</div>
 		<?php
 	}
@@ -224,7 +224,7 @@ final class ProUpsell {
 		?>
 		<aside class="tiers-card tiers-pro-aside" aria-labelledby="tiers-pro-aside-h">
 			<p class="tiers-pro-aside__eyebrow"><?php echo esc_html( $name ); ?></p>
-			<h2 id="tiers-pro-aside-h" class="tiers-pro-aside__heading"><?php esc_html_e( 'Unlock every PRO feature', 'plogins-tiers' ); ?></h2>
+			<h2 id="tiers-pro-aside-h" class="tiers-pro-aside__heading"><?php esc_html_e( 'Unlock every PRO feature', 'tiers' ); ?></h2>
 			<ul class="tiers-pro-aside__list">
 				<?php foreach ( $features as $f ) : ?>
 					<li>
@@ -234,10 +234,10 @@ final class ProUpsell {
 				<?php endforeach; ?>
 			</ul>
 			<a class="button button-primary button-hero tiers-pro-aside__cta" href="<?php echo esc_url( $this->url() ); ?>" target="_blank" rel="noopener noreferrer">
-				<?php esc_html_e( 'Upgrade to PRO', 'plogins-tiers' ); ?>
+				<?php esc_html_e( 'Upgrade to PRO', 'tiers' ); ?>
 			</a>
 			<?php if ( '' !== $price ) : ?>
-				<p class="tiers-pro-aside__price"><?php echo esc_html( $price ); ?> · <?php esc_html_e( 'one licence, every PRO feature', 'plogins-tiers' ); ?></p>
+				<p class="tiers-pro-aside__price"><?php echo esc_html( $price ); ?> · <?php esc_html_e( 'one licence, every PRO feature', 'tiers' ); ?></p>
 			<?php endif; ?>
 		</aside>
 		<?php
@@ -258,7 +258,7 @@ final class ProUpsell {
 			<h2 id="tiers-pro-cards-h" class="tiers-pro-cards__title">
 				<?php
 				/* translators: %s: PRO edition name */
-				printf( esc_html__( 'What %s adds', 'plogins-tiers' ), esc_html( $name ) );
+				printf( esc_html__( 'What %s adds', 'tiers' ), esc_html( $name ) );
 				?>
 			</h2>
 			<div class="tiers-pro-cards__grid">
