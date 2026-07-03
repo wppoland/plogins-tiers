@@ -13,3 +13,5 @@ define( 'Tiers\PLUGIN_FILE', '/tmp/tiers.php' );
 define( 'Tiers\PLUGIN_DIR', '/tmp' );
 define( 'Tiers\MIN_PHP_VERSION', '8.1.0' );
 define( 'Tiers\MIN_WC_VERSION', '8.0.0' );
+define( 'TIERS_DIR', '/tmp/' );
+define( 'TIERS_URL', 'https://example.test/wp-content/plugins/plogins-tiers/' );
