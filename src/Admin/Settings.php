@@ -30,6 +30,13 @@ final class Settings implements HasHooks {
 	private const SECTION = 'tiers_general';
 
 	/**
+	 * Lazily-instantiated PRO upsell renderer.
+	 *
+	 * @var ProUpsell|null
+	 */
+	private ?ProUpsell $pro_upsell = null;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param TiersService $tiers_service The core tiers service.
@@ -39,12 +46,20 @@ final class Settings implements HasHooks {
 	) {}
 
 	/**
+	 * Lazily build the PRO upsell renderer.
+	 */
+	private function proUpsell(): ProUpsell {
+		return $this->pro_upsell ??= new ProUpsell();
+	}
+
+	/**
 	 * Register WordPress hooks.
 	 */
 	public function registerHooks(): void {
 		add_action( 'admin_menu', array( $this, 'add_menu_page' ) );
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
+		$this->proUpsell()->registerHooks();
 	}
 
 	/**
@@ -451,13 +466,22 @@ final class Settings implements HasHooks {
 		?>
 		<div class="wrap tiers-settings">
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-			<form method="post" action="options.php">
-				<?php
-				settings_fields( self::PAGE );
-				do_settings_sections( self::PAGE );
-				submit_button();
-				?>
-			</form>
+
+			<?php $this->proUpsell()->banner(); ?>
+
+			<div class="tiers-cols">
+				<form method="post" action="options.php">
+					<?php
+					settings_fields( self::PAGE );
+					do_settings_sections( self::PAGE );
+					submit_button();
+					?>
+				</form>
+
+				<?php $this->proUpsell()->aside(); ?>
+			</div>
+
+			<?php $this->proUpsell()->cards(); ?>
 		</div>
 		<?php
 	}
