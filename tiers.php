@@ -3,7 +3,7 @@
  * Plugin Name:       Plogins Tiers - Tiered Pricing for WooCommerce
  * Plugin URI:        https://plogins.com/plogins-tiers/
  * Description:        Volume and quantity-based tiered pricing for WooCommerce
- * Version:           0.2.2
+ * Version:           0.2.3
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Requires Plugins:  woocommerce
