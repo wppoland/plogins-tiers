@@ -31,3 +31,4 @@
 /test-results
 /playwright-report
 /.playwright-mcp
+/glotpress-import
