@@ -25,7 +25,7 @@ Tiers declares compatibility with WooCommerce HPOS and the Cart/Checkout Blocks.
 * Any number of global pricing tiers, each a minimum quantity and a discount percentage (with an optional label)
 * Automatic discounting in the cart, with the highest matching tier winning
 * A pricing table on single product pages, with a choice of where it appears: product summary, before or after the add-to-cart form, the product meta area, or nowhere automatic
-* A `[tiers_table]` shortcode and a "Volume pricing table" block for dropping the table in by hand
+* A `[tiers_table]` shortcode, a "Volume pricing table" Gutenberg block, and an Elementor "Volume pricing table" widget for dropping the table in by hand
 * An optional heading above the table and an optional "You save" column
 * An optional "You save" note under each discounted line in the cart
 * An admin tier builder that adds and removes rows in place, with a live preview of how each tier reads
