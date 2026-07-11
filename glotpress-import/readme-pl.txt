@@ -4,33 +4,33 @@ Tags: woocommerce, volume pricing, quantity discount, bulk pricing, tiered prici
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Poziomy cenowe dla WooCommerce. Ustaw zakresy rabatów ilościowych i pokaż tabelę cen renderowaną przez serwer na stronach produktów. Bez jQuery.
+Progi cen hurtowych dla WooCommerce. Ustaw zakresy rabatów ilościowych i pokaż na stronach produktów tabelę cen renderowaną po stronie serwera. Bez jQuery.
 
 == Description ==
 
-Tiers zapewnia sklepowi WooCommerce ceny oparte na ilości. Ustawiasz punkty przerwania, kup 5, zaoszczędź 5%; kup 10, zaoszczędź 10%, a rabat zostanie odjęty od pozycji zamówienia w momencie, gdy kupujący zakupi wystarczającą liczbę jednostek. Te same punkty przerwania są pokazane w tabeli na stronie produktu, dzięki czemu użytkownicy mogą zobaczyć cenę, jaką zapłacą, zanim dodadzą produkt do koszyka.
+Tiers daje sklepowi WooCommerce ceny zależne od ilości. Ustawiasz progi: kup 5 — zaoszczędź 5%; kup 10 — zaoszczędź 10%, a rabat jest odejmowany od pozycji zamówienia w chwili, gdy klient doda do koszyka wystarczającą liczbę sztuk. Te same progi są pokazywane w tabeli na stronie produktu, aby klienci widzieli cenę, jaką zapłacą, zanim dodadzą produkt do koszyka.
 
-Rabat jest obliczany w PHP na podstawie `woocommerce_before_calculate_totals`, więc logika cenowa nie zawiera interfejsu JavaScript. Tabela stron produktu to zwykła `<tabela>` w formacie HTML drukowana po stronie serwera z `<tym zakresem>` i `<podpisem>`, dzięki czemu jest poprawnie czytana przez czytniki ekranu i nie zmienia układu podczas ładowania strony.
+Rabat jest obliczany w PHP w zdarzeniu `woocommerce_before_calculate_totals`, więc logika cen nie ładuje żadnego front-endowego JavaScriptu. Tabela na stronie produktu to zwykła tabela HTML `<table>` wypisywana po stronie serwera z `<th scope>` i `<caption>`, dzięki czemu jest poprawnie odczytywana przez czytniki ekranu i nie przesuwa układu podczas ładowania strony.
 
-Jeśli ilość odpowiada więcej niż jednemu poziomowi, stosuje się najgłębszy poziom kwalifikacyjny, 12 jednostek przyjmuje cenę „10+”, a nie cenę „5+”. Tiers również nigdy nie podnosi ceny, więc produkt, który jest już w promocji, zachowuje niższą cenę.
+Gdy ilość pasuje do więcej niż jednego progu, stosowany jest najwyższy kwalifikujący się próg — 12 sztuk otrzymuje cenę „10+”, a nie „5+”. Tiers nigdy też nie podnosi ceny, więc produkt już przeceniony zachowuje swoją niższą cenę.
 
-Tiers deklaruje kompatybilność z WooCommerce HPOS i blokami koszyka/kasy. Przechowuje wszystko w jednym wierszu `wp_options` i nie tworzy niestandardowych tabel, więc usunięcie wtyczki pozostawia bazę danych bez zmian.
+Tiers deklaruje zgodność z WooCommerce HPOS oraz blokami Koszyka/Kasy. Przechowuje wszystko w jednym wierszu `wp_options` i nie tworzy żadnych niestandardowych tabel, więc usunięcie wtyczki pozostawia bazę danych w niezmienionym stanie.
 
 <strong>Co otrzymujesz</strong>
 
-* Dowolna liczba globalnych poziomów cenowych, każdy z minimalną ilością i procentem rabatu (z opcjonalną etykietą)
-* Automatyczne rabaty w koszyku, przy czym wygrywa najwyższy pasujący poziom
-* Tabela cen na stronach poszczególnych produktów z możliwością wyboru miejsca jej wyświetlania: podsumowanie produktu, przed lub po formularzu dodawania do koszyka, metaobszar produktu lub nigdzie automatycznie
-* Krótki kod `[tiers_table]` i blok „Tabela cen wolumenowych” do ręcznego umieszczenia tabeli
-* Opcjonalny nagłówek nad tabelą i opcjonalna kolumna „Oszczędzasz”.
-* Opcjonalna notatka „Oszczędzasz” pod każdą przecenioną linią w koszyku
-* Kreator poziomów administracyjnych, który dodaje i usuwa wiersze na miejscu, z podglądem na żywo odczytu każdego poziomu
-* Tłumaczenie na język polski oraz dołączony plik POT do tłumaczenia na inne języki (poziomy domeny tekstowej)
-* Filtr „tiers_product_tiers”, który umożliwia Tiers PRO zamianę poziomów według produktu lub ról
+* Dowolna liczba globalnych progów cenowych, każdy z minimalną ilością i procentem rabatu (z opcjonalną etykietą)
+* Automatyczne rabaty w koszyku, gdzie wygrywa najwyższy pasujący próg
+* Tabela cen na stronach pojedynczych produktów, z wyborem miejsca wyświetlania: podsumowanie produktu, przed lub po formularzu dodawania do koszyka, obszar meta produktu albo nigdzie automatycznie
+* Shortcode `[tiers_table]`, blok Gutenberga „Tabela cen hurtowych” oraz widżet Elementora „Tabela cen hurtowych” do ręcznego wstawiania tabeli
+* Opcjonalny nagłówek nad tabelą i opcjonalna kolumna „Oszczędzasz”
+* Opcjonalna informacja „Oszczędzasz” pod każdą przecenioną pozycją w koszyku
+* Kreator progów w panelu, który dodaje i usuwa wiersze w miejscu, z podglądem na żywo tego, jak brzmi każdy próg
+* Tłumaczenie na polski oraz dołączony plik POT do tłumaczenia na inne języki (domena tekstowa `tiers`)
+* Filtr `tiers_product_tiers`, który pozwala Tiers PRO podmienić progi zależne od produktu lub roli
 
 <strong>Dokumentacja:</strong> https://plogins.com/pl/tiers/docs/
 
@@ -38,18 +38,19 @@ Tiers deklaruje kompatybilność z WooCommerce HPOS i blokami koszyka/kasy. Prze
 
 Więcej darmowych wtyczek WooCommerce od WPPoland:
 
-* [Plogins Waitlist](https://wordpress.org/plugins/plogins-waitlist/) - lista oczekujących na powrót do magazynu, która wysyła e-mail do kupujących w momencie zwrotu produktu.
+* [Plogins Waitlist](https://wordpress.org/plugins/plogins-waitlist/) - lista powiadomień o dostępności, która wysyła e-mail do klientów w chwili, gdy produkt wraca do sprzedaży.
 * [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - szybkie wyszukiwanie i filtrowanie produktów AJAX dla WooCommerce, bez jQuery.
-* [Polski for WooCommerce](https://wordpress.org/plugins/polski/) - Zgodność z rynkiem polskim: GPSR, Omnibus, RODO, faktury i moduły sklepowe.
+* [Polski for WooCommerce](https://wordpress.org/plugins/polski/) - zgodność z polskim rynkiem: GPSR, Omnibus, RODO, faktury i moduły sklepowe.
 
-Pełny katalog znajdziesz na https://plogins.com/pl/.
+Przejrzyj pełny katalog na https://plogins.com/pl/ .
 
 == Installation ==
 
-1. Zainstaluj i aktywuj WooCommerce (8.0 lub nowszy).
-2. Prześlij folder `tiers` do `/wp-content/plugins/` lub pobierz kopię z https://github.com/wppoland/plogins-tiers.
-3. Aktywuj wtyczkę na ekranie <strong>Wtyczki<strong>. 4. Przejdź do </strong>WooCommerce → Poziomy</strong> i dodaj co najmniej jeden poziom cenowy (np. 5 jednostek → 5% zniżki).
-5. Cennik pojawia się automatycznie na stronach produktów, a rabaty naliczają się w koszyku.
+1. Zainstaluj i włącz WooCommerce (8.0 lub nowszy).
+2. Wgraj folder `tiers` do `/wp-content/plugins/` lub pobierz kopię z https://github.com/wppoland/plogins-tiers.
+3. Włącz wtyczkę na ekranie <strong>Wtyczki</strong>.
+4. Przejdź do <strong>WooCommerce → Tiers</strong> i dodaj co najmniej jeden próg cenowy (np. 5 sztuk → 5% rabatu).
+5. Tabela cen pojawia się automatycznie na stronach produktów, a rabaty są naliczane w koszyku.
 
 == Frequently Asked Questions ==
 
@@ -58,77 +59,84 @@ Pełny katalog znajdziesz na https://plogins.com/pl/.
 * <strong>Dokumentacja</strong> - https://plogins.com/pl/tiers/docs/
 * <strong>Strona wtyczki</strong> - https://plogins.com/pl/tiers/
 * <strong>Kod źródłowy</strong> - https://github.com/wppoland/plogins-tiers
-* <strong>Raporty o błędach i prośby o nowe funkcje</strong> - https://github.com/wppoland/plogins-tiers/issues
+* <strong>Zgłoszenia błędów i propozycje funkcji</strong> - https://github.com/wppoland/plogins-tiers/issues
 
 
 = Does Tiers require WooCommerce? =
 Tak. Tiers jest rozszerzeniem WooCommerce i wymaga WooCommerce 8.0 lub nowszego.
 
 = Does the pricing table reload the page? =
-Nie. Tabela cen jest renderowana przez serwer i ładuje się wraz ze stroną, zanim zostanie uruchomiony jakikolwiek JavaScript. Nie ma etapu AJAX ani nawodnienia.
+Nie. Tabela cen jest renderowana po stronie serwera i ładuje się razem ze stroną, zanim uruchomi się jakikolwiek JavaScript. Nie ma etapu AJAX ani hydratacji.
 
 = How does the "highest tier wins" logic work? =
-Jeśli klient ma w koszyku 12 sztuk produktu, a Ty masz poziomy „5+” (5% zniżki) i „10+” (10% zniżki), otrzyma 10% zniżki. Poziomy są oceniane od najniższego do najwyższego min_qty, a ostatni mecz wygrywa.
+Jeśli klient ma w koszyku 12 sztuk produktu, a Ty masz progi „5+” (5% rabatu) i „10+” (10% rabatu), otrzyma 10% rabatu. Progi są oceniane od najniższego do najwyższego min_qty i wygrywa ostatnie dopasowanie.
 
 = Can I apply different tiers to different products? =
-W wersji bezpłatnej poziomy mają charakter globalny (dotyczy wszystkich produktów). Tiers PRO dodaje zastąpienia poziomów dla poszczególnych produktów na ekranie edycji produktu.
+W wersji darmowej progi są globalne (obejmują wszystkie produkty). Tiers PRO dodaje nadpisania progów dla poszczególnych produktów na ekranie edycji produktu.
 
 = Are discounts compatible with WooCommerce coupons? =
-Tak. Poziomy modyfikuje cenę pozycji koszyka, zanim WooCommerce obliczy sumę, więc standardowe kupony WooCommerce działają normalnie na górze ceny wielopoziomowej.
+Tak. Tiers modyfikuje cenę pozycji koszyka, zanim WooCommerce obliczy sumy, więc standardowe kupony WooCommerce działają normalnie na przecenionej cenie progowej.
 
 = What happens when I deactivate the plugin? =
-Rabaty przestają być stosowane, a tabela cenowa nie jest już wyświetlana. Twoje ustawienia zostaną zapisane w bazie danych.
+Rabaty przestają być stosowane, a tabela cen znika. Twoje ustawienia pozostają zapisane w bazie danych.
 
 = What happens when I delete the plugin? =
-Procedura deinstalacji usuwa opcję `tiers_settings`. Nie są tworzone żadne niestandardowe tabele, więc baza danych pozostaje czysta.
+Procedura odinstalowania usuwa opcję `tiers_settings`. Nie są tworzone żadne niestandardowe tabele, więc baza danych pozostaje czysta.
 
 = Does it work with taxes? =
-Tak. Tiers modyfikuje ceny przed obliczeniem podatku WooCommerce, więc logika podatkowa WooCommerce ma zastosowanie do obniżonej ceny.
+Tak. Tiers modyfikuje ceny przed obliczeniem podatku przez WooCommerce, więc podatkowa logika WooCommerce działa na przecenionej cenie.
 
 
 = Does this plugin work on WordPress Multisite? =
 
-Tak. Ta wtyczka jest kompatybilna z WordPress Multisite. Aktywuj go w sieci lub aktywuj na poszczególnych stronach; każda witryna przechowuje własne ustawienia i dane.
+Tak. Ta wtyczka jest zgodna z WordPress Multisite. Włącz ją w całej sieci lub na poszczególnych witrynach; każda witryna zachowuje własne ustawienia i dane.
 
 == Screenshots ==
 
-1. Tabela cen hurtowych na stronie produktu, pokazuje zakresy ilościowe, procent rabatów i wynikające z nich ceny.
-2. Strona ustawień administratora, kreator poziomów z możliwością dodawania/usuwania wierszy i przełącznikiem pokazywania/ukrywania tabeli.
+1. Tabela cen hurtowych na stronie produktu — pokazuje zakresy ilości, procenty rabatu i wynikowe ceny.
+2. Strona ustawień w panelu — kreator progów z dodawaniem/usuwaniem wierszy i przełącznikiem pokazywania/ukrywania tabeli.
 
 == External Services ==
 
-Tiers nie łączy się z żadnymi usługami zewnętrznymi. Poziomy cenowe są przechowywane w pojedynczym wierszu „tiers_settings” w tabeli opcji WordPress, a rabat jest obliczany w PHP na Twoim własnym serwerze, żadne dane nie opuszczają Twojej witryny. Wtyczka nie wysyła wiadomości e-mail ani nie wysyła żadnych zdalnych żądań; tabela cen na stronie produktu jest renderowana lokalnie z tych przechowywanych warstw.
+Tiers nie łączy się z żadnymi usługami zewnętrznymi. Progi cenowe są przechowywane w jednym wierszu `tiers_settings` w tabeli opcji WordPressa, a rabat jest obliczany w PHP na Twoim własnym serwerze — żadne dane nigdy nie opuszczają Twojej witryny. Wtyczka nie wysyła e-maili ani nie wykonuje żadnych zdalnych żądań; tabela cen na stronie produktu jest renderowana lokalnie z tych zapisanych progów.
 
 == Development ==
 
-Poziomy są rozwijane na otwartej przestrzeni. Instalowane PHP, JS i CSS to te same pliki w repozytorium, nic nie jest minimalizowane ani generowane w kroku kompilacji. Przeczytaj kod, zgłoś błąd lub wyślij łatkę na https://github.com/wppoland/plogins-tiers.
+Tiers jest rozwijany otwarcie (open source). Instalowane pliki PHP, JS i CSS to te same pliki co w repozytorium — nic nie jest minifikowane ani generowane w kroku budowania. Przeczytaj kod, zgłoś błąd lub wyślij poprawkę na https://github.com/wppoland/plogins-tiers.
+
+== Translations ==
+
+Plogins Tiers zawiera polskie, niemieckie i hiszpańskie tłumaczenia interfejsu wtyczki. Domena tekstowa to `tiers`, więc pakiety językowe z WordPress.org mogą też nadpisywać lub rozszerzać dołączone tłumaczenia.
 
 == Changelog ==
+
+= 1.0.2 =
+* Dodano dołączone polskie, niemieckie i hiszpańskie tłumaczenia interfejsu wtyczki.
 
 = 1.0.1 =
 * Pierwsza stabilna wersja.
 
 = 0.2.4 =
-* Dokumenty: dodano sekcję „Możesz też polubić” łączącą inne bezpłatne wtyczki WPPoland WooCommerce. Żadnych zmian funkcjonalnych.
+* Dokumentacja: dodano sekcję „Może Ci się też spodobać”, linkującą pozostałe darmowe wtyczki WooCommerce od WPPoland. Bez zmian funkcjonalnych.
 
 = 0.2.3 =
-* Nowość: Widżet Elementora dla tabeli cen hurtowych (działa na Elementorze 3.x i 4.0).
+* Nowość: widżet Elementora dla tabeli cen hurtowych (działa w Elementorze 3.x i 4.0).
 
 = 0.2.2 =
-* Opakowanie: wyklucz katalog zasobów .wordpress-org z pobierania wtyczki (tylko zasoby SVN WordPress.org). Żadnych zmian funkcjonalnych.
+* Pakowanie: wykluczenie katalogu zasobów .wordpress-org z pobieranej wtyczki (zasoby tylko dla SVN WordPress.org). Bez zmian funkcjonalnych.
 
 = 0.2.1 =
-* Zmieniono nazwę na Poziomy Plogins dla WooCommerce, aby uzyskać bardziej charakterystyczną nazwę wtyczki.
+* Zmieniono nazwę na Plogins Tiers dla WooCommerce, aby uzyskać bardziej charakterystyczną nazwę wtyczki.
 
 = 0.2.0 =
-* Nowość: konfigurowalne rozmieszczenie tabel (podsumowanie produktu, formularz przed/po dodaniu do koszyka, meta produktu lub tylko instrukcja).
-* Nowość: krótki kod `[tiers_table]` i blok „Tabela cen wolumenowych” umożliwiający umieszczenie tabeli w dowolnym miejscu.
-* Nowość: opcjonalny niestandardowy nagłówek tabeli.
-* Nowość: opcjonalna kolumna „Oszczędzasz” w cenniku.
-* Nowość: opcjonalna notatka „Oszczędzasz” w wierszu koszyka.
-* Nowość: obsługa tłumaczeń ze ścieżką domeny `/languages`, dołączonym plikiem `tiers.pot` i tłumaczeniem na język polski.
-* Poprawka: zdefiniuj brakującą stałą `Tiers\PLUGIN_DIR`, aby wtyczka uruchamiała się niezawodnie.
-* Sprzątanie: usunięto nieużywany szablon; rozszerzony zakres standardów kodowania na szablony i bloki.
+* Nowość: konfigurowalne umiejscowienie tabeli (podsumowanie produktu, przed/po formularzu dodawania do koszyka, meta produktu lub tylko ręcznie).
+* Nowość: shortcode `[tiers_table]` oraz blok „Tabela cen hurtowych” do umieszczania tabeli w dowolnym miejscu.
+* Nowość: opcjonalny własny nagłówek tabeli.
+* Nowość: opcjonalna kolumna „Oszczędzasz” w tabeli cen.
+* Nowość: opcjonalna informacja „Oszczędzasz” dla poszczególnych pozycji w koszyku.
+* Nowość: obsługa tłumaczeń ze ścieżką domeny `/languages`, dołączonym plikiem `tiers.pot` i tłumaczeniem na polski.
+* Poprawka: zdefiniowano brakującą stałą `Tiers\PLUGIN_DIR`, aby wtyczka uruchamiała się niezawodnie.
+* Porządki: usunięto nieużywany szablon; rozszerzono pokrycie standardów kodowania na szablony i bloki.
 
 = 0.1.0 =
-* Wersja pierwsza: globalne poziomy cenowe, tabela cen renderowana przez serwer na stronach produktów, narzędzie do tworzenia warstw administracyjnych, filtr „poziomy/poziomy_produktu” dla nadpisań PRO. Bez jQuery, bez zmiany układu, WCAG 2.2 AA.
+* Pierwsze wydanie: globalne progi cen hurtowych, tabela cen renderowana po stronie serwera na stronach produktów, kreator progów w panelu, filtr `tiers/product_tiers` do nadpisań w wersji PRO. Bez jQuery, bez przeskoków układu, WCAG 2.2 AA.
