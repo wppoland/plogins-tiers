@@ -9,25 +9,25 @@ msgstr ""
 "X-Generator: plogins-i18n\n"
 
 msgid "Volume pricing tiers for WooCommerce. Set quantity discount bands and show a server-rendered pricing table on product pages. No jQuery."
-msgstr "Volumenpreisstufen für WooCommerce. Lege Mengenrabattbereiche fest und zeige auf Produktseiten eine vom Server gerenderte Preistabelle an. Kein jQuery."
+msgstr "Volumenpreisstufen für WooCommerce. Lege Mengenrabatt-Bereiche fest und zeige auf Produktseiten eine serverseitig gerenderte Preistabelle. Kein jQuery."
 
 msgid "Tiers gives a WooCommerce store quantity-based pricing. You set the breakpoints, buy 5, save 5%; buy 10, save 10%, and the discount is taken off the line item the moment a shopper carts enough units. The same breakpoints are shown as a table on the product page so people can see the price they'd pay before they add to cart."
-msgstr "Tiers bietet einem WooCommerce-Shop eine mengenbasierte Preisgestaltung. Du legst die Haltepunkte fest, kaufen 5, sparen 5 %; Kaufe 10, spare 10 % und der Rabatt wird von der Werbebuchung abgezogen, sobald ein Käufer genügend Einheiten in den Warenkorb legt. Dieselben Haltepunkte werden als Tabelle auf der Produktseite angezeigt, sodass Benutzer den Preis sehen können, den sie zahlen würden, bevor sie sie in den Warenkorb legen."
+msgstr "Tiers gibt einem WooCommerce-Shop mengenbasierte Preise. Du legst die Schwellen fest: kaufe 5, spare 5 %; kaufe 10, spare 10 % – und der Rabatt wird vom Bestellposten abgezogen, sobald die Kundschaft genügend Einheiten in den Warenkorb legt. Dieselben Schwellen werden als Tabelle auf der Produktseite gezeigt, damit man den zu zahlenden Preis sieht, bevor man in den Warenkorb legt."
 
 msgid "The discount is calculated in PHP on `woocommerce_before_calculate_totals`, so the pricing logic ships no front-end JavaScript. The product-page table is a plain HTML `<table>` printed server-side with `<th scope>` and a `<caption>`, so it reads correctly to screen readers and doesn't shift the layout as the page loads."
-msgstr "Der Rabatt wird in PHP auf „woocommerce_before_calculate_totals“ berechnet, sodass die Preislogik kein Front-End-JavaScript liefert. Die Produktseitentabelle ist eine einfache, serverseitig gedruckte HTML-Tabelle „<table>“ mit „<th Scope>“ und einer „<caption>“, sodass sie für Screenreader korrekt gelesen wird und das Layout beim Laden der Seite nicht verschoben wird."
+msgstr "Der Rabatt wird in PHP im Hook `woocommerce_before_calculate_totals` berechnet, sodass die Preislogik kein Frontend-JavaScript lädt. Die Tabelle auf der Produktseite ist eine schlichte HTML-Tabelle `<table>`, serverseitig ausgegeben mit `<th scope>` und `<caption>`, sodass sie für Screenreader korrekt vorgelesen wird und das Layout beim Laden der Seite nicht verschiebt."
 
 msgid "When a quantity matches more than one tier, the deepest qualifying tier applies, 12 units takes the \"10+\" price, not the \"5+\" price. Tiers never raises a price either, so a product that's already on sale keeps its lower price."
-msgstr "Wenn eine Menge mit mehr als einer Stufe übereinstimmt, gilt die niedrigste Qualifikationsstufe, bei 12 Einheiten gilt der Preis „10+“, nicht der Preis „5+“. Auch bei Tiers wird nie der Preis erhöht, sodass ein Produkt, das bereits im Angebot ist, seinen niedrigeren Preis behält."
+msgstr "Passt eine Menge zu mehr als einer Stufe, greift die höchste qualifizierende Stufe – 12 Einheiten erhalten den „10+“-Preis, nicht den „5+“-Preis. Tiers erhöht außerdem nie einen Preis, sodass ein bereits reduziertes Produkt seinen niedrigeren Preis behält."
 
 msgid "Tiers declares compatibility with WooCommerce HPOS and the Cart/Checkout Blocks. It stores everything in a single `wp_options` row and creates no custom tables, so deleting the plugin leaves the database as it was."
-msgstr "Tiers erklärt die Kompatibilität mit WooCommerce HPOS und den Cart/Checkout Blocks. Es speichert alles in einer einzigen „wp_options“-Zeile und erstellt keine benutzerdefinierten Tabellen, sodass die Datenbank beim Löschen des Plugins unverändert bleibt."
+msgstr "Tiers erklärt die Kompatibilität mit WooCommerce HPOS und den Cart/Checkout-Blocks. Es speichert alles in einer einzigen `wp_options`-Zeile und legt keine eigenen Tabellen an, sodass die Datenbank beim Löschen des Plugins unverändert bleibt."
 
 msgid "<strong>What you get</strong>"
-msgstr "<strong>Was du bekommen</strong>"
+msgstr "<strong>Was du bekommst</strong>"
 
-msgid "* Any number of global pricing tiers, each a minimum quantity and a discount percentage (with an optional label)\n* Automatic discounting in the cart, with the highest matching tier winning\n* A pricing table on single product pages, with a choice of where it appears: product summary, before or after the add-to-cart form, the product meta area, or nowhere automatic\n* A `[tiers_table]` shortcode and a \"Volume pricing table\" block for dropping the table in by hand\n* An optional heading above the table and an optional \"You save\" column\n* An optional \"You save\" note under each discounted line in the cart\n* An admin tier builder that adds and removes rows in place, with a live preview of how each tier reads\n* A Polish translation, plus a bundled POT file for translating into other languages (text domain `tiers`)\n* A `tiers_product_tiers` filter that lets Tiers PRO swap in per-product or role-based tiers"
-msgstr "* Beliebig viele globale Preisstufen, jeweils eine Mindestmenge und ein Rabattprozentsatz (mit optionaler Beschriftung)\n* Automatischer Rabatt im Warenkorb, wobei die höchste passende Stufe gewinnt\n* Eine Preistabelle auf einzelnen Produktseiten, mit der Wahl, wo sie angezeigt wird: Produktzusammenfassung, vor oder nach dem Add-to-Cart-Formular, im Produkt-Metabereich oder nirgendwo automatisch\n* Ein „[tiers_table]“-Shortcode und ein „Volume Pricing Table“-Block zum manuellen Einfügen der Tabelle\n* Eine optionale Überschrift über der Tabelle und eine optionale Spalte „Du sparst“.\n* Ein optionaler „Du sparst“-Hinweis unter jeder rabattierten Zeile im Warenkorb\n* Ein Admin-Ebenen-Builder, der Zeilen an Ort und Stelle hinzufügt und entfernt, mit einer Live-Vorschau der Anzeige jeder Ebene\n* Eine polnische Übersetzung sowie eine gebündelte POT-Datei zur Übersetzung in andere Sprachen (Textdomäne „Tiers“)\n* Ein „tiers_product_tiers“-Filter, der es Tiers PRO ermöglicht, die Stufen pro Produkt oder rollenbasiert auszutauschen"
+msgid "* Any number of global pricing tiers, each a minimum quantity and a discount percentage (with an optional label)\n* Automatic discounting in the cart, with the highest matching tier winning\n* A pricing table on single product pages, with a choice of where it appears: product summary, before or after the add-to-cart form, the product meta area, or nowhere automatic\n* A `[tiers_table]` shortcode, a \"Volume pricing table\" Gutenberg block, and an Elementor \"Volume pricing table\" widget for dropping the table in by hand\n* An optional heading above the table and an optional \"You save\" column\n* An optional \"You save\" note under each discounted line in the cart\n* An admin tier builder that adds and removes rows in place, with a live preview of how each tier reads\n* A Polish translation, plus a bundled POT file for translating into other languages (text domain `tiers`)\n* A `tiers_product_tiers` filter that lets Tiers PRO swap in per-product or role-based tiers"
+msgstr "* Beliebig viele globale Preisstufen, je mit einer Mindestmenge und einem Rabatt-Prozentsatz (mit optionaler Beschriftung)\n* Automatischer Rabatt im Warenkorb, wobei die höchste passende Stufe gewinnt\n* Eine Preistabelle auf einzelnen Produktseiten, mit Wahl des Anzeigeorts: Produktzusammenfassung, vor oder nach dem In-den-Warenkorb-Formular, im Produkt-Meta-Bereich oder nirgends automatisch\n* Ein Shortcode `[tiers_table]`, ein Gutenberg-Block „Volumenpreistabelle“ und ein Elementor-Widget „Volumenpreistabelle“, um die Tabelle von Hand einzufügen\n* Eine optionale Überschrift über der Tabelle und eine optionale Spalte „Du sparst“\n* Ein optionaler Hinweis „Du sparst“ unter jeder rabattierten Zeile im Warenkorb\n* Ein Stufen-Builder im Adminbereich, der Zeilen an Ort und Stelle hinzufügt und entfernt, mit einer Live-Vorschau, wie jede Stufe klingt\n* Eine polnische Übersetzung sowie eine mitgelieferte POT-Datei zur Übersetzung in andere Sprachen (Textdomain `tiers`)\n* Ein Filter `tiers_product_tiers`, mit dem Tiers PRO produkt- oder rollenbasierte Stufen einsetzen kann"
 
 msgid "<strong>Documentation:</strong> https://plogins.com/tiers/docs/"
 msgstr "<strong>Dokumentation:</strong> https://plogins.com/de/tiers/docs/"
@@ -36,71 +36,77 @@ msgid "More free WooCommerce plugins from WPPoland:"
 msgstr "Weitere kostenlose WooCommerce-Plugins von WPPoland:"
 
 msgid "* [Plogins Waitlist](https://wordpress.org/plugins/plogins-waitlist/) - back-in-stock waitlist that emails shoppers the moment a product returns.\n* [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - fast AJAX product search and filtering for WooCommerce, with no jQuery.\n* [Polski for WooCommerce](https://wordpress.org/plugins/polski/) - Polish-market compliance: GPSR, Omnibus, GDPR, invoices and storefront modules."
-msgstr "* [Plogins Waitlist](https://wordpress.org/plugins/plogins-waitlist/) – Warteliste für wieder verfügbare Lagerbestände, die Käufer per E-Mail benachrichtigt, sobald ein Produkt zurückkommt.\n* [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) – schnelle AJAX-Produktsuche und -Filterung für WooCommerce, ohne jQuery.\n* [Polski for WooCommerce](https://wordpress.org/plugins/polski/) – Einhaltung des polnischen Marktes: GPSR, Omnibus, DSGVO, Rechnungen und Storefront-Module."
+msgstr "* [Plogins Waitlist](https://wordpress.org/plugins/plogins-waitlist/) - Warteliste für wieder verfügbare Artikel, die der Kundschaft eine E-Mail schickt, sobald ein Produkt zurück ist.\n* [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - schnelle AJAX-Produktsuche und -Filterung für WooCommerce, ohne jQuery.\n* [Polski for WooCommerce](https://wordpress.org/plugins/polski/) - Konformität für den polnischen Markt: GPSR, Omnibus, DSGVO, Rechnungen und Shop-Module."
 
 msgid "Browse the full catalogue at https://plogins.com/ ."
-msgstr "Durchsuche den vollständigen Katalog unter https://plogins.com/de/ ."
+msgstr "Durchstöbere den vollständigen Katalog unter https://plogins.com/de/ ."
 
 msgid "1. Install and activate WooCommerce (8.0 or later).\n2. Upload the `tiers` folder to `/wp-content/plugins/`, or grab a copy from https://github.com/wppoland/plogins-tiers.\n3. Activate the plugin through the <strong>Plugins<strong> screen. 4. Go to </strong>WooCommerce → Tiers</strong> and add at least one pricing tier (e.g. 5 units → 5% off).\n5. The pricing table appears automatically on product pages, and discounts apply in the cart."
-msgstr "1. Installieren und aktiviere WooCommerce (8.0 oder höher).\n2. Lade den Ordner „tiers“ nach „/wp-content/plugins/“ hoch oder hol dir eine Kopie von https://github.com/wppoland/plogins-tiers.\n3. Aktiviere das Plugin über den Bildschirm <strong>Plugins<strong>. 4. Gehe zu </strong>WooCommerce → Stufen</strong> und füge mindestens eine Preisstufe hinzu (z. B. 5 Einheiten → 5 % Rabatt).\n5. Die Preistabelle erscheint automatisch auf den Produktseiten und im Warenkorb gelten Rabatte."
+msgstr "1. Installiere und aktiviere WooCommerce (8.0 oder neuer).\n2. Lade den Ordner `tiers` nach `/wp-content/plugins/` hoch oder hol dir eine Kopie von https://github.com/wppoland/plogins-tiers.\n3. Aktiviere das Plugin über den Bildschirm <strong>Plugins</strong>.\n4. Gehe zu <strong>WooCommerce → Tiers</strong> und füge mindestens eine Preisstufe hinzu (z. B. 5 Einheiten → 5 % Rabatt).\n5. Die Preistabelle erscheint automatisch auf den Produktseiten, und im Warenkorb werden die Rabatte angewendet."
 
 msgid "* <strong>Documentation</strong> - https://plogins.com/tiers/docs/\n* <strong>Plugin page</strong> - https://plogins.com/tiers/\n* <strong>Source code</strong> - https://github.com/wppoland/plogins-tiers\n* <strong>Bug reports and feature requests</strong> - https://github.com/wppoland/plogins-tiers/issues"
-msgstr "* <strong>Dokumentation</strong> - https://plogins.com/de/tiers/docs/\n* <strong>Plugin-Seite</strong> - https://plogins.com/de/tiers/\n* <strong>Quellcode</strong> – https://github.com/wppoland/plogins-tiers\n* <strong>Fehlerberichte und Funktionsanfragen</strong> – https://github.com/wppoland/plogins-tiers/issues"
+msgstr "* <strong>Dokumentation</strong> - https://plogins.com/de/tiers/docs/\n* <strong>Plugin-Seite</strong> - https://plogins.com/de/tiers/\n* <strong>Quellcode</strong> - https://github.com/wppoland/plogins-tiers\n* <strong>Fehlerberichte und Funktionswünsche</strong> - https://github.com/wppoland/plogins-tiers/issues"
 
 msgid "Yes. Tiers is a WooCommerce extension and requires WooCommerce 8.0 or later."
-msgstr "Ja. Tiers ist eine WooCommerce-Erweiterung und erfordert WooCommerce 8.0 oder höher."
+msgstr "Ja. Tiers ist eine WooCommerce-Erweiterung und erfordert WooCommerce 8.0 oder neuer."
 
 msgid "No. The pricing table is server-rendered, it loads with the page, before any JavaScript runs. There is no AJAX or hydration step."
-msgstr "Nein. Die Preistabelle wird vom Server gerendert und mit der Seite geladen, bevor JavaScript ausgeführt wird. Es gibt keinen AJAX- oder Hydratationsschritt."
+msgstr "Nein. Die Preistabelle wird serverseitig gerendert und lädt mit der Seite, bevor JavaScript läuft. Es gibt keinen AJAX- oder Hydration-Schritt."
 
 msgid "If a customer has 12 units of a product in their cart, and you have tiers for \"5+\" (5% off) and \"10+\" (10% off), they receive 10% off. The tiers are evaluated from lowest to highest min_qty and the last match wins."
-msgstr "Wenn ein Kunde 12 Einheiten eines Produkts in seinem Warenkorb hat und du die Stufen „5+“ (5 % Rabatt) und „10+“ (10 % Rabatt) haben, erhält er 10 % Rabatt. Die Stufen werden vom niedrigsten zum höchsten Min_Qty bewertet und das letzte Spiel gewinnt."
+msgstr "Hat ein Kunde 12 Einheiten eines Produkts im Warenkorb und du hast die Stufen „5+“ (5 % Rabatt) und „10+“ (10 % Rabatt), erhält er 10 % Rabatt. Die Stufen werden von der niedrigsten zur höchsten min_qty ausgewertet, und die letzte Übereinstimmung gewinnt."
 
 msgid "In the free version, tiers are global (applied to all products). Tiers PRO adds per-product tier overrides via the product edit screen."
-msgstr "In der kostenlosen Version sind die Stufen global (gilt für alle Produkte). Tiers PRO fügt Produktstufenüberschreibungen über den Produktbearbeitungsbildschirm hinzu."
+msgstr "In der kostenlosen Version sind die Stufen global (gelten für alle Produkte). Tiers PRO ergänzt produktspezifische Stufen-Überschreibungen über den Produktbearbeitungs-Bildschirm."
 
 msgid "Yes. Tiers modifies the cart line-item price before WooCommerce calculates totals, so standard WooCommerce coupons work normally on top of the tiered price."
-msgstr "Ja. Durch Stufen wird der Einzelpostenpreis im Warenkorb geändert, bevor WooCommerce die Gesamtsummen berechnet, sodass Standard-WooCommerce-Gutscheine normalerweise zusätzlich zum Staffelpreis funktionieren."
+msgstr "Ja. Tiers ändert den Preis des Warenkorb-Postens, bevor WooCommerce die Summen berechnet, sodass normale WooCommerce-Gutscheine zusätzlich zum Staffelpreis wie gewohnt funktionieren."
 
 msgid "Discounts stop being applied and the pricing table no longer appears. Your settings are retained in the database."
-msgstr "Rabatte werden nicht mehr angewendet und die Preistabelle wird nicht mehr angezeigt. deine Einstellungen bleiben in der Datenbank erhalten."
+msgstr "Rabatte werden nicht mehr angewendet und die Preistabelle erscheint nicht mehr. Deine Einstellungen bleiben in der Datenbank erhalten."
 
 msgid "The uninstall routine removes the `tiers_settings` option. No custom tables are created, so your database is left clean."
-msgstr "Die Deinstallationsroutine entfernt die Option „tiers_settings“. Es werden keine benutzerdefinierten Tabellen erstellt, sodass deine Datenbank sauber bleibt."
+msgstr "Die Deinstallationsroutine entfernt die Option `tiers_settings`. Es werden keine eigenen Tabellen angelegt, sodass deine Datenbank sauber bleibt."
 
 msgid "Yes. Tiers modifies prices before WooCommerce's tax calculation, so WooCommerce's own tax logic applies to the discounted price."
-msgstr "Ja. Stufen ändern die Preise vor der Steuerberechnung von WooCommerce, sodass die eigene Steuerlogik von WooCommerce auf den reduzierten Preis angewendet wird."
+msgstr "Ja. Tiers ändert die Preise vor der Steuerberechnung von WooCommerce, sodass die eigene Steuerlogik von WooCommerce auf den reduzierten Preis angewendet wird."
 
 msgid "Yes. This plugin is compatible with WordPress Multisite. Network activate it or activate it on individual sites; each site keeps its own settings and data."
-msgstr "Ja. Dieses Plugin ist mit WordPress Multisite kompatibel. Aktiviere es im Netzwerk oder auf einzelnen Websites. Jede Site behält ihre eigenen Einstellungen und Daten."
+msgstr "Ja. Dieses Plugin ist mit WordPress Multisite kompatibel. Aktiviere es netzwerkweit oder auf einzelnen Websites; jede Website behält ihre eigenen Einstellungen und Daten."
 
 msgid "1. Volume pricing table on a product page, shows quantity ranges, discount percentages, and resulting prices.\n2. Admin settings page, tier builder with add/remove rows and a show/hide table toggle."
-msgstr "1. Die Mengenpreistabelle auf einer Produktseite zeigt Mengenbereiche, Rabattprozentsätze und resultierende Preise.\n2. Admin-Einstellungsseite, Ebenenersteller mit Hinzufügen/Entfernen von Zeilen und einem Umschalter zum Ein-/Ausblenden der Tabelle."
+msgstr "1. Volumenpreistabelle auf einer Produktseite – zeigt Mengenbereiche, Rabatt-Prozentsätze und die daraus resultierenden Preise.\n2. Admin-Einstellungsseite – Stufen-Builder mit Hinzufügen/Entfernen von Zeilen und einem Schalter zum Ein-/Ausblenden der Tabelle."
 
 msgid "Tiers does not connect to any external services. Pricing tiers are stored in a single `tiers_settings` row in your WordPress options table, and the discount is calculated in PHP on your own server, no data ever leaves your site. The plugin sends no email and makes no remote requests; the product-page pricing table is rendered locally from those stored tiers."
-msgstr "Tiers stellt keine Verbindung zu externen Diensten her. Preisstufen werden in einer einzigen Zeile „tiers_settings“ in deiner WordPress-Optionstabelle gespeichert und der Rabatt wird in PHP auf deinem eigenen Server berechnet, es verlassen nie Daten deine Website. Das Plugin sendet keine E-Mails und stellt keine Remote-Anfragen; Die Preistabelle auf der Produktseite wird lokal aus diesen gespeicherten Ebenen gerendert."
+msgstr "Tiers stellt keine Verbindung zu externen Diensten her. Die Preisstufen werden in einer einzigen `tiers_settings`-Zeile in deiner WordPress-Optionstabelle gespeichert, und der Rabatt wird in PHP auf deinem eigenen Server berechnet – es verlassen nie Daten deine Website. Das Plugin sendet keine E-Mails und stellt keine Remote-Anfragen; die Preistabelle auf der Produktseite wird lokal aus diesen gespeicherten Stufen gerendert."
 
 msgid "Tiers is developed in the open. The PHP, JS, and CSS you install are the same files in the repository, nothing is minified or generated by a build step. Read the code, file a bug, or send a patch at https://github.com/wppoland/plogins-tiers."
-msgstr "Tiers wird im Freien entwickelt. Bei den von dir installierten PHP-, JS- und CSS-Dateien handelt es sich um dieselben Dateien im Repository. Durch einen Build-Schritt wird nichts minimiert oder generiert. Lese den Code, melde einen Fehler oder sende einen Patch unter https://github.com/wppoland/plogins-tiers."
+msgstr "Tiers wird quelloffen entwickelt. Die installierten PHP-, JS- und CSS-Dateien sind dieselben Dateien wie im Repository – nichts wird durch einen Build-Schritt minifiziert oder generiert. Lies den Code, melde einen Fehler oder schicke einen Patch unter https://github.com/wppoland/plogins-tiers."
+
+msgid "Plogins Tiers includes Polish, German and Spanish translations for the plugin interface. The text domain is `tiers`, so WordPress.org language packs can also override or extend these bundled translations."
+msgstr "Plogins Tiers enthält deutsche, polnische und spanische Übersetzungen für die Plugin-Oberfläche. Die Textdomain ist `tiers`, sodass Sprachpakete von WordPress.org diese mitgelieferten Übersetzungen ebenfalls überschreiben oder erweitern können."
+
+msgid "* Added bundled Polish, German and Spanish translations for the plugin interface."
+msgstr "* Deutsche, polnische und spanische Übersetzungen für die Plugin-Oberfläche mitgeliefert."
 
 msgid "* First stable release."
 msgstr "* Erste stabile Version."
 
 msgid "* Docs: added a \"You may also like\" section linking the other free WPPoland WooCommerce plugins. No functional changes."
-msgstr "* Dokumente: Es wurde ein Abschnitt „Das könnte dir auch gefallen“ hinzugefügt, der die anderen kostenlosen WPPoland WooCommerce-Plugins verlinkt. Keine funktionalen Änderungen."
+msgstr "* Doku: Ein Abschnitt „Das könnte dir auch gefallen“ hinzugefügt, der die anderen kostenlosen WooCommerce-Plugins von WPPoland verlinkt. Keine funktionalen Änderungen."
 
 msgid "* New: Elementor widget for the volume pricing table (works on Elementor 3.x and 4.0)."
-msgstr "* Neu: Elementor-Widget für die Volumenpreistabelle (funktioniert auf Elementor 3.x und 4.0)."
+msgstr "* Neu: Elementor-Widget für die Volumenpreistabelle (funktioniert mit Elementor 3.x und 4.0)."
 
 msgid "* Packaging: exclude the .wordpress-org assets directory from the plugin download (WordPress.org SVN assets only). No functional changes."
-msgstr "* Verpackung: Schließe das .wordpress-org-Assets-Verzeichnis vom Plugin-Download aus (nur WordPress.org-SVN-Assets). Keine funktionalen Änderungen."
+msgstr "* Verpackung: Das Verzeichnis .wordpress-org-Assets vom Plugin-Download ausschließen (nur WordPress.org-SVN-Assets). Keine funktionalen Änderungen."
 
 msgid "* Renamed to Plogins Tiers for WooCommerce for a more distinctive plugin name."
-msgstr "* Für einen eindeutigeren Plugin-Namen in Plogins Tiers für WooCommerce umbenannt."
+msgstr "* In Plogins Tiers für WooCommerce umbenannt, für einen unverwechselbareren Plugin-Namen."
 
 msgid "* New: configurable table placement (product summary, before/after add-to-cart form, product meta, or manual only).\n* New: `[tiers_table]` shortcode and a \"Volume pricing table\" block for placing the table anywhere.\n* New: optional custom table heading.\n* New: optional \"You save\" column in the pricing table.\n* New: optional per-line \"You save\" note in the cart.\n* New: translation support, with a Domain Path of `/languages`, a bundled `tiers.pot`, and a Polish translation.\n* Fix: define the missing `Tiers\\PLUGIN_DIR` constant so the plugin boots reliably.\n* Housekeeping: removed an unused template; expanded coding-standards coverage to templates and blocks."
-msgstr "* Neu: Konfigurierbare Tabellenplatzierung (Produktzusammenfassung, Vorher/Nachher-Formular zum Hinzufügen zum Warenkorb, Produkt-Meta oder nur Handbuch).\n* Neu: Shortcode „[tiers_table]“ und ein „Volume Pricing Table“-Block zum Platzieren der Tabelle an einer beliebigen Stelle.\n* Neu: optionale benutzerdefinierte Tabellenüberschrift.\n* Neu: optionale Spalte „Du sparst“ in der Preistabelle.\n* Neu: optionaler pro Zeile „Du sparst“-Hinweis im Warenkorb.\n* Neu: Übersetzungsunterstützung mit einem Domain-Pfad von „/Sprachen“, einem gebündelten „tiers.pot“ und einer polnischen Übersetzung.\n* Fix: Definiere die fehlende Konstante „Tiers\\PLUGIN_DIR“, damit das Plugin zuverlässig startet.\n* Housekeeping: Eine nicht verwendete Vorlage wurde entfernt; Erweiterte Abdeckung von Codierungsstandards auf Vorlagen und Blöcke."
+msgstr "* Neu: konfigurierbare Tabellenplatzierung (Produktzusammenfassung, vor/nach dem In-den-Warenkorb-Formular, Produkt-Meta oder nur manuell).\n* Neu: Shortcode `[tiers_table]` und ein Block „Volumenpreistabelle“, um die Tabelle an beliebiger Stelle zu platzieren.\n* Neu: optionale eigene Tabellenüberschrift.\n* Neu: optionale Spalte „Du sparst“ in der Preistabelle.\n* Neu: optionaler Hinweis „Du sparst“ pro Zeile im Warenkorb.\n* Neu: Übersetzungsunterstützung mit einem Domain Path von `/languages`, einer mitgelieferten `tiers.pot` und einer polnischen Übersetzung.\n* Fix: die fehlende Konstante `Tiers\\PLUGIN_DIR` definiert, damit das Plugin zuverlässig startet.\n* Aufräumen: eine ungenutzte Vorlage entfernt; die Abdeckung der Coding-Standards auf Templates und Blöcke ausgeweitet."
 
 msgid "* Initial release: global volume pricing tiers, server-rendered pricing table on product pages, admin tier builder, `tiers/product_tiers` filter for PRO overrides. No jQuery, no layout shift, WCAG 2.2 AA."
-msgstr "* Erstveröffentlichung: globale Volumenpreisstufen, vom Server gerenderte Preistabelle auf Produktseiten, Builder für Administratorstufen, Filter „tiers/product_tiers“ für PRO-Überschreibungen. Kein jQuery, keine Layoutverschiebung, WCAG 2.2 AA."
+msgstr "* Erste Veröffentlichung: globale Volumenpreisstufen, serverseitig gerenderte Preistabelle auf Produktseiten, Stufen-Builder im Adminbereich, Filter `tiers/product_tiers` für PRO-Überschreibungen. Kein jQuery, keine Layout-Verschiebung, WCAG 2.2 AA."
 
