@@ -4,7 +4,7 @@ Tags: woocommerce, volume pricing, quantity discount, bulk pricing, tiered prici
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,7 +55,7 @@ The free edition gives every product global quantity tiers. **Plogins Tiers PRO*
 
 Everything in the free edition stays free and open. Plogins Tiers PRO starts at 29 EUR per year (PLN shown at checkout).
 
-Compare editions and pricing: https://plogins.com/plogins-tiers-pro/pricing/
+Compare editions and pricing: [plogins.com/plogins-tiers-pro/pricing/](https://plogins.com/plogins-tiers-pro/pricing/)
 
 == Installation ==
 
@@ -69,10 +69,10 @@ Compare editions and pricing: https://plogins.com/plogins-tiers-pro/pricing/
 
 = Documentation and links =
 
-* **Documentation** - https://plogins.com/tiers/docs/
-* **Plugin page** - https://plogins.com/tiers/
-* **Source code** - https://github.com/wppoland/plogins-tiers
-* **Bug reports and feature requests** - https://github.com/wppoland/plogins-tiers/issues
+* **Documentation** - [plogins.com/tiers/docs/](https://plogins.com/tiers/docs/)
+* **Plugin page** - [plogins.com/tiers/](https://plogins.com/tiers/)
+* **Source code** - [github.com/wppoland/plogins-tiers](https://github.com/wppoland/plogins-tiers)
+* **Bug reports and feature requests** - [github.com/wppoland/plogins-tiers/issues](https://github.com/wppoland/plogins-tiers/issues)
 
 
 = Does Tiers require WooCommerce? =
@@ -122,6 +122,9 @@ Tiers is developed in the open. The PHP, JS, and CSS you install are the same fi
 Plogins Tiers includes Polish, German and Spanish translations for the plugin interface. The text domain is `tiers`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.0.5 =
+* Documentation: readme links are now labelled links.
 
 = 1.0.4 =
 * Shortened display name (dropped the Plogins prefix; slug unchanged).
