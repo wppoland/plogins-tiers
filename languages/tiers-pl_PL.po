@@ -18,7 +18,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: tiers.php
 msgid "Tiers - Tiered Pricing for WooCommerce"
-msgstr "Poziomy — wielopoziomowe ceny dla WooCommerce"
+msgstr "Tiers - ceny progowe dla WooCommerce"
 
 #. Plugin URI of the plugin
 #: tiers.php
@@ -350,7 +350,7 @@ msgstr "Oszczędzasz"
 #: templates/single-product/pricing-table.php:84
 msgctxt "quantity range"
 msgid "%1$d – %2$d"
-msgstr "%1$d – %2$d"
+msgstr "%1$d-%2$d"
 
 #. translators: %d: minimum quantity
 #: templates/single-product/pricing-table.php:91

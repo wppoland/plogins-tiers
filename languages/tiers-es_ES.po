@@ -431,7 +431,7 @@ msgstr "cantidad"
 
 #~ msgctxt "quantity, no upper limit"
 #~ msgid "%1$d – %2$d"
-#~ msgstr "%1$d – %2$d"
+#~ msgstr "%1$d - %2$d"
 
 #~ msgid "%d+"
 #~ msgstr "%d+"
@@ -439,7 +439,8 @@ msgstr "cantidad"
 #~ msgctxt "block title"
 #~ msgid "The tier table renders on the front end for the selected product."
 #~ msgstr ""
-#~ "La tabla de tramos se muestra en el front-end para el producto seleccionado."
+#~ "La tabla de niveles se muestra en la parte pública del sitio para el "
+#~ "producto seleccionado."
 
 #~ msgctxt "block description"
 #~ msgid "Volume pricing table"
