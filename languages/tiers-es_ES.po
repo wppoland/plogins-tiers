@@ -109,8 +109,7 @@ msgid "Add a tier above to preview how it reads to shoppers."
 msgstr ""
 "Añade un tramo arriba para previsualizar cómo lo verán los compradores."
 
-#. translators: %d: minimum quantity (kept as a literal token for JS
-#. substitution).
+#. translators: %d: minimum quantity (kept as a literal token for JS substitution).
 #: src/Admin/Settings.php:118
 msgid "Buy %d+"
 msgstr "Compra %d+"
@@ -136,9 +135,8 @@ msgid ""
 msgstr ""
 "Define umbrales de cantidad y el descuento que desbloquea cada uno. Cuando "
 "un comprador añade suficiente cantidad de un producto al carrito, se aplica "
-"automáticamente el descuento correspondiente, sin cupones. Tiers se aplica a"
-" todos los productos; las reglas por producto están disponibles en Tiers "
-"PRO."
+"automáticamente el descuento correspondiente, sin cupones. Tiers se aplica a "
+"todos los productos; las reglas por producto están disponibles en Tiers PRO."
 
 #: src/Admin/Settings.php:176
 msgid "Show pricing table"
@@ -191,11 +189,11 @@ msgstr "Muestra una tabla de precios por volumen en las páginas de producto."
 #: src/Admin/Settings.php:260
 msgid ""
 "Shows shoppers the quantity breaks and the price they unlock at each level, "
-"a proven nudge to buy more. The discount still applies in the cart even with"
-" this turned off."
+"a proven nudge to buy more. The discount still applies in the cart even with "
+"this turned off."
 msgstr ""
-"Muestra a los compradores los tramos de cantidad y el precio que desbloquean"
-" en cada nivel, un incentivo probado para comprar más. El descuento seguirá "
+"Muestra a los compradores los tramos de cantidad y el precio que desbloquean "
+"en cada nivel, un incentivo probado para comprar más. El descuento seguirá "
 "aplicándose en el carrito aunque esto esté desactivado."
 
 #: src/Admin/Settings.php:281
@@ -204,8 +202,8 @@ msgid ""
 "where I place it\" to position it yourself with the [tiers_table] shortcode "
 "or the Volume pricing table block."
 msgstr ""
-"Controla dónde se inserta automáticamente la tabla en la página de producto."
-" Elige «Solo donde la coloque» para posicionarla con el shortcode "
+"Controla dónde se inserta automáticamente la tabla en la página de producto. "
+"Elige «Solo donde la coloque» para posicionarla con el shortcode "
 "[tiers_table] o con el bloque de tabla de precios por volumen."
 
 #: src/Admin/Settings.php:285
@@ -231,8 +229,7 @@ msgstr ""
 "más». Déjalo vacío para mostrar solo la tabla."
 
 #: src/Admin/Settings.php:312
-msgid ""
-"Optional heading shown above the pricing table. Leave blank to hide it."
+msgid "Optional heading shown above the pricing table. Leave blank to hide it."
 msgstr ""
 "Encabezado opcional mostrado encima de la tabla de precios. Déjalo vacío "
 "para ocultarlo."
@@ -243,11 +240,11 @@ msgstr "Añade una columna «Ahorras» a la tabla de precios."
 
 #: src/Admin/Settings.php:337
 msgid ""
-"Adds a column showing the cash saved per unit at each tier. Concrete savings"
-" figures convert better than a percentage alone."
+"Adds a column showing the cash saved per unit at each tier. Concrete savings "
+"figures convert better than a percentage alone."
 msgstr ""
-"Añade una columna que muestra el ahorro por unidad en cada tramo. Las cifras"
-" concretas de ahorro convierten mejor que un porcentaje solo."
+"Añade una columna que muestra el ahorro por unidad en cada tramo. Las cifras "
+"concretas de ahorro convierten mejor que un porcentaje solo."
 
 #: src/Admin/Settings.php:356
 msgid "Show a per-line \"You save\" note under each discounted cart item."
@@ -256,8 +253,8 @@ msgstr ""
 
 #: src/Admin/Settings.php:361
 msgid ""
-"Reassures shoppers in the cart by printing the exact amount saved under each"
-" qualifying line item. Reinforces the discount right before checkout."
+"Reassures shoppers in the cart by printing the exact amount saved under each "
+"qualifying line item. Reinforces the discount right before checkout."
 msgstr ""
 "Refuerza la confianza del comprador en el carrito mostrando el importe "
 "exacto ahorrado bajo cada artículo que cumple los requisitos. Refuerza el "
@@ -265,8 +262,8 @@ msgstr ""
 
 #: src/Admin/Settings.php:374
 msgid ""
-"No tiers yet. Add your first quantity break below, for example, 10% off when"
-" a shopper buys 5 or more."
+"No tiers yet. Add your first quantity break below, for example, 10% off when "
+"a shopper buys 5 or more."
 msgstr ""
 "Aún no hay tramos. Añade abajo tu primer corte de cantidad, por ejemplo, 10 "
 "% de descuento cuando el comprador compra 5 o más."
@@ -305,8 +302,8 @@ msgstr ""
 
 #: src/Admin/Settings.php:452
 msgid ""
-"Minimum quantity is the smallest cart amount that unlocks the tier. Discount"
-" % is taken off the regular price. Label is optional copy a shopper sees "
+"Minimum quantity is the smallest cart amount that unlocks the tier. Discount "
+"% is taken off the regular price. Label is optional copy a shopper sees "
 "(e.g. \"Bulk deal\"). Tiers are sorted automatically by quantity."
 msgstr ""
 "La cantidad mínima es la menor cantidad en el carrito que desbloquea el "
@@ -383,8 +380,7 @@ msgstr "Tabla de precios por volumen"
 #: blocks/tiers-table/index.js:38
 msgid "The tier table renders on the front end for the selected product."
 msgstr ""
-"La tabla de niveles se muestra en la parte frontal del producto "
-"seleccionado."
+"La tabla de niveles se muestra en la parte frontal del producto seleccionado."
 
 #: blocks/tiers-table/block.json
 msgctxt "block title"
@@ -394,8 +390,8 @@ msgstr "Tabla de precios por volumen"
 #: blocks/tiers-table/block.json
 msgctxt "block description"
 msgid ""
-"Server-rendered volume pricing table for the current or a chosen WooCommerce"
-" product."
+"Server-rendered volume pricing table for the current or a chosen WooCommerce "
+"product."
 msgstr ""
 "Tabla de precios por volumen renderizada por el servidor para el producto "
 "WooCommerce actual o uno elegido."
@@ -448,11 +444,11 @@ msgstr "cantidad"
 
 #~ msgctxt "block keyword"
 #~ msgid ""
-#~ "Server-rendered volume pricing table for the current or a chosen WooCommerce"
-#~ " product."
+#~ "Server-rendered volume pricing table for the current or a chosen "
+#~ "WooCommerce product."
 #~ msgstr ""
-#~ "Tabla de precios por volumen renderizada en servidor para el producto actual"
-#~ " o para un producto de WooCommerce elegido."
+#~ "Tabla de precios por volumen renderizada en servidor para el producto "
+#~ "actual o para un producto de WooCommerce elegido."
 
 #~ msgid "quantity"
 #~ msgstr "cantidad"
