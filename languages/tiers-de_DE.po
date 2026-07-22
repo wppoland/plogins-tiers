@@ -108,8 +108,7 @@ msgstr "Bezeichnung"
 msgid "Add a tier above to preview how it reads to shoppers."
 msgstr "Füge oben eine Staffel hinzu, um eine Vorschau für Kunden zu sehen."
 
-#. translators: %d: minimum quantity (kept as a literal token for JS
-#. substitution).
+#. translators: %d: minimum quantity (kept as a literal token for JS substitution).
 #: src/Admin/Settings.php:118
 msgid "Buy %d+"
 msgstr "Kaufe %d+"
@@ -189,8 +188,8 @@ msgstr "Zeigt eine Mengenpreistabelle auf einzelnen Produktseiten an."
 #: src/Admin/Settings.php:260
 msgid ""
 "Shows shoppers the quantity breaks and the price they unlock at each level, "
-"a proven nudge to buy more. The discount still applies in the cart even with"
-" this turned off."
+"a proven nudge to buy more. The discount still applies in the cart even with "
+"this turned off."
 msgstr ""
 "Zeigt Kunden die Mengenstufen und den Preis, der auf jeder Stufe "
 "freigeschaltet wird. Das ist ein bewährter Anreiz, mehr zu kaufen. Der "
@@ -212,8 +211,8 @@ msgid ""
 "to place it manually with the [tiers_table] shortcode or the \"Volume "
 "pricing table\" block."
 msgstr ""
-"Wo die Preistabelle auf der Produktseite erscheint. Wähle die letzte Option,"
-" um sie manuell mit dem Shortcode [tiers_table] oder dem Block "
+"Wo die Preistabelle auf der Produktseite erscheint. Wähle die letzte Option, "
+"um sie manuell mit dem Shortcode [tiers_table] oder dem Block "
 "„Mengenpreistabelle“ zu platzieren."
 
 #: src/Admin/Settings.php:303
@@ -229,8 +228,7 @@ msgstr ""
 "Leer lassen, um nur die Tabelle anzuzeigen."
 
 #: src/Admin/Settings.php:312
-msgid ""
-"Optional heading shown above the pricing table. Leave blank to hide it."
+msgid "Optional heading shown above the pricing table. Leave blank to hide it."
 msgstr ""
 "Optionale Überschrift über der Preistabelle. Leer lassen, um sie "
 "auszublenden."
@@ -241,11 +239,11 @@ msgstr "Fügt der Preistabelle eine Spalte „Du sparst“ hinzu."
 
 #: src/Admin/Settings.php:337
 msgid ""
-"Adds a column showing the cash saved per unit at each tier. Concrete savings"
-" figures convert better than a percentage alone."
+"Adds a column showing the cash saved per unit at each tier. Concrete savings "
+"figures convert better than a percentage alone."
 msgstr ""
-"Fügt eine Spalte hinzu, die die Ersparnis pro Einheit auf jeder Stufe zeigt."
-" Konkrete Ersparnisbeträge überzeugen besser als nur ein Prozentwert."
+"Fügt eine Spalte hinzu, die die Ersparnis pro Einheit auf jeder Stufe zeigt. "
+"Konkrete Ersparnisbeträge überzeugen besser als nur ein Prozentwert."
 
 #: src/Admin/Settings.php:356
 msgid "Show a per-line \"You save\" note under each discounted cart item."
@@ -254,19 +252,19 @@ msgstr ""
 
 #: src/Admin/Settings.php:361
 msgid ""
-"Reassures shoppers in the cart by printing the exact amount saved under each"
-" qualifying line item. Reinforces the discount right before checkout."
+"Reassures shoppers in the cart by printing the exact amount saved under each "
+"qualifying line item. Reinforces the discount right before checkout."
 msgstr ""
 "Bestätigt Kunden im Warenkorb die genaue Ersparnis unter jedem passenden "
 "Artikel. Das verstärkt den Rabatt direkt vor dem Checkout."
 
 #: src/Admin/Settings.php:374
 msgid ""
-"No tiers yet. Add your first quantity break below, for example, 10% off when"
-" a shopper buys 5 or more."
+"No tiers yet. Add your first quantity break below, for example, 10% off when "
+"a shopper buys 5 or more."
 msgstr ""
-"Noch keine Staffeln. Füge unten die erste Mengenstufe hinzu, zum Beispiel 10"
-" % Rabatt ab 5 Stück."
+"Noch keine Staffeln. Füge unten die erste Mengenstufe hinzu, zum Beispiel 10 "
+"% Rabatt ab 5 Stück."
 
 #: src/Admin/Settings.php:379
 msgid "Min. quantity"
@@ -302,8 +300,8 @@ msgstr ""
 
 #: src/Admin/Settings.php:452
 msgid ""
-"Minimum quantity is the smallest cart amount that unlocks the tier. Discount"
-" % is taken off the regular price. Label is optional copy a shopper sees "
+"Minimum quantity is the smallest cart amount that unlocks the tier. Discount "
+"% is taken off the regular price. Label is optional copy a shopper sees "
 "(e.g. \"Bulk deal\"). Tiers are sorted automatically by quantity."
 msgstr ""
 "Die Mindestmenge ist die kleinste Warenkorbmenge, die diese Staffel "
@@ -390,8 +388,8 @@ msgstr "Mengenpreistabelle"
 #: blocks/tiers-table/block.json
 msgctxt "block description"
 msgid ""
-"Server-rendered volume pricing table for the current or a chosen WooCommerce"
-" product."
+"Server-rendered volume pricing table for the current or a chosen WooCommerce "
+"product."
 msgstr ""
 "Vom Server gerenderte Volumenpreistabelle für das aktuelle oder ein "
 "ausgewähltes WooCommerce-Produkt."
@@ -443,8 +441,8 @@ msgstr "Menge"
 
 #~ msgctxt "block keyword"
 #~ msgid ""
-#~ "Server-rendered volume pricing table for the current or a chosen WooCommerce"
-#~ " product."
+#~ "Server-rendered volume pricing table for the current or a chosen "
+#~ "WooCommerce product."
 #~ msgstr ""
 #~ "Serverseitig gerenderte Mengenpreistabelle für das aktuelle oder ein "
 #~ "ausgewähltes WooCommerce-Produkt."
