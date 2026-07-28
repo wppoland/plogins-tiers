@@ -1,34 +1,35 @@
-# Copyright (C) 2026 WPPoland.com
-# This file is distributed under the GPL-2.0-or-later.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Tiers - Tiered Pricing for WooCommerce 0.2.4\n"
+"Project-Id-Version: Tiers - Tiered Pricing for WooCommerce 0.2.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tiers\n"
 "POT-Creation-Date: 2026-07-03T13:13:15+00:00\n"
-"PO-Revision-Date: 2026-07-07 00:00+0000\n"
+"PO-Revision-Date: 2026-06-15 00:00+0000\n"
 "Last-Translator: motylanogha <szatkowski.mariusz@gmail.com>\n"
-"Language-Team: German <de@li.org>\n"
-"Language: de_DE\n"
+"Language-Team: Polish <pl@li.org>\n"
+"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Domain: tiers\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
+"X-Domain: plogins-tiers\n"
+"X-Generator: WP-CLI 2.12.0\n"
 
 #. Plugin Name of the plugin
 #: tiers.php
 msgid "Tiers - Tiered Pricing for WooCommerce"
-msgstr "Tiers - Staffelpreise für WooCommerce"
+msgstr "Tiers - ceny progowe dla WooCommerce"
 
 #. Plugin URI of the plugin
 #: tiers.php
 msgid "https://plogins.com/plogins-tiers/"
-msgstr "https://plogins.com/de/plogins-tiers/"
+msgstr "https://plogins.com/pl/plogins-tiers/"
 
 #. Description of the plugin
 #: tiers.php
 msgid "Volume and quantity-based tiered pricing for WooCommerce"
-msgstr "Mengenbasierte Staffelpreise für WooCommerce"
+msgstr "Progowe ceny zależne od ilości i wolumenu dla WooCommerce"
 
 #. Author of the plugin
 #: tiers.php
@@ -43,46 +44,46 @@ msgstr "https://wppoland.com"
 #. translators: %d: yearly price in PLN
 #: src/Admin/ProUpsell.php:100
 msgid "od %d zł/rok"
-msgstr "ab %d PLN/Jahr"
+msgstr "od %d zł/rok"
 
 #. translators: 1: currency symbol, 2: yearly price
 #: src/Admin/ProUpsell.php:106
 msgid "from %1$s%2$d/yr"
-msgstr "ab %1$s%2$d/Jahr"
+msgstr "od %1$s%2$d/rok"
 
 #: src/Admin/ProUpsell.php:154
 msgid "Permission denied."
-msgstr "Zugriff verweigert."
+msgstr "Brak uprawnień."
 
 #. translators: %s: PRO edition name
 #: src/Admin/ProUpsell.php:193
 msgid "Do more with %s"
-msgstr "Mehr erreichen mit %s"
+msgstr "Zrób więcej z %s"
 
 #: src/Admin/ProUpsell.php:206 src/Admin/ProUpsell.php:237
 msgid "Upgrade to PRO"
-msgstr "Auf PRO upgraden"
+msgstr "Przejdź na PRO"
 
 #: src/Admin/ProUpsell.php:208
 msgid "Dismiss this notice"
-msgstr "Diesen Hinweis ausblenden"
+msgstr "Ukryj ten komunikat"
 
 #: src/Admin/ProUpsell.php:227
 msgid "Unlock every PRO feature"
-msgstr "Alle PRO-Funktionen freischalten"
+msgstr "Odblokuj wszystkie funkcje PRO"
 
 #: src/Admin/ProUpsell.php:240
 msgid "one licence, every PRO feature"
-msgstr "eine Lizenz, alle PRO-Funktionen"
+msgstr "jedna licencja, wszystkie funkcje PRO"
 
 #. translators: %s: PRO edition name
 #: src/Admin/ProUpsell.php:261
 msgid "What %s adds"
-msgstr "Was %s hinzufügt"
+msgstr "Co dodaje %s"
 
 #: src/Admin/Settings.php:71
 msgid "Tiers Settings"
-msgstr "Tiers-Einstellungen"
+msgstr "Ustawienia Tiers"
 
 #: src/Admin/Settings.php:72
 msgid "Tiers"
@@ -90,40 +91,40 @@ msgstr "Tiers"
 
 #: src/Admin/Settings.php:112 src/Admin/Settings.php:426
 msgid "Remove"
-msgstr "Entfernen"
+msgstr "Usuń"
 
 #: src/Admin/Settings.php:113 src/Admin/Settings.php:397
 msgid "Minimum quantity"
-msgstr "Mindestmenge"
+msgstr "Minimalna ilość"
 
 #: src/Admin/Settings.php:114 src/Admin/Settings.php:410
 msgid "Discount percent"
-msgstr "Rabatt in Prozent"
+msgstr "Procent rabatu"
 
 #: src/Admin/Settings.php:115
 msgid "Label"
-msgstr "Bezeichnung"
+msgstr "Etykieta"
 
 #: src/Admin/Settings.php:116
 msgid "Add a tier above to preview how it reads to shoppers."
-msgstr "Füge oben eine Staffel hinzu, um eine Vorschau für Kunden zu sehen."
+msgstr "Dodaj próg powyżej, aby zobaczyć podgląd tego, jak widzą go klienci."
 
 #. translators: %d: minimum quantity (kept as a literal token for JS substitution).
 #: src/Admin/Settings.php:118
 msgid "Buy %d+"
-msgstr "Kaufe %d+"
+msgstr "Kup %d+"
 
 #: src/Admin/Settings.php:137
 msgid "More information"
-msgstr "Weitere Informationen"
+msgstr "Więcej informacji"
 
 #: src/Admin/Settings.php:161
 msgid "Global Volume Pricing Tiers"
-msgstr "Globale Mengenpreisstaffeln"
+msgstr "Globalne progi cen ilościowych"
 
 #: src/Admin/Settings.php:164
 msgid "Reward bigger orders, automatically"
-msgstr "Größere Bestellungen automatisch belohnen"
+msgstr "Nagradzaj większe zamówienia, automatycznie"
 
 #: src/Admin/Settings.php:165
 msgid ""
@@ -132,58 +133,59 @@ msgid ""
 "automatically, no coupon codes needed. Tiers apply to every product; per-"
 "product overrides are available in Tiers PRO."
 msgstr ""
-"Lege Mengenschwellen und den jeweiligen Rabatt fest. Wenn ein Kunde genug "
-"Stück eines Produkts in den Warenkorb legt, wird der passende Rabatt "
-"automatisch angewendet, ganz ohne Gutscheincodes. Tiers gilt für jedes "
-"Produkt; produktspezifische Überschreibungen gibt es in Tiers PRO."
+"Ustal progi ilościowe i rabat, jaki odblokowuje każdy z nich. Gdy klient "
+"doda do koszyka wystarczającą ilość produktu, pasujący rabat zostanie "
+"zastosowany automatycznie, bez kodów rabatowych. Progi obowiązują dla "
+"każdego produktu; nadpisania dla pojedynczych produktów są dostępne w Tiers "
+"PRO."
 
 #: src/Admin/Settings.php:176
 msgid "Show pricing table"
-msgstr "Preistabelle anzeigen"
+msgstr "Pokaż tabelę cen"
 
 #: src/Admin/Settings.php:184
 msgid "Table placement"
-msgstr "Position der Tabelle"
+msgstr "Umiejscowienie tabeli"
 
 #: src/Admin/Settings.php:193
 msgid "Table heading"
-msgstr "Tabellenüberschrift"
+msgstr "Nagłówek tabeli"
 
 #: src/Admin/Settings.php:202
 msgid "Savings column"
-msgstr "Ersparnis-Spalte"
+msgstr "Kolumna oszczędności"
 
 #: src/Admin/Settings.php:210
 msgid "Cart savings note"
-msgstr "Ersparnishinweis im Warenkorb"
+msgstr "Informacja o oszczędnościach w koszyku"
 
 #: src/Admin/Settings.php:218
 msgid "Pricing tiers"
-msgstr "Preisstaffeln"
+msgstr "Progi cenowe"
 
 #: src/Admin/Settings.php:232
 msgid "Product summary (below price)"
-msgstr "Produktzusammenfassung (unter dem Preis)"
+msgstr "Podsumowanie produktu (pod ceną)"
 
 #: src/Admin/Settings.php:233
 msgid "Before the add-to-cart form"
-msgstr "Vor dem In-den-Warenkorb-Formular"
+msgstr "Przed formularzem dodawania do koszyka"
 
 #: src/Admin/Settings.php:234
 msgid "After the add-to-cart form"
-msgstr "Nach dem In-den-Warenkorb-Formular"
+msgstr "Po formularzu dodawania do koszyka"
 
 #: src/Admin/Settings.php:235
 msgid "Product meta area"
-msgstr "Produkt-Metabereich"
+msgstr "Obszar metadanych produktu"
 
 #: src/Admin/Settings.php:236
 msgid "Only where I place it (shortcode / block)"
-msgstr "Nur dort, wo ich sie platziere (Shortcode / Block)"
+msgstr "Tylko tam, gdzie sam umieszczę (shortcode / blok)"
 
 #: src/Admin/Settings.php:255
 msgid "Display a volume pricing table on single product pages."
-msgstr "Zeigt eine Mengenpreistabelle auf einzelnen Produktseiten an."
+msgstr "Wyświetlaj tabelę cen ilościowych na stronach pojedynczych produktów."
 
 #: src/Admin/Settings.php:260
 msgid ""
@@ -191,9 +193,9 @@ msgid ""
 "a proven nudge to buy more. The discount still applies in the cart even with "
 "this turned off."
 msgstr ""
-"Zeigt Kunden die Mengenstufen und den Preis, der auf jeder Stufe "
-"freigeschaltet wird. Das ist ein bewährter Anreiz, mehr zu kaufen. Der "
-"Rabatt gilt im Warenkorb weiterhin, auch wenn diese Anzeige deaktiviert ist."
+"Pokazuje klientom progi ilościowe i cenę odblokowywaną na każdym poziomie, "
+"sprawdzona zachęta do większych zakupów. Rabat działa w koszyku nawet przy "
+"tej opcji wyłączonej."
 
 #: src/Admin/Settings.php:281
 msgid ""
@@ -201,9 +203,9 @@ msgid ""
 "where I place it\" to position it yourself with the [tiers_table] shortcode "
 "or the Volume pricing table block."
 msgstr ""
-"Steuert, wo die Tabelle automatisch auf der Produktseite eingefügt wird. "
-"Wähle „Nur dort, wo ich sie platziere“, um sie mit dem Shortcode "
-"[tiers_table] oder dem Block „Mengenpreistabelle“ selbst zu positionieren."
+"Określa, gdzie tabela jest automatycznie wstawiana na stronie produktu. "
+"Wybierz „Tylko tam, gdzie sam umieszczę”, aby umieścić ją samodzielnie za "
+"pomocą shortcode'a [tiers_table] lub bloku Tabela cen ilościowych."
 
 #: src/Admin/Settings.php:285
 msgid ""
@@ -211,92 +213,91 @@ msgid ""
 "to place it manually with the [tiers_table] shortcode or the \"Volume "
 "pricing table\" block."
 msgstr ""
-"Wo die Preistabelle auf der Produktseite erscheint. Wähle die letzte Option, "
-"um sie manuell mit dem Shortcode [tiers_table] oder dem Block "
-"„Mengenpreistabelle“ zu platzieren."
+"Gdzie tabela cen pojawia się na stronie produktu. Wybierz ostatnią opcję, "
+"aby umieścić ją ręcznie za pomocą shortcode'a [tiers_table] lub bloku "
+"„Tabela cen ilościowych”."
 
 #: src/Admin/Settings.php:303
 msgid "e.g. Buy more, save more"
-msgstr "z. B. Mehr kaufen, mehr sparen"
+msgstr "np. Kup więcej, oszczędź więcej"
 
 #: src/Admin/Settings.php:308
 msgid ""
 "A short title rendered directly above the table, e.g. \"Buy more, save "
 "more\". Leave it blank to show just the table."
 msgstr ""
-"Ein kurzer Titel direkt über der Tabelle, z. B. „Mehr kaufen, mehr sparen“. "
-"Leer lassen, um nur die Tabelle anzuzeigen."
+"Krótki tytuł wyświetlany bezpośrednio nad tabelą, np. „Kup więcej, oszczędź "
+"więcej”. Pozostaw puste, aby pokazać samą tabelę."
 
 #: src/Admin/Settings.php:312
 msgid "Optional heading shown above the pricing table. Leave blank to hide it."
 msgstr ""
-"Optionale Überschrift über der Preistabelle. Leer lassen, um sie "
-"auszublenden."
+"Opcjonalny nagłówek wyświetlany nad tabelą cen. Pozostaw puste, aby go ukryć."
 
 #: src/Admin/Settings.php:332
 msgid "Add a \"You save\" column to the pricing table."
-msgstr "Fügt der Preistabelle eine Spalte „Du sparst“ hinzu."
+msgstr "Dodaj kolumnę „Oszczędzasz” do tabeli cen."
 
 #: src/Admin/Settings.php:337
 msgid ""
 "Adds a column showing the cash saved per unit at each tier. Concrete savings "
 "figures convert better than a percentage alone."
 msgstr ""
-"Fügt eine Spalte hinzu, die die Ersparnis pro Einheit auf jeder Stufe zeigt. "
-"Konkrete Ersparnisbeträge überzeugen besser als nur ein Prozentwert."
+"Dodaje kolumnę pokazującą kwotę zaoszczędzoną na sztuce na każdym progu. "
+"Konkretne kwoty oszczędności konwertują lepiej niż sam procent."
 
 #: src/Admin/Settings.php:356
 msgid "Show a per-line \"You save\" note under each discounted cart item."
-msgstr ""
-"Zeigt unter jedem rabattierten Warenkorbposten einen Hinweis „Du sparst“ an."
+msgstr "Pokaż informację „Oszczędzasz” pod każdą rabatowaną pozycją w koszyku."
 
 #: src/Admin/Settings.php:361
 msgid ""
 "Reassures shoppers in the cart by printing the exact amount saved under each "
 "qualifying line item. Reinforces the discount right before checkout."
 msgstr ""
-"Bestätigt Kunden im Warenkorb die genaue Ersparnis unter jedem passenden "
-"Artikel. Das verstärkt den Rabatt direkt vor dem Checkout."
+"Upewnia klientów w koszyku, pokazując dokładną zaoszczędzoną kwotę pod każdą "
+"kwalifikującą się pozycją. Wzmacnia odczucie rabatu tuż przed finalizacją "
+"zamówienia."
 
 #: src/Admin/Settings.php:374
 msgid ""
 "No tiers yet. Add your first quantity break below, for example, 10% off when "
 "a shopper buys 5 or more."
 msgstr ""
-"Noch keine Staffeln. Füge unten die erste Mengenstufe hinzu, zum Beispiel 10 "
-"% Rabatt ab 5 Stück."
+"Brak progów. Dodaj poniżej swój pierwszy próg ilościowy, na przykład 10% "
+"rabatu, gdy klient kupi 5 sztuk lub więcej."
 
 #: src/Admin/Settings.php:379
 msgid "Min. quantity"
-msgstr "Mindestmenge"
+msgstr "Min. ilość"
 
 #: src/Admin/Settings.php:380
 msgid "Discount %"
-msgstr "Rabatt %"
+msgstr "Rabat %"
 
 #: src/Admin/Settings.php:381
 msgid "Label (optional)"
-msgstr "Bezeichnung (freiwillig)"
+msgstr "Etykieta (opcjonalnie)"
 
 #: src/Admin/Settings.php:420
 msgid "Tier label (optional)"
-msgstr "Stufenbezeichnung (freiwillig)"
+msgstr "Etykieta progu (opcjonalnie)"
 
 #: src/Admin/Settings.php:435
 msgid "+ Add tier"
-msgstr "+ Staffel hinzufügen"
+msgstr "+ Dodaj próg"
 
 #: src/Admin/Settings.php:440
 msgid "Live preview"
-msgstr "Live-Vorschau"
+msgstr "Podgląd na żywo"
 
 #: src/Admin/Settings.php:447
 msgid ""
 "The highest matching tier wins. E.g., buying 12 units gets the \"10+\" "
 "discount, not the \"5+\" discount."
 msgstr ""
-"Die höchste passende Staffel gewinnt. Wer z. B. 12 Stück kauft, erhält den "
-"Rabatt „10+“, nicht den Rabatt „5+“."
+"Wygrywa najwyższy pasujący próg. Np. zakup 12 sztuk daje rabat „10+”, a nie "
+"rabat „5+”."
 
 #: src/Admin/Settings.php:452
 msgid ""
@@ -304,49 +305,49 @@ msgid ""
 "% is taken off the regular price. Label is optional copy a shopper sees "
 "(e.g. \"Bulk deal\"). Tiers are sorted automatically by quantity."
 msgstr ""
-"Die Mindestmenge ist die kleinste Warenkorbmenge, die diese Staffel "
-"freischaltet. Rabatt % wird vom regulären Preis abgezogen. Die Bezeichnung "
-"ist ein optionaler Text für Kunden (z. B. „Mengenrabatt“). Staffeln werden "
-"automatisch nach Menge sortiert."
+"Minimalna ilość to najmniejsza liczba w koszyku odblokowująca próg. Rabat % "
+"jest odejmowany od ceny regularnej. Etykieta to opcjonalny tekst widoczny "
+"dla klienta (np. „Oferta hurtowa”). Progi są sortowane automatycznie według "
+"ilości."
 
 #. translators: %s: formatted saved amount
 #: src/Service/TiersService.php:335
 msgid "You save %s"
-msgstr "Du sparst %s"
+msgstr "Oszczędzasz %s"
 
 #: templates/single-product/pricing-table.php:27
 msgid "No volume discounts are available for this product yet."
-msgstr "Für dieses Produkt sind noch keine Mengenrabatte verfügbar."
+msgstr "Dla tego produktu nie ma jeszcze dostępnych rabatów ilościowych."
 
 #: templates/single-product/pricing-table.php:45
 msgid "Volume pricing"
-msgstr "Mengenpreise"
+msgstr "Ceny ilościowe"
 
 #: templates/single-product/pricing-table.php:51
 msgid "Volume pricing tiers"
-msgstr "Mengenpreisstaffeln"
+msgstr "Progi cen ilościowych"
 
 #: templates/single-product/pricing-table.php:55
 msgid "Quantity"
-msgstr "Menge"
+msgstr "Ilość"
 
 #: templates/single-product/pricing-table.php:56
 msgid "Discount"
-msgstr "Rabatt"
+msgstr "Rabat"
 
 #: templates/single-product/pricing-table.php:57
 msgid "Price"
-msgstr "Preis"
+msgstr "Cena"
 
 #: templates/single-product/pricing-table.php:59
 msgid "You save"
-msgstr "Du sparst"
+msgstr "Oszczędzasz"
 
 #. translators: 1: min quantity, 2: max quantity
 #: templates/single-product/pricing-table.php:84
 msgctxt "quantity range"
 msgid "%1$d, %2$d"
-msgstr "%1$d, %2$d"
+msgstr "%1$d-%2$d"
 
 #. translators: %d: minimum quantity
 #: templates/single-product/pricing-table.php:91
@@ -356,34 +357,33 @@ msgstr "%d+"
 
 #: templates/single-product/pricing-table.php:98
 msgid "Best value"
-msgstr "Bester Wert"
+msgstr "Najlepsza wartość"
 
 #. translators: %s: discount percentage
 #: templates/single-product/pricing-table.php:108
 msgid "%s%% off"
-msgstr "%s %% Rabatt"
+msgstr "-%s%%"
 
 #: tiers.php:55
 msgid "Tiers requires WooCommerce to be active."
-msgstr "Tiers erfordert, dass WooCommerce aktiv ist."
+msgstr "Tiers wymaga aktywnego WooCommerce."
 
 #: blocks/tiers-table/index.js:25
 msgid "Product ID (0 = current product)"
-msgstr "Produkt-ID (0 = aktuelles Produkt)"
+msgstr "ID produktu (0 = bieżący produkt)"
 
 #: blocks/tiers-table/index.js:37
 msgid "Volume pricing table"
-msgstr "Mengenpreistabelle"
+msgstr "Tabela cen ilościowych"
 
 #: blocks/tiers-table/index.js:38
 msgid "The tier table renders on the front end for the selected product."
-msgstr ""
-"Die Rangtabelle wird im Frontend für das ausgewählte Produkt gerendert."
+msgstr "Tabela progów renderuje się na froncie dla wybranego produktu."
 
 #: blocks/tiers-table/block.json
 msgctxt "block title"
 msgid "Volume pricing table"
-msgstr "Mengenpreistabelle"
+msgstr "Tabela cen ilościowych"
 
 #: blocks/tiers-table/block.json
 msgctxt "block description"
@@ -391,8 +391,8 @@ msgid ""
 "Server-rendered volume pricing table for the current or a chosen WooCommerce "
 "product."
 msgstr ""
-"Vom Server gerenderte Volumenpreistabelle für das aktuelle oder ein "
-"ausgewähltes WooCommerce-Produkt."
+"Renderowana po stronie serwera tabela cen ilościowych dla bieżącego lub "
+"wybranego produktu WooCommerce."
 
 #: blocks/tiers-table/block.json
 msgctxt "block keyword"
@@ -402,50 +402,19 @@ msgstr "woocommerce"
 #: blocks/tiers-table/block.json
 msgctxt "block keyword"
 msgid "pricing"
-msgstr "preise"
+msgstr "ceny"
 
 #: blocks/tiers-table/block.json
 msgctxt "block keyword"
 msgid "tiers"
-msgstr "staffeln"
+msgstr "progi"
 
 #: blocks/tiers-table/block.json
 msgctxt "block keyword"
 msgid "volume"
-msgstr "menge"
+msgstr "wolumen"
 
 #: blocks/tiers-table/block.json
 msgctxt "block keyword"
 msgid "quantity"
-msgstr "Menge"
-
-#~ msgctxt "quantity range"
-#~ msgid "You save"
-#~ msgstr "Du sparst"
-
-#~ msgctxt "quantity, no upper limit"
-#~ msgid "%1$d, %2$d"
-#~ msgstr "%1$d, %2$d"
-
-#~ msgid "%d+"
-#~ msgstr "%d+"
-
-#~ msgctxt "block title"
-#~ msgid "The tier table renders on the front end for the selected product."
-#~ msgstr ""
-#~ "Die Staffeltabelle wird im Frontend für das ausgewählte Produkt gerendert."
-
-#~ msgctxt "block description"
-#~ msgid "Volume pricing table"
-#~ msgstr "Mengenpreistabelle"
-
-#~ msgctxt "block keyword"
-#~ msgid ""
-#~ "Server-rendered volume pricing table for the current or a chosen "
-#~ "WooCommerce product."
-#~ msgstr ""
-#~ "Serverseitig gerenderte Mengenpreistabelle für das aktuelle oder ein "
-#~ "ausgewähltes WooCommerce-Produkt."
-
-#~ msgid "quantity"
-#~ msgstr "menge"
+msgstr "ilość"

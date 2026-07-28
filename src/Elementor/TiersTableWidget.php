@@ -36,7 +36,7 @@ final class TiersTableWidget extends Widget_Base {
 	 * Widget label shown in the editor.
 	 */
 	public function get_title(): string {
-		return esc_html__( 'Volume Pricing Table', 'tiers' );
+		return esc_html__( 'Volume Pricing Table', 'plogins-tiers' );
 	}
 
 	/**
@@ -70,17 +70,17 @@ final class TiersTableWidget extends Widget_Base {
 	protected function register_controls(): void {
 		$this->start_controls_section(
 			'content',
-			array( 'label' => esc_html__( 'Pricing table', 'tiers' ) )
+			array( 'label' => esc_html__( 'Pricing table', 'plogins-tiers' ) )
 		);
 
 		$this->add_control(
 			'product_id',
 			array(
-				'label'       => esc_html__( 'Product ID', 'tiers' ),
+				'label'       => esc_html__( 'Product ID', 'plogins-tiers' ),
 				'type'        => Controls_Manager::NUMBER,
 				'default'     => 0,
 				'min'         => 0,
-				'description' => esc_html__( 'Leave 0 to use the current product on a product page.', 'tiers' ),
+				'description' => esc_html__( 'Leave 0 to use the current product on a product page.', 'plogins-tiers' ),
 			)
 		);
 
