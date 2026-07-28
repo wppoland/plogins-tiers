@@ -12,11 +12,11 @@ Volumenpreisstufen für WooCommerce. Lege Mengenrabatt-Bereiche fest und zeige a
 
 == Description ==
 
-Tiers gibt einem WooCommerce-Shop mengenbasierte Preise. Du legst die Schwellen fest: kaufe 5, spare 5 %; kaufe 10, spare 10 % – und der Rabatt wird vom Bestellposten abgezogen, sobald die Kundschaft genügend Einheiten in den Warenkorb legt. Dieselben Schwellen werden als Tabelle auf der Produktseite gezeigt, damit man den zu zahlenden Preis sieht, bevor man in den Warenkorb legt.
+Tiers gibt einem WooCommerce-Shop mengenbasierte Preise. Du legst die Schwellen fest: kaufe 5, spare 5 %; kaufe 10, spare 10 %, und der Rabatt wird vom Bestellposten abgezogen, sobald die Kundschaft genügend Einheiten in den Warenkorb legt. Dieselben Schwellen werden als Tabelle auf der Produktseite gezeigt, damit man den zu zahlenden Preis sieht, bevor man in den Warenkorb legt.
 
 Der Rabatt wird in PHP im Hook `woocommerce_before_calculate_totals` berechnet, sodass die Preislogik kein Frontend-JavaScript lädt. Die Tabelle auf der Produktseite ist eine schlichte HTML-Tabelle `<table>`, serverseitig ausgegeben mit `<th scope>` und `<caption>`, sodass sie für Screenreader korrekt vorgelesen wird und das Layout beim Laden der Seite nicht verschiebt.
 
-Passt eine Menge zu mehr als einer Stufe, greift die höchste qualifizierende Stufe – 12 Einheiten erhalten den „10+“-Preis, nicht den „5+“-Preis. Tiers erhöht außerdem nie einen Preis, sodass ein bereits reduziertes Produkt seinen niedrigeren Preis behält.
+Passt eine Menge zu mehr als einer Stufe, greift die höchste qualifizierende Stufe, 12 Einheiten erhalten den „10+“-Preis, nicht den „5+“-Preis. Tiers erhöht außerdem nie einen Preis, sodass ein bereits reduziertes Produkt seinen niedrigeren Preis behält.
 
 Tiers erklärt die Kompatibilität mit WooCommerce HPOS und den Cart/Checkout-Blocks. Es speichert alles in einer einzigen `wp_options`-Zeile und legt keine eigenen Tabellen an, sodass die Datenbank beim Löschen des Plugins unverändert bleibt.
 
@@ -93,16 +93,16 @@ Ja. Dieses Plugin ist mit WordPress Multisite kompatibel. Aktiviere es netzwerkw
 
 == Screenshots ==
 
-1. Volumenpreistabelle auf einer Produktseite – zeigt Mengenbereiche, Rabatt-Prozentsätze und die daraus resultierenden Preise.
-2. Admin-Einstellungsseite – Stufen-Builder mit Hinzufügen/Entfernen von Zeilen und einem Schalter zum Ein-/Ausblenden der Tabelle.
+1. Volumenpreistabelle auf einer Produktseite, zeigt Mengenbereiche, Rabatt-Prozentsätze und die daraus resultierenden Preise.
+2. Admin-Einstellungsseite, Stufen-Builder mit Hinzufügen/Entfernen von Zeilen und einem Schalter zum Ein-/Ausblenden der Tabelle.
 
 == External Services ==
 
-Tiers stellt keine Verbindung zu externen Diensten her. Die Preisstufen werden in einer einzigen `tiers_settings`-Zeile in deiner WordPress-Optionstabelle gespeichert, und der Rabatt wird in PHP auf deinem eigenen Server berechnet – es verlassen nie Daten deine Website. Das Plugin sendet keine E-Mails und stellt keine Remote-Anfragen; die Preistabelle auf der Produktseite wird lokal aus diesen gespeicherten Stufen gerendert.
+Tiers stellt keine Verbindung zu externen Diensten her. Die Preisstufen werden in einer einzigen `tiers_settings`-Zeile in deiner WordPress-Optionstabelle gespeichert, und der Rabatt wird in PHP auf deinem eigenen Server berechnet, es verlassen nie Daten deine Website. Das Plugin sendet keine E-Mails und stellt keine Remote-Anfragen; die Preistabelle auf der Produktseite wird lokal aus diesen gespeicherten Stufen gerendert.
 
 == Development ==
 
-Tiers wird quelloffen entwickelt. Die installierten PHP-, JS- und CSS-Dateien sind dieselben Dateien wie im Repository – nichts wird durch einen Build-Schritt minifiziert oder generiert. Lies den Code, melde einen Fehler oder schicke einen Patch unter https://github.com/wppoland/plogins-tiers.
+Tiers wird quelloffen entwickelt. Die installierten PHP-, JS- und CSS-Dateien sind dieselben Dateien wie im Repository, nichts wird durch einen Build-Schritt minifiziert oder generiert. Lies den Code, melde einen Fehler oder schicke einen Patch unter https://github.com/wppoland/plogins-tiers.
 
 == Translations ==
 

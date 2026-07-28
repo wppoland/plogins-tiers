@@ -12,11 +12,11 @@ Progi cen hurtowych dla WooCommerce. Ustaw zakresy rabatów ilościowych i poka�
 
 == Description ==
 
-Tiers daje sklepowi WooCommerce ceny zależne od ilości. Ustawiasz progi: kup 5 — zaoszczędź 5%; kup 10 — zaoszczędź 10%, a rabat jest odejmowany od pozycji zamówienia w chwili, gdy klient doda do koszyka wystarczającą liczbę sztuk. Te same progi są pokazywane w tabeli na stronie produktu, aby klienci widzieli cenę, jaką zapłacą, zanim dodadzą produkt do koszyka.
+Tiers daje sklepowi WooCommerce ceny zależne od ilości. Ustawiasz progi: kup 5, zaoszczędź 5%; kup 10, zaoszczędź 10%, a rabat jest odejmowany od pozycji zamówienia w chwili, gdy klient doda do koszyka wystarczającą liczbę sztuk. Te same progi są pokazywane w tabeli na stronie produktu, aby klienci widzieli cenę, jaką zapłacą, zanim dodadzą produkt do koszyka.
 
 Rabat jest obliczany w PHP w zdarzeniu `woocommerce_before_calculate_totals`, więc logika cen nie ładuje żadnego front-endowego JavaScriptu. Tabela na stronie produktu to zwykła tabela HTML `<table>` wypisywana po stronie serwera z `<th scope>` i `<caption>`, dzięki czemu jest poprawnie odczytywana przez czytniki ekranu i nie przesuwa układu podczas ładowania strony.
 
-Gdy ilość pasuje do więcej niż jednego progu, stosowany jest najwyższy kwalifikujący się próg — 12 sztuk otrzymuje cenę „10+”, a nie „5+”. Tiers nigdy też nie podnosi ceny, więc produkt już przeceniony zachowuje swoją niższą cenę.
+Gdy ilość pasuje do więcej niż jednego progu, stosowany jest najwyższy kwalifikujący się próg, 12 sztuk otrzymuje cenę „10+”, a nie „5+”. Tiers nigdy też nie podnosi ceny, więc produkt już przeceniony zachowuje swoją niższą cenę.
 
 Tiers deklaruje zgodność z WooCommerce HPOS oraz blokami Koszyka/Kasy. Przechowuje wszystko w jednym wierszu `wp_options` i nie tworzy żadnych niestandardowych tabel, więc usunięcie wtyczki pozostawia bazę danych w niezmienionym stanie.
 
@@ -93,16 +93,16 @@ Tak. Ta wtyczka jest zgodna z WordPress Multisite. Włącz ją w całej sieci lu
 
 == Screenshots ==
 
-1. Tabela cen hurtowych na stronie produktu — pokazuje zakresy ilości, procenty rabatu i wynikowe ceny.
-2. Strona ustawień w panelu — kreator progów z dodawaniem/usuwaniem wierszy i przełącznikiem pokazywania/ukrywania tabeli.
+1. Tabela cen hurtowych na stronie produktu, pokazuje zakresy ilości, procenty rabatu i wynikowe ceny.
+2. Strona ustawień w panelu, kreator progów z dodawaniem/usuwaniem wierszy i przełącznikiem pokazywania/ukrywania tabeli.
 
 == External Services ==
 
-Tiers nie łączy się z żadnymi usługami zewnętrznymi. Progi cenowe są przechowywane w jednym wierszu `tiers_settings` w tabeli opcji WordPressa, a rabat jest obliczany w PHP na Twoim własnym serwerze — żadne dane nigdy nie opuszczają Twojej witryny. Wtyczka nie wysyła e-maili ani nie wykonuje żadnych zdalnych żądań; tabela cen na stronie produktu jest renderowana lokalnie z tych zapisanych progów.
+Tiers nie łączy się z żadnymi usługami zewnętrznymi. Progi cenowe są przechowywane w jednym wierszu `tiers_settings` w tabeli opcji WordPressa, a rabat jest obliczany w PHP na Twoim własnym serwerze, żadne dane nigdy nie opuszczają Twojej witryny. Wtyczka nie wysyła e-maili ani nie wykonuje żadnych zdalnych żądań; tabela cen na stronie produktu jest renderowana lokalnie z tych zapisanych progów.
 
 == Development ==
 
-Tiers jest rozwijany otwarcie (open source). Instalowane pliki PHP, JS i CSS to te same pliki co w repozytorium — nic nie jest minifikowane ani generowane w kroku budowania. Przeczytaj kod, zgłoś błąd lub wyślij poprawkę na https://github.com/wppoland/plogins-tiers.
+Tiers jest rozwijany otwarcie (open source). Instalowane pliki PHP, JS i CSS to te same pliki co w repozytorium, nic nie jest minifikowane ani generowane w kroku budowania. Przeczytaj kod, zgłoś błąd lub wyślij poprawkę na https://github.com/wppoland/plogins-tiers.
 
 == Translations ==
 

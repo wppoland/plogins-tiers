@@ -1,19 +1,19 @@
 /* ==========================================================================
-   Tiers – Volume Pricing Table (storefront)
+   Tiers, Volume Pricing Table (storefront)
    Themeable, accessible, Core-Web-Vitals-native styles.
    No layout shift (space is reserved), no FOUC, graceful in any WC theme.
    The deepest-discount tier is given a spotlight so the saving reads at a glance.
    ========================================================================== */
 
 .tiers-pricing-table {
-	/* Themeable tokens — override these in your theme to restyle the table. */
+	/* Themeable tokens, override these in your theme to restyle the table. */
 	--tiers-radius: 12px;
 	--tiers-border: rgba(0, 0, 0, 0.1);
 	--tiers-border-soft: rgba(0, 0, 0, 0.06);
 	--tiers-head-bg: rgba(0, 0, 0, 0.035);
 	--tiers-row-hover: rgba(0, 0, 0, 0.03);
 	--tiers-muted: #5a5a5a;
-	--tiers-accent: #0f766e;        /* deep teal — value you can trust, not a default blue */
+	--tiers-accent: #0f766e;        /* deep teal, value you can trust, not a default blue */
 	--tiers-accent-ink: #0b5852;
 	--tiers-accent-bg: rgba(15, 118, 110, 0.07);
 	--tiers-accent-bg-strong: rgba(15, 118, 110, 0.12);
@@ -86,8 +86,8 @@
 
 /* --------------------------------------------------------------------------
    The one moment that matters: the best (deepest-discount) tier.
-   It lifts out of the table — accent rail on the leading edge, tinted fill,
-   and the price set in the accent ink — so the saving is unmistakable.
+   It lifts out of the table, accent rail on the leading edge, tinted fill,
+   and the price set in the accent ink, so the saving is unmistakable.
    -------------------------------------------------------------------------- */
 .tiers-pricing-table tbody tr.is-best-tier > td {
 	background: var(--tiers-accent-bg);
@@ -166,7 +166,7 @@
 	}
 }
 
-/* Dark mode — only when the visitor prefers it. */
+/* Dark mode, only when the visitor prefers it. */
 @media (prefers-color-scheme: dark) {
 	.tiers-pricing-table {
 		--tiers-border: rgba(255, 255, 255, 0.16);

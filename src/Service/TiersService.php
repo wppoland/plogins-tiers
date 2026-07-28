@@ -141,7 +141,7 @@ final class TiersService implements HasHooks {
 	 * Register the front-end style if it has not been registered yet.
 	 *
 	 * Registration normally happens on `wp_enqueue_scripts`, but shortcode and
-	 * block render paths can run before (or without) that hook — e.g. a block
+	 * block render paths can run before (or without) that hook, e.g. a block
 	 * server-render during a REST editor preview. Registering on demand keeps
 	 * enqueue_style() from silently no-opping in those contexts.
 	 */
@@ -292,7 +292,7 @@ final class TiersService implements HasHooks {
 	/**
 	 * Append a per-line "You save" note to the cart item subtotal.
 	 *
-	 * Display only — no pricing logic. The discount itself is applied in
+	 * Display only, no pricing logic. The discount itself is applied in
 	 * apply_cart_discounts().
 	 *
 	 * @param string               $subtotal  Formatted subtotal HTML.

@@ -44,7 +44,7 @@ final class Plugin {
 	private bool $booted = false;
 
 	/**
-	 * Private constructor — use Plugin::instance() instead.
+	 * Private constructor, use Plugin::instance() instead.
 	 */
 	private function __construct() {
 		$this->container = new Container();

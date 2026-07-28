@@ -81,7 +81,7 @@ foreach ( $tiers_tiers as $tiers_idx => $tiers_row ) {
 						if ( null !== $tiers_next_min ) {
 							printf(
 								/* translators: 1: min quantity, 2: max quantity */
-								esc_html_x( '%1$d – %2$d', 'quantity range', 'tiers' ),
+								esc_html_x( '%1$d, %2$d', 'quantity range', 'tiers' ),
 								esc_html( (string) $tiers_tier['min_qty'] ),
 								esc_html( (string) $tiers_next_min ),
 							);
