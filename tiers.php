@@ -3,7 +3,7 @@
  * Plugin Name:       Tiers - Tiered Pricing for WooCommerce
  * Plugin URI:        https://plogins.com/plogins-tiers/
  * Description:        Volume and quantity-based tiered pricing for WooCommerce
- * Version:           1.0.9
+ * Version:           1.0.10
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Requires Plugins:  woocommerce
@@ -11,7 +11,7 @@
  * Author URI:        https://wppoland.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       tiers
+ * Text Domain:       plogins-tiers
  * Domain Path:       /languages
  * WC requires at least: 8.0
  * WC tested up to: 10.9
@@ -25,7 +25,7 @@ namespace Tiers;
 
 defined( 'ABSPATH' ) || exit;
 
-const VERSION     = '1.0.9';
+const VERSION     = '1.0.10';
 const PLUGIN_FILE = __FILE__;
 const PLUGIN_DIR  = __DIR__;
 
@@ -53,7 +53,7 @@ add_action(
 				'admin_notices',
 				static function (): void {
 					echo '<div class="notice notice-error"><p>';
-					echo esc_html__( 'Tiers requires WooCommerce to be active.', 'tiers' );
+					echo esc_html__( 'Tiers requires WooCommerce to be active.', 'plogins-tiers' );
 					echo '</p></div>';
 				}
 			);
