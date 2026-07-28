@@ -11,7 +11,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
 "X-Domain: tiers\n"
 "X-Generator: WP-CLI 2.12.0\n"
 
@@ -108,8 +109,7 @@ msgstr "Etykieta"
 msgid "Add a tier above to preview how it reads to shoppers."
 msgstr "Dodaj próg powyżej, aby zobaczyć podgląd tego, jak widzą go klienci."
 
-#. translators: %d: minimum quantity (kept as a literal token for JS
-#. substitution).
+#. translators: %d: minimum quantity (kept as a literal token for JS substitution).
 #: src/Admin/Settings.php:118
 msgid "Buy %d+"
 msgstr "Kup %d+"
@@ -190,8 +190,8 @@ msgstr "Wyświetlaj tabelę cen ilościowych na stronach pojedynczych produktów
 #: src/Admin/Settings.php:260
 msgid ""
 "Shows shoppers the quantity breaks and the price they unlock at each level, "
-"a proven nudge to buy more. The discount still applies in the cart even with"
-" this turned off."
+"a proven nudge to buy more. The discount still applies in the cart even with "
+"this turned off."
 msgstr ""
 "Pokazuje klientom progi ilościowe i cenę odblokowywaną na każdym poziomie, "
 "sprawdzona zachęta do większych zakupów. Rabat działa w koszyku nawet przy "
@@ -230,11 +230,9 @@ msgstr ""
 "więcej”. Pozostaw puste, aby pokazać samą tabelę."
 
 #: src/Admin/Settings.php:312
-msgid ""
-"Optional heading shown above the pricing table. Leave blank to hide it."
+msgid "Optional heading shown above the pricing table. Leave blank to hide it."
 msgstr ""
-"Opcjonalny nagłówek wyświetlany nad tabelą cen. Pozostaw puste, aby go "
-"ukryć."
+"Opcjonalny nagłówek wyświetlany nad tabelą cen. Pozostaw puste, aby go ukryć."
 
 #: src/Admin/Settings.php:332
 msgid "Add a \"You save\" column to the pricing table."
@@ -242,30 +240,29 @@ msgstr "Dodaj kolumnę „Oszczędzasz” do tabeli cen."
 
 #: src/Admin/Settings.php:337
 msgid ""
-"Adds a column showing the cash saved per unit at each tier. Concrete savings"
-" figures convert better than a percentage alone."
+"Adds a column showing the cash saved per unit at each tier. Concrete savings "
+"figures convert better than a percentage alone."
 msgstr ""
 "Dodaje kolumnę pokazującą kwotę zaoszczędzoną na sztuce na każdym progu. "
 "Konkretne kwoty oszczędności konwertują lepiej niż sam procent."
 
 #: src/Admin/Settings.php:356
 msgid "Show a per-line \"You save\" note under each discounted cart item."
-msgstr ""
-"Pokaż informację „Oszczędzasz” pod każdą rabatowaną pozycją w koszyku."
+msgstr "Pokaż informację „Oszczędzasz” pod każdą rabatowaną pozycją w koszyku."
 
 #: src/Admin/Settings.php:361
 msgid ""
-"Reassures shoppers in the cart by printing the exact amount saved under each"
-" qualifying line item. Reinforces the discount right before checkout."
+"Reassures shoppers in the cart by printing the exact amount saved under each "
+"qualifying line item. Reinforces the discount right before checkout."
 msgstr ""
-"Upewnia klientów w koszyku, pokazując dokładną zaoszczędzoną kwotę pod każdą"
-" kwalifikującą się pozycją. Wzmacnia odczucie rabatu tuż przed finalizacją "
+"Upewnia klientów w koszyku, pokazując dokładną zaoszczędzoną kwotę pod każdą "
+"kwalifikującą się pozycją. Wzmacnia odczucie rabatu tuż przed finalizacją "
 "zamówienia."
 
 #: src/Admin/Settings.php:374
 msgid ""
-"No tiers yet. Add your first quantity break below, for example, 10% off when"
-" a shopper buys 5 or more."
+"No tiers yet. Add your first quantity break below, for example, 10% off when "
+"a shopper buys 5 or more."
 msgstr ""
 "Brak progów. Dodaj poniżej swój pierwszy próg ilościowy, na przykład 10% "
 "rabatu, gdy klient kupi 5 sztuk lub więcej."
@@ -304,8 +301,8 @@ msgstr ""
 
 #: src/Admin/Settings.php:452
 msgid ""
-"Minimum quantity is the smallest cart amount that unlocks the tier. Discount"
-" % is taken off the regular price. Label is optional copy a shopper sees "
+"Minimum quantity is the smallest cart amount that unlocks the tier. Discount "
+"% is taken off the regular price. Label is optional copy a shopper sees "
 "(e.g. \"Bulk deal\"). Tiers are sorted automatically by quantity."
 msgstr ""
 "Minimalna ilość to najmniejsza liczba w koszyku odblokowująca próg. Rabat % "
@@ -391,8 +388,8 @@ msgstr "Tabela cen ilościowych"
 #: blocks/tiers-table/block.json
 msgctxt "block description"
 msgid ""
-"Server-rendered volume pricing table for the current or a chosen WooCommerce"
-" product."
+"Server-rendered volume pricing table for the current or a chosen WooCommerce "
+"product."
 msgstr ""
 "Renderowana po stronie serwera tabela cen ilościowych dla bieżącego lub "
 "wybranego produktu WooCommerce."
