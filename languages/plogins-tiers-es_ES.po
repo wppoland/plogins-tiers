@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tiers - Tiered Pricing for WooCommerce 0.2.4\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tiers\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plogins-tiers\n"
 "POT-Creation-Date: 2026-07-03T13:13:15+00:00\n"
 "PO-Revision-Date: 2026-07-07 00:00+0000\n"
 "Last-Translator: motylanogha <szatkowski.mariusz@gmail.com>\n"
