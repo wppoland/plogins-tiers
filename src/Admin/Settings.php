@@ -19,7 +19,7 @@ use Tiers\Service\TiersService;
  *
  * Settings are stored in `tiers_settings` (array):
  *  - tiers:       array of {min_qty, discount_percent, label}
- *  - show_table:  bool — show pricing table on product page
+ *  - show_table:  bool, show pricing table on product page
  *
  * @package Tiers\Admin
  */

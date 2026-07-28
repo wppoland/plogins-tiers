@@ -347,8 +347,8 @@ msgstr "Ahorras"
 #. translators: 1: min quantity, 2: max quantity
 #: templates/single-product/pricing-table.php:84
 msgctxt "quantity range"
-msgid "%1$d – %2$d"
-msgstr "%1$d – %2$d"
+msgid "%1$d, %2$d"
+msgstr "%1$d, %2$d"
 
 #. translators: %d: minimum quantity
 #: templates/single-product/pricing-table.php:91
@@ -426,7 +426,7 @@ msgstr "cantidad"
 #~ msgstr "Ahorras"
 
 #~ msgctxt "quantity, no upper limit"
-#~ msgid "%1$d – %2$d"
+#~ msgid "%1$d, %2$d"
 #~ msgstr "%1$d - %2$d"
 
 #~ msgid "%d+"

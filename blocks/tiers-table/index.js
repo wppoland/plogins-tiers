@@ -1,9 +1,9 @@
 /**
- * Tiers – "Volume pricing table" block (editor).
+ * Tiers, "Volume pricing table" block (editor).
  *
  * A dynamic, server-rendered block. The editor shows a lightweight placeholder
  * with an optional product id; the front-end output is rendered in PHP. No build
- * step, no JSX — uses wp.element.createElement directly.
+ * step, no JSX, uses wp.element.createElement directly.
  */
 (function (blocks, element, blockEditor, components, i18n) {
 	'use strict';
