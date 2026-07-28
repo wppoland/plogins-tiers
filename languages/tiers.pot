@@ -58,8 +58,7 @@ msgstr ""
 msgid "Do more with %s"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:206
-#: src/Admin/ProUpsell.php:237
+#: src/Admin/ProUpsell.php:206 src/Admin/ProUpsell.php:237
 msgid "Upgrade to PRO"
 msgstr ""
 
@@ -88,18 +87,15 @@ msgstr ""
 msgid "Tiers"
 msgstr ""
 
-#: src/Admin/Settings.php:112
-#: src/Admin/Settings.php:426
+#: src/Admin/Settings.php:112 src/Admin/Settings.php:426
 msgid "Remove"
 msgstr ""
 
-#: src/Admin/Settings.php:113
-#: src/Admin/Settings.php:397
+#: src/Admin/Settings.php:113 src/Admin/Settings.php:397
 msgid "Minimum quantity"
 msgstr ""
 
-#: src/Admin/Settings.php:114
-#: src/Admin/Settings.php:410
+#: src/Admin/Settings.php:114 src/Admin/Settings.php:410
 msgid "Discount percent"
 msgstr ""
 
@@ -129,7 +125,11 @@ msgid "Reward bigger orders, automatically"
 msgstr ""
 
 #: src/Admin/Settings.php:165
-msgid "Set quantity thresholds and the discount each one unlocks. When a shopper adds enough of a product to their cart, the matching discount is applied automatically, no coupon codes needed. Tiers apply to every product; per-product overrides are available in Tiers PRO."
+msgid ""
+"Set quantity thresholds and the discount each one unlocks. When a shopper "
+"adds enough of a product to their cart, the matching discount is applied "
+"automatically, no coupon codes needed. Tiers apply to every product; per-"
+"product overrides are available in Tiers PRO."
 msgstr ""
 
 #: src/Admin/Settings.php:176
@@ -181,15 +181,24 @@ msgid "Display a volume pricing table on single product pages."
 msgstr ""
 
 #: src/Admin/Settings.php:260
-msgid "Shows shoppers the quantity breaks and the price they unlock at each level, a proven nudge to buy more. The discount still applies in the cart even with this turned off."
+msgid ""
+"Shows shoppers the quantity breaks and the price they unlock at each level, "
+"a proven nudge to buy more. The discount still applies in the cart even with "
+"this turned off."
 msgstr ""
 
 #: src/Admin/Settings.php:281
-msgid "Controls where the table is auto-inserted on the product page. Pick \"Only where I place it\" to position it yourself with the [tiers_table] shortcode or the Volume pricing table block."
+msgid ""
+"Controls where the table is auto-inserted on the product page. Pick \"Only "
+"where I place it\" to position it yourself with the [tiers_table] shortcode "
+"or the Volume pricing table block."
 msgstr ""
 
 #: src/Admin/Settings.php:285
-msgid "Where the pricing table appears on the product page. Choose the last option to place it manually with the [tiers_table] shortcode or the \"Volume pricing table\" block."
+msgid ""
+"Where the pricing table appears on the product page. Choose the last option "
+"to place it manually with the [tiers_table] shortcode or the \"Volume "
+"pricing table\" block."
 msgstr ""
 
 #: src/Admin/Settings.php:303
@@ -197,7 +206,9 @@ msgid "e.g. Buy more, save more"
 msgstr ""
 
 #: src/Admin/Settings.php:308
-msgid "A short title rendered directly above the table, e.g. \"Buy more, save more\". Leave it blank to show just the table."
+msgid ""
+"A short title rendered directly above the table, e.g. \"Buy more, save "
+"more\". Leave it blank to show just the table."
 msgstr ""
 
 #: src/Admin/Settings.php:312
@@ -209,7 +220,9 @@ msgid "Add a \"You save\" column to the pricing table."
 msgstr ""
 
 #: src/Admin/Settings.php:337
-msgid "Adds a column showing the cash saved per unit at each tier. Concrete savings figures convert better than a percentage alone."
+msgid ""
+"Adds a column showing the cash saved per unit at each tier. Concrete savings "
+"figures convert better than a percentage alone."
 msgstr ""
 
 #: src/Admin/Settings.php:356
@@ -217,11 +230,15 @@ msgid "Show a per-line \"You save\" note under each discounted cart item."
 msgstr ""
 
 #: src/Admin/Settings.php:361
-msgid "Reassures shoppers in the cart by printing the exact amount saved under each qualifying line item. Reinforces the discount right before checkout."
+msgid ""
+"Reassures shoppers in the cart by printing the exact amount saved under each "
+"qualifying line item. Reinforces the discount right before checkout."
 msgstr ""
 
 #: src/Admin/Settings.php:374
-msgid "No tiers yet. Add your first quantity break below, for example, 10% off when a shopper buys 5 or more."
+msgid ""
+"No tiers yet. Add your first quantity break below, for example, 10% off when "
+"a shopper buys 5 or more."
 msgstr ""
 
 #: src/Admin/Settings.php:379
@@ -249,11 +266,16 @@ msgid "Live preview"
 msgstr ""
 
 #: src/Admin/Settings.php:447
-msgid "The highest matching tier wins. E.g., buying 12 units gets the \"10+\" discount, not the \"5+\" discount."
+msgid ""
+"The highest matching tier wins. E.g., buying 12 units gets the \"10+\" "
+"discount, not the \"5+\" discount."
 msgstr ""
 
 #: src/Admin/Settings.php:452
-msgid "Minimum quantity is the smallest cart amount that unlocks the tier. Discount % is taken off the regular price. Label is optional copy a shopper sees (e.g. \"Bulk deal\"). Tiers are sorted automatically by quantity."
+msgid ""
+"Minimum quantity is the smallest cart amount that unlocks the tier. Discount "
+"% is taken off the regular price. Label is optional copy a shopper sees "
+"(e.g. \"Bulk deal\"). Tiers are sorted automatically by quantity."
 msgstr ""
 
 #. translators: %s: formatted saved amount
@@ -333,7 +355,9 @@ msgstr ""
 
 #: blocks/tiers-table/block.json
 msgctxt "block description"
-msgid "Server-rendered volume pricing table for the current or a chosen WooCommerce product."
+msgid ""
+"Server-rendered volume pricing table for the current or a chosen WooCommerce "
+"product."
 msgstr ""
 
 #: blocks/tiers-table/block.json
