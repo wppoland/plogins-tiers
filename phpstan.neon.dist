@@ -10,6 +10,11 @@ parameters:
         - src
         - config
     excludePaths:
+        # Elementor is an optional integration and no stub package for it is
+        # available, so its widgets read as extending an unknown class. The
+        # runtime guard lives in the service that registers them.
+        - src/Elementor/
+        - src/Service/ElementorWidgets.php
         - vendor/
     bootstrapFiles:
         - tests/phpstan/constants.php
