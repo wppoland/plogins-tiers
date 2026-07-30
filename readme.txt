@@ -4,7 +4,7 @@ Tags: woocommerce, volume pricing, quantity discount, bulk pricing, tiered prici
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 1.0.10
+Stable tag: 1.0.11
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,7 +49,7 @@ Browse the full catalogue at https://plogins.com/ .
 The free edition gives every product global quantity tiers. **Plogins Tiers PRO** adds B2B and per-product control:
 
 * **Per-product overrides** - different tier ladders for specific products
-* **Role and group pricing** - prices by customer role or user group
+* **Role-based pricing** - prices by WordPress user role, or for guests
 * **Category pricing rules** - tiers scoped to product categories
 * **Scheduled pricing** - start and end dates for a tier ladder
 
@@ -122,6 +122,9 @@ Tiers is developed in the open. The PHP, JS, and CSS you install are the same fi
 Plogins Tiers includes Polish, German and Spanish translations for the plugin interface. The text domain is `plogins-tiers`, matching the plugin slug, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.0.11 =
+* Copy: the pricing axis is WordPress roles, plus guests. The readme called it role and customer-group pricing, which suggested a Groups or Memberships integration that does not exist. The B2B screen is described as the quote mode it is, rather than as hidden prices.
 
 = 1.0.10 =
 * Text domain now matches the plugin slug (`plogins-tiers`), so translations from WordPress.org load correctly. Bundled translation files were renamed to match.
