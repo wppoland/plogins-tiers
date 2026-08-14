@@ -2,33 +2,29 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Tiers - Tiered Pricing for WooCommerce 0.2.4\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plogins-tiers\n"
-"POT-Creation-Date: 2026-07-03T13:13:15+00:00\n"
-"PO-Revision-Date: 2026-07-07 00:00+0000\n"
-"Last-Translator: motylanogha <szatkowski.mariusz@gmail.com>\n"
-"Language-Team: Spanish <es@li.org>\n"
-"Language: es_ES\n"
+"PO-Revision-Date: 2026-07-28 18:46:23+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Domain: plogins-tiers\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.3\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Tiers &#8211; Tiered Pricing for WooCommerce - Stable (latest release)\n"
 
 #. Plugin Name of the plugin
 #: tiers.php
 msgid "Tiers - Tiered Pricing for WooCommerce"
-msgstr "Tiers - precios por tramos para WooCommerce"
+msgstr "Tiers - Tiered Pricing for WooCommerce"
 
 #. Plugin URI of the plugin
 #: tiers.php
 msgid "https://plogins.com/plogins-tiers/"
-msgstr "https://plogins.com/es/plogins-tiers/"
+msgstr "https://plogins.com/plogins-tiers/"
 
 #. Description of the plugin
 #: tiers.php
 msgid "Volume and quantity-based tiered pricing for WooCommerce"
-msgstr "Precios por volumen y cantidad para WooCommerce"
+msgstr "Precios escalonados basados en volumen y cantidad para WooCommerce"
 
 #. Author of the plugin
 #: tiers.php
@@ -43,7 +39,7 @@ msgstr "https://wppoland.com"
 #. translators: %d: yearly price in PLN
 #: src/Admin/ProUpsell.php:100
 msgid "od %d zł/rok"
-msgstr "desde %d PLN/año"
+msgstr "od %d zł/rok"
 
 #. translators: 1: currency symbol, 2: yearly price
 #: src/Admin/ProUpsell.php:106
@@ -61,7 +57,7 @@ msgstr "Haz más con %s"
 
 #: src/Admin/ProUpsell.php:206 src/Admin/ProUpsell.php:237
 msgid "Upgrade to PRO"
-msgstr "Mejorar a PRO"
+msgstr "Actualizar a PRO"
 
 #: src/Admin/ProUpsell.php:208
 msgid "Dismiss this notice"
@@ -69,24 +65,24 @@ msgstr "Descartar este aviso"
 
 #: src/Admin/ProUpsell.php:227
 msgid "Unlock every PRO feature"
-msgstr "Desbloquea todas las funciones PRO"
+msgstr "Desbloquear todas las características PRO"
 
 #: src/Admin/ProUpsell.php:240
 msgid "one licence, every PRO feature"
-msgstr "una licencia, todas las funciones PRO"
+msgstr "una licencia, todas las características PRO"
 
 #. translators: %s: PRO edition name
 #: src/Admin/ProUpsell.php:261
 msgid "What %s adds"
-msgstr "Qué añade %s"
+msgstr "Lo que %s añade"
 
 #: src/Admin/Settings.php:71
 msgid "Tiers Settings"
-msgstr "Ajustes de Tiers"
+msgstr "Ajustes de niveles"
 
 #: src/Admin/Settings.php:72
 msgid "Tiers"
-msgstr "Tiers"
+msgstr "Niveles"
 
 #: src/Admin/Settings.php:112 src/Admin/Settings.php:426
 msgid "Remove"
@@ -106,13 +102,12 @@ msgstr "Etiqueta"
 
 #: src/Admin/Settings.php:116
 msgid "Add a tier above to preview how it reads to shoppers."
-msgstr ""
-"Añade un tramo arriba para previsualizar cómo lo verán los compradores."
+msgstr "Añada un nivel superior para previsualizar cómo lo verán los compradores."
 
 #. translators: %d: minimum quantity (kept as a literal token for JS substitution).
 #: src/Admin/Settings.php:118
 msgid "Buy %d+"
-msgstr "Compra %d+"
+msgstr "Comprar %d+"
 
 #: src/Admin/Settings.php:137
 msgid "More information"
@@ -120,11 +115,11 @@ msgstr "Más información"
 
 #: src/Admin/Settings.php:161
 msgid "Global Volume Pricing Tiers"
-msgstr "Tramos globales de precios por volumen"
+msgstr "Niveles de precios por volumen globales"
 
 #: src/Admin/Settings.php:164
 msgid "Reward bigger orders, automatically"
-msgstr "Premia pedidos más grandes automáticamente"
+msgstr "Recompense pedidos más grandes, automáticamente"
 
 #: src/Admin/Settings.php:165
 msgid ""
@@ -152,15 +147,15 @@ msgstr "Encabezado de la tabla"
 
 #: src/Admin/Settings.php:202
 msgid "Savings column"
-msgstr "Columna de ahorro"
+msgstr "Columna de ahorros"
 
 #: src/Admin/Settings.php:210
 msgid "Cart savings note"
-msgstr "Nota de ahorro en el carrito"
+msgstr "Nota de ahorro del carrito"
 
 #: src/Admin/Settings.php:218
 msgid "Pricing tiers"
-msgstr "Tramos de precio"
+msgstr "Niveles de precios"
 
 #: src/Admin/Settings.php:232
 msgid "Product summary (below price)"
@@ -180,11 +175,11 @@ msgstr "Área de metadatos del producto"
 
 #: src/Admin/Settings.php:236
 msgid "Only where I place it (shortcode / block)"
-msgstr "Solo donde la coloque (shortcode / bloque)"
+msgstr "Solo donde yo lo coloque (shortcode / bloque)"
 
 #: src/Admin/Settings.php:255
 msgid "Display a volume pricing table on single product pages."
-msgstr "Muestra una tabla de precios por volumen en las páginas de producto."
+msgstr "Mostrar una tabla de precios por volumen en las páginas de productos individuales."
 
 #: src/Admin/Settings.php:260
 msgid ""
@@ -218,7 +213,7 @@ msgstr ""
 
 #: src/Admin/Settings.php:303
 msgid "e.g. Buy more, save more"
-msgstr "p. ej. Compra más, ahorra más"
+msgstr "p. ej. Compre más, ahorre más"
 
 #: src/Admin/Settings.php:308
 msgid ""
@@ -230,13 +225,11 @@ msgstr ""
 
 #: src/Admin/Settings.php:312
 msgid "Optional heading shown above the pricing table. Leave blank to hide it."
-msgstr ""
-"Encabezado opcional mostrado encima de la tabla de precios. Déjalo vacío "
-"para ocultarlo."
+msgstr "Encabezado opcional que se muestra encima de la tabla de precios. Déjelo en blanco para ocultarlo."
 
 #: src/Admin/Settings.php:332
 msgid "Add a \"You save\" column to the pricing table."
-msgstr "Añade una columna «Ahorras» a la tabla de precios."
+msgstr "Añadir una columna \"Ahorras\" a la tabla de precios."
 
 #: src/Admin/Settings.php:337
 msgid ""
@@ -248,8 +241,7 @@ msgstr ""
 
 #: src/Admin/Settings.php:356
 msgid "Show a per-line \"You save\" note under each discounted cart item."
-msgstr ""
-"Muestra una nota «Ahorras» bajo cada línea con descuento en el carrito."
+msgstr "Mostrar una nota \"Ahorras\" por línea debajo de cada artículo con descuento en el carrito."
 
 #: src/Admin/Settings.php:361
 msgid ""
@@ -270,11 +262,11 @@ msgstr ""
 
 #: src/Admin/Settings.php:379
 msgid "Min. quantity"
-msgstr "Cantidad mín."
+msgstr "Cant. mín."
 
 #: src/Admin/Settings.php:380
 msgid "Discount %"
-msgstr "Descuento %"
+msgstr "% de descuento"
 
 #: src/Admin/Settings.php:381
 msgid "Label (optional)"
@@ -282,15 +274,15 @@ msgstr "Etiqueta (opcional)"
 
 #: src/Admin/Settings.php:420
 msgid "Tier label (optional)"
-msgstr "Etiqueta del tramo (opcional)"
+msgstr "Etiqueta del nivel (opcional)"
 
 #: src/Admin/Settings.php:435
 msgid "+ Add tier"
-msgstr "+ Añadir tramo"
+msgstr "+ Añadir nivel"
 
 #: src/Admin/Settings.php:440
 msgid "Live preview"
-msgstr "Vista previa en directo"
+msgstr "Vista previa en vivo"
 
 #: src/Admin/Settings.php:447
 msgid ""
@@ -318,7 +310,7 @@ msgstr "Ahorras %s"
 
 #: templates/single-product/pricing-table.php:27
 msgid "No volume discounts are available for this product yet."
-msgstr "Todavía no hay descuentos por volumen para este producto."
+msgstr "Aún no hay descuentos por volumen disponibles para este producto."
 
 #: templates/single-product/pricing-table.php:45
 msgid "Volume pricing"
@@ -326,7 +318,7 @@ msgstr "Precios por volumen"
 
 #: templates/single-product/pricing-table.php:51
 msgid "Volume pricing tiers"
-msgstr "Tramos de precios por volumen"
+msgstr "Niveles de precios por volumen"
 
 #: templates/single-product/pricing-table.php:55
 msgid "Quantity"
@@ -363,15 +355,15 @@ msgstr "Mejor valor"
 #. translators: %s: discount percentage
 #: templates/single-product/pricing-table.php:108
 msgid "%s%% off"
-msgstr "%s %% dto."
+msgstr "%s%% de descuento"
 
 #: tiers.php:55
 msgid "Tiers requires WooCommerce to be active."
-msgstr "Tiers requiere que WooCommerce esté activo."
+msgstr "Los niveles requieren que WooCommerce esté activo."
 
 #: blocks/tiers-table/index.js:25
 msgid "Product ID (0 = current product)"
-msgstr "ID del producto (0 = producto actual)"
+msgstr "ID de producto (0 = producto actual)"
 
 #: blocks/tiers-table/index.js:37
 msgid "Volume pricing table"
@@ -379,8 +371,7 @@ msgstr "Tabla de precios por volumen"
 
 #: blocks/tiers-table/index.js:38
 msgid "The tier table renders on the front end for the selected product."
-msgstr ""
-"La tabla de niveles se muestra en la parte frontal del producto seleccionado."
+msgstr "La tabla de niveles se renderiza en el front-end para el producto seleccionado."
 
 #: blocks/tiers-table/block.json
 msgctxt "block title"
@@ -409,7 +400,7 @@ msgstr "precios"
 #: blocks/tiers-table/block.json
 msgctxt "block keyword"
 msgid "tiers"
-msgstr "tramos"
+msgstr "niveles"
 
 #: blocks/tiers-table/block.json
 msgctxt "block keyword"
