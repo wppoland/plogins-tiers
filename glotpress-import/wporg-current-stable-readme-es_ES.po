@@ -75,10 +75,10 @@ msgstr ""
 #. Found in description paragraph.
 msgid ""
 "Everything in the free edition stays free and open. Plogins Tiers PRO starts"
-" at 29 EUR per year (PLN shown at checkout)."
+" at 29 EUR per year, billed in EUR."
 msgstr ""
 "Todo en la edición gratuita permanece libre y abierto. Plogins Tiers PRO "
-"comienza en 29 EUR por año (PLN se muestra al finalizar la compra)."
+"comienza en 29 EUR por año, con facturación en EUR."
 
 #. Found in description paragraph.
 msgid ""

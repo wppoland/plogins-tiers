@@ -4,7 +4,7 @@ Tags: woocommerce, volume pricing, quantity discount, bulk pricing, tiered prici
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.11
+Stable tag: 1.0.12
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,7 +55,7 @@ The free edition gives every product global quantity tiers. **Plogins Tiers PRO*
 * **Category pricing rules** - tiers scoped to product categories
 * **Scheduled pricing** - start and end dates for a tier ladder
 
-Everything in the free edition stays free and open. Plogins Tiers PRO starts at 29 EUR per year (PLN shown at checkout).
+Everything in the free edition stays free and open. Plogins Tiers PRO starts at 29 EUR per year, billed in EUR.
 
 Compare editions and pricing: [plogins.com/plogins-tiers-pro/pricing/](https://plogins.com/plogins-tiers-pro/pricing/)
 
@@ -124,6 +124,9 @@ Tiers is developed in the open. The PHP, JS, and CSS you install are the same fi
 Plogins Tiers includes Polish, German and Spanish translations for the plugin interface. The text domain is `plogins-tiers`, matching the plugin slug, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.0.12 =
+* Copy: the PRO pricing line said the amount would be shown in PLN at checkout. It is not. Billing is in EUR, and the readme now says so in English, Polish, German and Spanish.
 
 = 1.0.11 =
 * Copy: the pricing axis is WordPress roles, plus guests. The readme called it role and customer-group pricing, which suggested a Groups or Memberships integration that does not exist. The B2B screen is described as the quote mode it is, rather than as hidden prices.
