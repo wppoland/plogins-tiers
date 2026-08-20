@@ -75,11 +75,11 @@ msgstr ""
 #. Found in description paragraph.
 msgid ""
 "Everything in the free edition stays free and open. Plogins Tiers PRO starts"
-" at 29 EUR per year (PLN shown at checkout)."
+" at 29 EUR per year, billed in EUR."
 msgstr ""
 "Wszystko w wersji darmowej pozostaje darmowe i otwarte. Ceny pakietów "
-"Plogins Tiers PRO zaczynają się od 29 EUR rocznie (kwota w PLN wyświetlana "
-"jest przy kasie)."
+"Plogins Tiers PRO zaczynają się od 29 EUR rocznie, rozliczenie następuje w "
+"EUR."
 
 #. Found in description paragraph.
 msgid ""
