@@ -15,7 +15,6 @@ return [
 	'sellable'   => true,
 	'price_from' => 29,
 	'currency'   => 'EUR',
-	'price_pln'  => 129,
 	'lead'       => [
 		'en' => 'Role pricing, per-product overrides, category rules, B2B wholesale and scheduled pricing ship in the current PRO release.',
 		'pl' => 'Ceny per rola, nadpisania per produkt, reguły kategorii, hurt B2B i harmonogramy są dostępne w bieżącym wydaniu PRO.',
