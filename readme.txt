@@ -29,7 +29,7 @@ Tiers declares compatibility with WooCommerce HPOS and the Cart/Checkout Blocks.
 * An optional heading above the table and an optional "You save" column
 * An optional "You save" note under each discounted line in the cart
 * An admin tier builder that adds and removes rows in place, with a live preview of how each tier reads
-* A Polish translation, plus a bundled POT file for translating into other languages (text domain `tiers`)
+* Fully translatable: ships the `plogins-tiers.pot` template (text domain `plogins-tiers`), with Polish, German and Spanish delivered by the WordPress.org language pack
 * A `tiers_product_tiers` filter that lets Tiers PRO swap in per-product or role-based tiers
 
 **Documentation:** [plogins.com/tiers/docs/](https://plogins.com/tiers/docs/)
