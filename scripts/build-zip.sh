@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
-# Build a clean, installable tiers.zip for local testing, honouring .distignore.
+# Build a clean, installable ${NAME}.zip for local testing, honouring .distignore.
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-OUT_DIR="${1:-/tmp/tiers-build}"
-STAGE="${OUT_DIR}/tiers"
+# The package folder and zip must be named after the plugin slug, which is the
+# Text Domain, not the local checkout directory and not the plugin's old name.
+# This script still said "tiers" long after the rename, so every local build
+# produced a folder Plugin Check reads as a text-domain mismatch.
+NAME="$(grep -m1 -oE 'Text Domain:[[:space:]]+[a-z0-9-]+' "$ROOT_DIR"/*.php | awk '{print $3}')"
+[ -n "$NAME" ] || { echo "ERROR: could not read Text Domain from the plugin header" >&2; exit 1; }
+OUT_DIR="${1:-/tmp/${NAME}-build}"
+STAGE="${OUT_DIR}/${NAME}"
 
 rm -rf "${OUT_DIR}"
 mkdir -p "${STAGE}"
@@ -16,5 +22,5 @@ rsync -a --exclude-from="${ROOT_DIR}/.distignore" \
 
 find "${STAGE}" -name '.DS_Store' -delete
 
-( cd "${OUT_DIR}" && zip -rqX /tmp/tiers.zip tiers -x '*.DS_Store' )
-echo "✓ Built /tmp/tiers.zip from ${STAGE}"
+( cd "${OUT_DIR}" && zip -rqX /tmp/${NAME}.zip "${NAME}" -x '*.DS_Store' )
+echo "✓ Built /tmp/${NAME}.zip from ${STAGE}"
