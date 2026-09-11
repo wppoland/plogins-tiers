@@ -49,7 +49,7 @@ Durchstöbere den vollständigen Katalog unter https://plogins.com/de/ .
 1. Installiere und aktiviere WooCommerce (8.0 oder neuer).
 2. Lade den Ordner `tiers` nach `/wp-content/plugins/` hoch oder hol dir eine Kopie von https://github.com/wppoland/plogins-tiers.
 3. Aktiviere das Plugin über den Bildschirm <strong>Plugins</strong>.
-4. Gehe zu <strong>WooCommerce → Tiers</strong> und füge mindestens eine Preisstufe hinzu (z. B. 5 Einheiten → 5 % Rabatt).
+4. Gehe zu <strong>WooCommerce > Tiers</strong> und füge mindestens eine Preisstufe hinzu (z. B. 5 Einheiten > 5 % Rabatt).
 5. Die Preistabelle erscheint automatisch auf den Produktseiten, und im Warenkorb werden die Rabatte angewendet.
 
 == Frequently Asked Questions ==
