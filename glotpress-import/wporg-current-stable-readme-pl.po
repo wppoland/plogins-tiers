@@ -118,8 +118,8 @@ msgid "The pricing table appears automatically on product pages, and discounts a
 msgstr "Tabela cen pojawia się automatycznie na stronach produktów, a rabaty działają w koszyku."
 
 #. Found in installation list item.
-msgid "Go to <strong>WooCommerce → Tiers</strong> and add at least one pricing tier (e.g. 5 units → 5% off)."
-msgstr "Przejdź do <strong>WooCommerce → Tiers</strong> i dodaj co najmniej jeden próg cenowy (np. 5 sztuk → 5% rabatu)."
+msgid "Go to <strong>WooCommerce > Tiers</strong> and add at least one pricing tier (e.g. 5 units > 5% off)."
+msgstr "Przejdź do <strong>WooCommerce > Tiers</strong> i dodaj co najmniej jeden próg cenowy (np. 5 sztuk > 5% rabatu)."
 
 #. Found in installation list item.
 msgid "Activate the plugin through the <strong>Plugins</strong> screen."

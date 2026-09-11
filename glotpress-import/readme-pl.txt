@@ -49,7 +49,7 @@ Przejrzyj pełny katalog na https://plogins.com/pl/ .
 1. Zainstaluj i włącz WooCommerce (8.0 lub nowszy).
 2. Wgraj folder `tiers` do `/wp-content/plugins/` lub pobierz kopię z https://github.com/wppoland/plogins-tiers.
 3. Włącz wtyczkę na ekranie <strong>Wtyczki</strong>.
-4. Przejdź do <strong>WooCommerce → Tiers</strong> i dodaj co najmniej jeden próg cenowy (np. 5 sztuk → 5% rabatu).
+4. Przejdź do <strong>WooCommerce > Tiers</strong> i dodaj co najmniej jeden próg cenowy (np. 5 sztuk > 5% rabatu).
 5. Tabela cen pojawia się automatycznie na stronach produktów, a rabaty są naliczane w koszyku.
 
 == Frequently Asked Questions ==

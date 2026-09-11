@@ -3,7 +3,7 @@
  * Template loader utility.
  *
  * Resolves and includes templates with theme override support.
- * Lookup order: {theme}/tiers/{template}.php → {plugin}/templates/{template}.php
+ * Lookup order: {theme}/tiers/{template}.php > {plugin}/templates/{template}.php
  *
  * @package Tiers\Util
  */

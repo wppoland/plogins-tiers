@@ -49,7 +49,7 @@ Explora el catálogo completo en https://plogins.com/es/ .
 1. Instala y activa WooCommerce (8.0 o posterior).
 2. Sube la carpeta `tiers` a `/wp-content/plugins/` u obtén una copia desde https://github.com/wppoland/plogins-tiers.
 3. Activa el plugin desde la pantalla <strong>Plugins</strong>.
-4. Ve a <strong>WooCommerce → Tiers</strong> y añade al menos un nivel de precios (p. ej. 5 unidades → 5 % de descuento).
+4. Ve a <strong>WooCommerce > Tiers</strong> y añade al menos un nivel de precios (p. ej. 5 unidades > 5 % de descuento).
 5. La tabla de precios aparece automáticamente en las páginas de producto, y los descuentos se aplican en el carrito.
 
 == Frequently Asked Questions ==
