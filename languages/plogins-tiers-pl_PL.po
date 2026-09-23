@@ -309,19 +309,19 @@ msgstr ""
 
 #: src/Elementor/TiersTableWidget.php:39
 msgid "Volume Pricing Table"
-msgstr ""
+msgstr "Tabela cen ilościowych"
 
 #: src/Elementor/TiersTableWidget.php:73
 msgid "Pricing table"
-msgstr ""
+msgstr "Tabela cen"
 
 #: src/Elementor/TiersTableWidget.php:79
 msgid "Product ID"
-msgstr ""
+msgstr "ID produktu"
 
 #: src/Elementor/TiersTableWidget.php:83
 msgid "Leave 0 to use the current product on a product page."
-msgstr ""
+msgstr "Zostaw 0, aby użyć bieżącego produktu na stronie produktu."
 
 #. translators: %s: formatted saved amount
 #: src/Service/TiersService.php:335
