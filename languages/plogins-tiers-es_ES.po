@@ -78,11 +78,11 @@ msgstr "Lo que %s añade"
 
 #: src/Admin/Settings.php:71
 msgid "Tiers Settings"
-msgstr "Ajustes de niveles"
+msgstr "Ajustes de Tiers"
 
 #: src/Admin/Settings.php:72
 msgid "Tiers"
-msgstr "Niveles"
+msgstr "Tiers"
 
 #: src/Admin/Settings.php:112 src/Admin/Settings.php:426
 msgid "Remove"
@@ -130,8 +130,9 @@ msgid ""
 msgstr ""
 "Define umbrales de cantidad y el descuento que desbloquea cada uno. Cuando "
 "un comprador añade suficiente cantidad de un producto al carrito, se aplica "
-"automáticamente el descuento correspondiente, sin cupones. Tiers se aplica a "
-"todos los productos; las reglas por producto están disponibles en Tiers PRO."
+"automáticamente el descuento correspondiente, sin cupones. Los tramos se "
+"aplican a todos los productos; las reglas por producto están disponibles en "
+"Tiers PRO."
 
 #: src/Admin/Settings.php:176
 msgid "Show pricing table"
@@ -359,7 +360,7 @@ msgstr "%s%% de descuento"
 
 #: tiers.php:55
 msgid "Tiers requires WooCommerce to be active."
-msgstr "Los niveles requieren que WooCommerce esté activo."
+msgstr "Tiers requiere que WooCommerce esté activo."
 
 #: blocks/tiers-table/index.js:25
 msgid "Product ID (0 = current product)"
