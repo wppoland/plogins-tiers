@@ -1,14 +1,18 @@
 #
 msgid ""
 msgstr ""
+"Project-Id-Version: Plugins - Tiers &#8211; Tiered Pricing for WooCommerce - "
+"Stable (latest release)\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plogins-tiers\n"
+"POT-Creation-Date: 2026-09-09T14:37:55+00:00\n"
 "PO-Revision-Date: 2026-07-24 12:29:49+0000\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 "
+"&& (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
 "X-Generator: GlotPress/4.0.3\n"
-"Language: pl\n"
-"Project-Id-Version: Plugins - Tiers &#8211; Tiered Pricing for WooCommerce - Stable (latest release)\n"
 
 #. Plugin Name of the plugin
 #: tiers.php
@@ -35,43 +39,41 @@ msgstr "WPPoland.com"
 msgid "https://wppoland.com"
 msgstr "https://wppoland.com"
 
-#. translators: %d: yearly price in PLN
-#: src/Admin/ProUpsell.php:100
-msgid "od %d zł/rok"
-msgstr "od %d zł/rok"
-
 #. translators: 1: currency symbol, 2: yearly price
-#: src/Admin/ProUpsell.php:106
+#: src/Admin/ProUpsell.php:101
+#, php-format
 msgid "from %1$s%2$d/yr"
 msgstr "od %1$s%2$d/rok"
 
-#: src/Admin/ProUpsell.php:154
+#: src/Admin/ProUpsell.php:149
 msgid "Permission denied."
 msgstr "Brak uprawnień."
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:193
+#: src/Admin/ProUpsell.php:188
+#, php-format
 msgid "Do more with %s"
 msgstr "Zrób więcej z %s"
 
-#: src/Admin/ProUpsell.php:206 src/Admin/ProUpsell.php:237
+#: src/Admin/ProUpsell.php:201 src/Admin/ProUpsell.php:232
 msgid "Upgrade to PRO"
 msgstr "Przejdź na PRO"
 
-#: src/Admin/ProUpsell.php:208
+#: src/Admin/ProUpsell.php:203
 msgid "Dismiss this notice"
 msgstr "Ukryj ten komunikat"
 
-#: src/Admin/ProUpsell.php:227
+#: src/Admin/ProUpsell.php:222
 msgid "Unlock every PRO feature"
 msgstr "Odblokuj wszystkie funkcje PRO"
 
-#: src/Admin/ProUpsell.php:240
+#: src/Admin/ProUpsell.php:235
 msgid "one licence, every PRO feature"
 msgstr "jedna licencja, wszystkie funkcje PRO"
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:261
+#: src/Admin/ProUpsell.php:256
+#, php-format
 msgid "What %s adds"
 msgstr "Co dodaje %s"
 
@@ -105,6 +107,7 @@ msgstr "Dodaj próg powyżej, aby zobaczyć podgląd tego, jak widzą go klienci
 
 #. translators: %d: minimum quantity (kept as a literal token for JS substitution).
 #: src/Admin/Settings.php:118
+#, php-format
 msgid "Buy %d+"
 msgstr "Kup %d+"
 
@@ -225,7 +228,8 @@ msgstr ""
 
 #: src/Admin/Settings.php:312
 msgid "Optional heading shown above the pricing table. Leave blank to hide it."
-msgstr "Opcjonalny nagłówek wyświetlany nad tabelą cen. Pozostaw puste, aby go ukryć."
+msgstr ""
+"Opcjonalny nagłówek wyświetlany nad tabelą cen. Pozostaw puste, aby go ukryć."
 
 #: src/Admin/Settings.php:332
 msgid "Add a \"You save\" column to the pricing table."
@@ -303,8 +307,25 @@ msgstr ""
 "dla klienta (np. „Oferta hurtowa”). Progi są sortowane automatycznie według "
 "ilości."
 
+#: src/Elementor/TiersTableWidget.php:39
+msgid "Volume Pricing Table"
+msgstr ""
+
+#: src/Elementor/TiersTableWidget.php:73
+msgid "Pricing table"
+msgstr ""
+
+#: src/Elementor/TiersTableWidget.php:79
+msgid "Product ID"
+msgstr ""
+
+#: src/Elementor/TiersTableWidget.php:83
+msgid "Leave 0 to use the current product on a product page."
+msgstr ""
+
 #. translators: %s: formatted saved amount
 #: src/Service/TiersService.php:335
+#, php-format
 msgid "You save %s"
 msgstr "Oszczędzasz %s"
 
@@ -338,12 +359,14 @@ msgstr "Oszczędzasz"
 
 #. translators: 1: min quantity, 2: max quantity
 #: templates/single-product/pricing-table.php:84
+#, php-format
 msgctxt "quantity range"
 msgid "%1$d, %2$d"
 msgstr "%1$d-%2$d"
 
 #. translators: %d: minimum quantity
 #: templates/single-product/pricing-table.php:91
+#, php-format
 msgctxt "quantity, no upper limit"
 msgid "%d+"
 msgstr "%d+"
@@ -354,10 +377,11 @@ msgstr "Najlepsza wartość"
 
 #. translators: %s: discount percentage
 #: templates/single-product/pricing-table.php:108
+#, php-format
 msgid "%s%% off"
 msgstr "-%s%%"
 
-#: tiers.php:55
+#: tiers.php:56
 msgid "Tiers requires WooCommerce to be active."
 msgstr "Tiers wymaga aktywnego WooCommerce."
 
@@ -411,3 +435,6 @@ msgstr "wolumen"
 msgctxt "block keyword"
 msgid "quantity"
 msgstr "ilość"
+
+#~ msgid "od %d zł/rok"
+#~ msgstr "od %d zł/rok"
