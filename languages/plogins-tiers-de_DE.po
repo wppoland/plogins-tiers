@@ -134,8 +134,8 @@ msgid ""
 msgstr ""
 "Lege Mengenschwellen und den jeweiligen Rabatt fest. Wenn ein Kunde genug "
 "Stück eines Produkts in den Warenkorb legt, wird der passende Rabatt "
-"automatisch angewendet, ganz ohne Gutscheincodes. Tiers gilt für jedes "
-"Produkt; produktspezifische Überschreibungen gibt es in Tiers PRO."
+"automatisch angewendet, ganz ohne Gutscheincodes. Die Staffeln gelten für "
+"jedes Produkt; produktspezifische Überschreibungen gibt es in Tiers PRO."
 
 #: src/Admin/Settings.php:176
 msgid "Show pricing table"
