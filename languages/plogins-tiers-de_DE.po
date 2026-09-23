@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tiers - Tiered Pricing for WooCommerce 0.2.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plogins-tiers\n"
-"POT-Creation-Date: 2026-07-03T13:13:15+00:00\n"
+"POT-Creation-Date: 2026-09-09T14:37:55+00:00\n"
 "PO-Revision-Date: 2026-07-07 00:00+0000\n"
 "Last-Translator: motylanogha <szatkowski.mariusz@gmail.com>\n"
 "Language-Team: German <de@li.org>\n"
@@ -40,43 +40,41 @@ msgstr "WPPoland.com"
 msgid "https://wppoland.com"
 msgstr "https://wppoland.com"
 
-#. translators: %d: yearly price in PLN
-#: src/Admin/ProUpsell.php:100
-msgid "od %d zł/rok"
-msgstr "ab %d PLN/Jahr"
-
 #. translators: 1: currency symbol, 2: yearly price
-#: src/Admin/ProUpsell.php:106
+#: src/Admin/ProUpsell.php:101
+#, php-format
 msgid "from %1$s%2$d/yr"
 msgstr "ab %1$s%2$d/Jahr"
 
-#: src/Admin/ProUpsell.php:154
+#: src/Admin/ProUpsell.php:149
 msgid "Permission denied."
 msgstr "Zugriff verweigert."
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:193
+#: src/Admin/ProUpsell.php:188
+#, php-format
 msgid "Do more with %s"
 msgstr "Mehr erreichen mit %s"
 
-#: src/Admin/ProUpsell.php:206 src/Admin/ProUpsell.php:237
+#: src/Admin/ProUpsell.php:201 src/Admin/ProUpsell.php:232
 msgid "Upgrade to PRO"
 msgstr "Auf PRO upgraden"
 
-#: src/Admin/ProUpsell.php:208
+#: src/Admin/ProUpsell.php:203
 msgid "Dismiss this notice"
 msgstr "Diesen Hinweis ausblenden"
 
-#: src/Admin/ProUpsell.php:227
+#: src/Admin/ProUpsell.php:222
 msgid "Unlock every PRO feature"
 msgstr "Alle PRO-Funktionen freischalten"
 
-#: src/Admin/ProUpsell.php:240
+#: src/Admin/ProUpsell.php:235
 msgid "one licence, every PRO feature"
 msgstr "eine Lizenz, alle PRO-Funktionen"
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:261
+#: src/Admin/ProUpsell.php:256
+#, php-format
 msgid "What %s adds"
 msgstr "Was %s hinzufügt"
 
@@ -110,6 +108,7 @@ msgstr "Füge oben eine Staffel hinzu, um eine Vorschau für Kunden zu sehen."
 
 #. translators: %d: minimum quantity (kept as a literal token for JS substitution).
 #: src/Admin/Settings.php:118
+#, php-format
 msgid "Buy %d+"
 msgstr "Kaufe %d+"
 
@@ -309,8 +308,25 @@ msgstr ""
 "ist ein optionaler Text für Kunden (z. B. „Mengenrabatt“). Staffeln werden "
 "automatisch nach Menge sortiert."
 
+#: src/Elementor/TiersTableWidget.php:39
+msgid "Volume Pricing Table"
+msgstr ""
+
+#: src/Elementor/TiersTableWidget.php:73
+msgid "Pricing table"
+msgstr ""
+
+#: src/Elementor/TiersTableWidget.php:79
+msgid "Product ID"
+msgstr ""
+
+#: src/Elementor/TiersTableWidget.php:83
+msgid "Leave 0 to use the current product on a product page."
+msgstr ""
+
 #. translators: %s: formatted saved amount
 #: src/Service/TiersService.php:335
+#, php-format
 msgid "You save %s"
 msgstr "Du sparst %s"
 
@@ -344,12 +360,14 @@ msgstr "Du sparst"
 
 #. translators: 1: min quantity, 2: max quantity
 #: templates/single-product/pricing-table.php:84
+#, php-format
 msgctxt "quantity range"
 msgid "%1$d, %2$d"
 msgstr "%1$d, %2$d"
 
 #. translators: %d: minimum quantity
 #: templates/single-product/pricing-table.php:91
+#, php-format
 msgctxt "quantity, no upper limit"
 msgid "%d+"
 msgstr "%d+"
@@ -360,10 +378,11 @@ msgstr "Bester Wert"
 
 #. translators: %s: discount percentage
 #: templates/single-product/pricing-table.php:108
+#, php-format
 msgid "%s%% off"
 msgstr "%s %% Rabatt"
 
-#: tiers.php:55
+#: tiers.php:56
 msgid "Tiers requires WooCommerce to be active."
 msgstr "Tiers erfordert, dass WooCommerce aktiv ist."
 
@@ -418,6 +437,9 @@ msgstr "menge"
 msgctxt "block keyword"
 msgid "quantity"
 msgstr "Menge"
+
+#~ msgid "od %d zł/rok"
+#~ msgstr "ab %d PLN/Jahr"
 
 #~ msgctxt "quantity range"
 #~ msgid "You save"
