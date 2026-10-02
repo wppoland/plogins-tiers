@@ -136,6 +136,12 @@
 	vertical-align: middle;
 }
 
+.tiers-pricing-table .tiers-tier-label {
+	display: block;
+	font-size: 0.85em;
+	color: var(--tiers-muted);
+}
+
 .tiers-pricing-table__empty {
 	margin: 0;
 	padding: var(--tiers-pad-block) var(--tiers-pad-inline);
