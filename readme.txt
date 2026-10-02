@@ -4,7 +4,7 @@ Tags: woocommerce, volume pricing, quantity discount, bulk pricing, tiered prici
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.19
+Stable tag: 1.0.20
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -124,6 +124,14 @@ Tiers is developed in the open. The PHP, JS, and CSS you install are the same fi
 Plogins Tiers is fully translatable and ships the `plogins-tiers.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.0.20 =
+* Fixed: the product-page table showed prices without tax on a store that displays prices including tax, so it disagreed with the product price above it. It now follows the shop's tax display, and the cart "You save" note does the same.
+* Fixed: on a product already on sale, the table listed tier prices above the sale price that the cart never charges. Those rows now show the price the shopper pays.
+* Fixed: the optional tier label was saved but never shown. It now appears in the table.
+* Fixed: quantity ranges read "5, 9" instead of "5-9".
+* Fixed: the Volume pricing table block ignored its wide or full alignment and custom CSS classes.
+* Fixed: saving the settings showed no confirmation.
 
 = 1.0.19 =
 * The sidebar upgrade promo now follows the same dismissal as the banner. Dismissing the banner used to leave a full-height advert on the settings screen for good, which is not what the WordPress.org guideline on upgrade prompts means by used with moderation.
