@@ -286,7 +286,8 @@ final class TiersService implements HasHooks {
 		$this->register_style();
 		wp_enqueue_style( 'tiers-pricing' );
 
-		return $this->get_table_html( $product );
+		// The wrapper carries the block's align and custom class names.
+		return sprintf( '<div %s>%s</div>', get_block_wrapper_attributes(), $this->get_table_html( $product ) );
 	}
 
 	/**
@@ -323,8 +324,13 @@ final class TiersService implements HasHooks {
 			return $subtotal;
 		}
 
-		$current = (float) $product->get_price();
-		$saved   = round( ( $regular - $current ) * $qty, wc_get_price_decimals() );
+		// Measure the saving the way the cart line is displayed (incl. or excl.
+		// tax), or a gross cart line carries a net "You save" amount.
+		$incl       = WC()->cart instanceof \WC_Cart && WC()->cart->display_prices_including_tax();
+		$to_display = static fn( float $price ): float => (float) ( $incl
+			? wc_get_price_including_tax( $product, array( 'qty' => $qty, 'price' => $price ) )
+			: wc_get_price_excluding_tax( $product, array( 'qty' => $qty, 'price' => $price ) ) );
+		$saved      = round( $to_display( $regular ) - $to_display( (float) $product->get_price() ), wc_get_price_decimals() );
 
 		if ( $saved <= 0 ) {
 			return $subtotal;

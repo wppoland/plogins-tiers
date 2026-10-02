@@ -66,11 +66,23 @@ foreach ( $tiers_tiers as $tiers_idx => $tiers_row ) {
 			if ( $tiers_base_price <= 0 ) {
 				$tiers_base_price = (float) $tiers_product->get_price();
 			}
+			$tiers_current_price = (float) $tiers_product->get_price();
+
+			// Prices are shown the way the shop displays them (incl. or excl.
+			// tax), not as the raw stored amount, or a store that displays
+			// gross prices shows a net table next to a gross product price.
+			$tiers_display_base = (float) wc_get_price_to_display( $tiers_product, array( 'price' => $tiers_base_price ) );
 
 			foreach ( $tiers_tiers as $tiers_i => $tiers_tier ) :
-				$tiers_percent    = (float) $tiers_tier['discount_percent'];
-				$tiers_tier_price = round( $tiers_base_price * ( 1.0 - $tiers_percent / 100.0 ), wc_get_price_decimals() );
-				$tiers_saved      = round( $tiers_base_price - $tiers_tier_price, wc_get_price_decimals() );
+				$tiers_percent  = (float) $tiers_tier['discount_percent'];
+				$tiers_tier_raw = round( $tiers_base_price * ( 1.0 - $tiers_percent / 100.0 ), wc_get_price_decimals() );
+				// The cart never raises a price (TiersService::apply_cart_discounts),
+				// so a sale price below the tier price is what the shopper pays.
+				if ( $tiers_current_price > 0 && $tiers_tier_raw > $tiers_current_price ) {
+					$tiers_tier_raw = $tiers_current_price;
+				}
+				$tiers_tier_price = (float) wc_get_price_to_display( $tiers_product, array( 'price' => $tiers_tier_raw ) );
+				$tiers_saved      = round( $tiers_display_base - $tiers_tier_price, wc_get_price_decimals() );
 				$tiers_is_last    = ( count( $tiers_tiers ) - 1 === $tiers_i );
 				$tiers_next_min   = $tiers_is_last ? null : $tiers_tiers[ $tiers_i + 1 ]['min_qty'] - 1;
 				$tiers_is_best    = ( $tiers_i === $tiers_best_i && count( $tiers_tiers ) > 1 );
@@ -81,7 +93,7 @@ foreach ( $tiers_tiers as $tiers_idx => $tiers_row ) {
 						if ( null !== $tiers_next_min ) {
 							printf(
 								/* translators: 1: min quantity, 2: max quantity */
-								esc_html_x( '%1$d, %2$d', 'quantity range', 'plogins-tiers' ),
+								esc_html_x( '%1$d-%2$d', 'quantity range', 'plogins-tiers' ),
 								esc_html( (string) $tiers_tier['min_qty'] ),
 								esc_html( (string) $tiers_next_min ),
 							);
@@ -92,6 +104,12 @@ foreach ( $tiers_tiers as $tiers_idx => $tiers_row ) {
 								esc_html( (string) $tiers_tier['min_qty'] ),
 							);
 						}
+
+						if ( '' !== $tiers_tier['label'] ) :
+							?>
+							<span class="tiers-tier-label"><?php echo esc_html( $tiers_tier['label'] ); ?></span>
+							<?php
+						endif;
 
 						if ( $tiers_is_best ) :
 							?>
