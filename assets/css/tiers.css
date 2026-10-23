@@ -79,7 +79,9 @@
 }
 
 .tiers-pricing-table .tiers-price .amount,
-.tiers-pricing-table .amount {
+.tiers-pricing-table .amount,
+.tiers-pricing-table .tiers-price,
+.tiers-pricing-table .tiers-saved {
 	font-weight: 600;
 	font-variant-numeric: tabular-nums;   /* prices align column-wise */
 }
@@ -105,7 +107,8 @@
 	background: var(--tiers-accent-bg-strong);
 }
 
-.tiers-pricing-table tbody tr.is-best-tier .tiers-price .amount {
+.tiers-pricing-table tbody tr.is-best-tier .tiers-price .amount,
+.tiers-pricing-table tbody tr.is-best-tier .tiers-price {
 	color: var(--tiers-accent-ink);
 	font-weight: 700;
 }
@@ -192,4 +195,22 @@
 	.tiers-pricing-table tbody tr {
 		transition: background-color 0.18s ease;
 	}
+}
+
+/* The row the quantity box currently reaches (set by tiers-table.js).
+   Colour only, so the highlight never changes a column width. */
+.tiers-pricing-table tbody tr.is-active-tier > td {
+	background: var(--tiers-accent-bg-strong);
+}
+
+.tiers-pricing-table tbody tr.is-active-tier .tiers-price .amount,
+.tiers-pricing-table tbody tr.is-active-tier .tiers-price {
+	color: var(--tiers-accent-ink);
+}
+
+/* Line total under the table. Height is reserved so filling it shifts nothing. */
+.tiers-pricing-table .tiers-line-price {
+	min-height: 1.5em;
+	margin: 0.5em 0 0;
+	font-variant-numeric: tabular-nums;
 }
