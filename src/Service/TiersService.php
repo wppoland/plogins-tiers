@@ -89,6 +89,11 @@ final class TiersService implements HasHooks {
 		if ( $settings['loop_hint'] ?? true ) {
 			add_action( 'woocommerce_before_shop_loop_item', array( $this, 'start_loop_hint' ) );
 			add_action( 'woocommerce_after_shop_loop_item', array( $this, 'stop_loop_hint' ), 99 );
+
+			// Block themes render the grid with the Product Collection block,
+			// which fires neither loop hook: start at its price block instead.
+			add_filter( 'render_block_context', array( $this, 'start_block_loop_hint' ), 10, 2 );
+			add_filter( 'render_block_woocommerce/product-price', array( $this, 'stop_block_loop_hint' ) );
 		}
 
 		// Per-line savings note in the cart (display only).
@@ -435,6 +440,33 @@ final class TiersService implements HasHooks {
 	 */
 	public function stop_loop_hint(): void {
 		remove_filter( 'woocommerce_get_price_html', array( $this, 'render_loop_hint' ), 20 );
+	}
+
+	/**
+	 * Start the hint for a price block inside a Product Collection grid.
+	 *
+	 * @param array<string, mixed> $context      Block context.
+	 * @param array<string, mixed> $parsed_block The block about to render.
+	 * @return array<string, mixed>
+	 */
+	public function start_block_loop_hint( array $context, array $parsed_block ): array {
+		if ( 'woocommerce/product-price' === ( $parsed_block['blockName'] ?? '' ) && isset( $context['query']['isProductCollectionBlock'] ) ) {
+			$this->start_loop_hint();
+		}
+
+		return $context;
+	}
+
+	/**
+	 * Stop the hint once a price block has rendered.
+	 *
+	 * @param string $block_content Rendered block.
+	 * @return string
+	 */
+	public function stop_block_loop_hint( string $block_content ): string {
+		$this->stop_loop_hint();
+
+		return $block_content;
 	}
 
 	/**
