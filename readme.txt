@@ -4,7 +4,7 @@ Tags: woocommerce, volume pricing, quantity discount, bulk pricing, tiered prici
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -126,6 +126,9 @@ Tiers is developed in the open. The PHP, JS, and CSS you install are the same fi
 Plogins Tiers is fully translatable and ships the `plogins-tiers.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.1.1 =
+* Fixed: the "From X in bulk" shop hint did not show in block themes (such as Twenty Twenty-Five), whose shop grid is the Product Collection block.
 
 = 1.1.0 =
 * New: shop and category grids show "From X in bulk" under the price, X being the deepest tier price as the shop displays prices (incl. or excl. tax). Product pages, the cart and the mini-cart are unchanged. It can be turned off under Shop price hint.
