@@ -83,6 +83,19 @@ final class TiersService implements HasHooks {
 			add_action( $target['hook'], array( $this, 'render_pricing_table' ), $target['priority'] );
 		}
 
+		// "From X" hint under shop-loop prices. Added at the start of each loop
+		// tile and removed at its end, so it never reaches the single product
+		// price, the cart or the mini-cart.
+		if ( $settings['loop_hint'] ?? true ) {
+			add_action( 'woocommerce_before_shop_loop_item', array( $this, 'start_loop_hint' ) );
+			add_action( 'woocommerce_after_shop_loop_item', array( $this, 'stop_loop_hint' ), 99 );
+
+			// Block themes render the grid with the Product Collection block,
+			// which fires neither loop hook: start at its price block instead.
+			add_filter( 'render_block_context', array( $this, 'start_block_loop_hint' ), 10, 2 );
+			add_filter( 'render_block_woocommerce/product-price', array( $this, 'stop_block_loop_hint' ) );
+		}
+
 		// Per-line savings note in the cart (display only).
 		if ( $settings['cart_savings_note'] ?? false ) {
 			add_filter( 'woocommerce_cart_item_subtotal', array( $this, 'render_cart_savings_note' ), 10, 3 );
@@ -115,11 +128,11 @@ final class TiersService implements HasHooks {
 	}
 
 	/**
-	 * Register and conditionally enqueue front-end assets (CSS only, no jQuery).
+	 * Register and conditionally enqueue front-end assets (no jQuery).
 	 *
-	 * The style is registered unconditionally so the shortcode/block can enqueue
-	 * it on demand, and auto-enqueued on single product pages when a table will
-	 * be shown.
+	 * The style and script are registered unconditionally so the shortcode and
+	 * block can enqueue them on demand, and auto-enqueued on single product
+	 * pages when a table will be shown.
 	 */
 	public function enqueue_assets(): void {
 		$this->register_style();
@@ -134,7 +147,16 @@ final class TiersService implements HasHooks {
 			return;
 		}
 
+		$this->enqueue_table_assets();
+	}
+
+	/**
+	 * Enqueue the table style and the quantity-tracking script.
+	 */
+	private function enqueue_table_assets(): void {
+		$this->register_style();
 		wp_enqueue_style( 'tiers-pricing' );
+		wp_enqueue_script( 'tiers-table' );
 	}
 
 	/**
@@ -156,6 +178,33 @@ final class TiersService implements HasHooks {
 			array(),
 			\Tiers\VERSION,
 		);
+
+		wp_register_script(
+			'tiers-table',
+			\Tiers\Plugin::instance()->url( 'assets/js/tiers-table.js' ),
+			array(),
+			\Tiers\VERSION,
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			),
+		);
+
+		wp_add_inline_script(
+			'tiers-table',
+			'window.tiersTable = ' . wp_json_encode(
+				array(
+					'decimals'     => wc_get_price_decimals(),
+					'decimalSep'   => wc_get_price_decimal_separator(),
+					'thousandSep'  => wc_get_price_thousand_separator(),
+					'priceFormat'  => html_entity_decode( get_woocommerce_price_format(), ENT_QUOTES, 'UTF-8' ),
+					'symbol'       => html_entity_decode( get_woocommerce_currency_symbol(), ENT_QUOTES, 'UTF-8' ),
+					/* translators: 1: quantity, 2: formatted line total */
+					'totalFormat'  => __( 'Total for %1$s: %2$s', 'plogins-tiers' ),
+				)
+			) . ';',
+			'before',
+		);
 	}
 
 	/**
@@ -168,14 +217,17 @@ final class TiersService implements HasHooks {
 			return;
 		}
 
-		foreach ( $cart->get_cart() as $item ) {
+		$contents   = $cart->get_cart();
+		$quantities = self::group_quantities( $contents );
+
+		foreach ( $contents as $item ) {
 			$product = $item['data'] ?? null;
 
 			if ( ! $product instanceof \WC_Product ) {
 				continue;
 			}
 
-			$qty = (int) ( $item['quantity'] ?? 0 );
+			$qty = self::tier_quantity( $item, $quantities );
 
 			if ( $qty <= 0 ) {
 				continue;
@@ -263,8 +315,7 @@ final class TiersService implements HasHooks {
 			return '';
 		}
 
-		$this->register_style();
-		wp_enqueue_style( 'tiers-pricing' );
+		$this->enqueue_table_assets();
 
 		return $this->get_table_html( $product );
 	}
@@ -283,8 +334,7 @@ final class TiersService implements HasHooks {
 			return '';
 		}
 
-		$this->register_style();
-		wp_enqueue_style( 'tiers-pricing' );
+		$this->enqueue_table_assets();
 
 		// The wrapper carries the block's align and custom class names.
 		return sprintf( '<div %s>%s</div>', get_block_wrapper_attributes(), $this->get_table_html( $product ) );
@@ -311,8 +361,13 @@ final class TiersService implements HasHooks {
 			return $subtotal;
 		}
 
-		$tiers = $this->get_active_tiers_for_product( $product );
-		$match = empty( $tiers ) ? null : $this->find_matching_tier( $tiers, $qty, $product );
+		// The tier is chosen by the quantity across all variations of the
+		// product, the same count apply_cart_discounts() used.
+		$tier_qty = WC()->cart instanceof \WC_Cart
+			? self::tier_quantity( $cart_item, self::group_quantities( WC()->cart->get_cart() ) )
+			: $qty;
+		$tiers    = $this->get_active_tiers_for_product( $product );
+		$match    = empty( $tiers ) ? null : $this->find_matching_tier( $tiers, $tier_qty, $product );
 
 		if ( null === $match ) {
 			return $subtotal;
@@ -366,10 +421,213 @@ final class TiersService implements HasHooks {
 				'tiers'        => $tiers,
 				'heading'      => (string) ( $settings['table_heading'] ?? '' ),
 				'show_savings' => (bool) ( $settings['show_savings'] ?? false ),
+				'prices'       => $this->display_prices( $product, $tiers ),
 			),
 		);
 
 		return (string) ob_get_clean();
+	}
+
+	/**
+	 * Start adding the tier hint to prices inside a shop-loop tile.
+	 */
+	public function start_loop_hint(): void {
+		add_filter( 'woocommerce_get_price_html', array( $this, 'render_loop_hint' ), 20, 2 );
+	}
+
+	/**
+	 * Stop adding the tier hint once the shop-loop tile is done.
+	 */
+	public function stop_loop_hint(): void {
+		remove_filter( 'woocommerce_get_price_html', array( $this, 'render_loop_hint' ), 20 );
+	}
+
+	/**
+	 * Start the hint for a price block inside a Product Collection grid.
+	 *
+	 * @param array<string, mixed> $context      Block context.
+	 * @param array<string, mixed> $parsed_block The block about to render.
+	 * @return array<string, mixed>
+	 */
+	public function start_block_loop_hint( array $context, array $parsed_block ): array {
+		if ( 'woocommerce/product-price' === ( $parsed_block['blockName'] ?? '' ) && isset( $context['query']['isProductCollectionBlock'] ) ) {
+			$this->start_loop_hint();
+		}
+
+		return $context;
+	}
+
+	/**
+	 * Stop the hint once a price block has rendered.
+	 *
+	 * @param string $block_content Rendered block.
+	 * @return string
+	 */
+	public function stop_block_loop_hint( string $block_content ): string {
+		$this->stop_loop_hint();
+
+		return $block_content;
+	}
+
+	/**
+	 * Append "From X" under a loop price when a tier makes it cheaper.
+	 *
+	 * X is the lowest price the deepest tier reaches, shown the way the shop
+	 * displays prices (incl. or excl. tax).
+	 *
+	 * @param string      $price_html Formatted price HTML.
+	 * @param \WC_Product $product    The product in the loop tile.
+	 * @return string
+	 */
+	public function render_loop_hint( string $price_html, \WC_Product $product ): string {
+		if ( '' === $price_html ) {
+			return $price_html;
+		}
+
+		$tiers = $this->get_active_tiers_for_product( $product );
+
+		if ( empty( $tiers ) ) {
+			return $price_html;
+		}
+
+		$prices = $this->display_prices( $product, $tiers );
+
+		if ( null === $prices['lowest'] ) {
+			return $price_html;
+		}
+
+		return $price_html . '<br /><small class="tiers-loop-hint">' . sprintf(
+			/* translators: %s: lowest price per unit with the deepest volume discount */
+			esc_html__( 'From %s in bulk', 'plogins-tiers' ),
+			wp_kses_post( wc_price( $prices['lowest'] ) )
+		) . '</small>';
+	}
+
+	/**
+	 * Tier prices for a product, as the shop displays them.
+	 *
+	 * A variable product is priced per variation: its parent carries no regular
+	 * price, and its get_price() is only the cheapest variation, so basing the
+	 * table on the parent gave every variation the cheapest one's prices.
+	 *
+	 * @param \WC_Product                                                        $product The product.
+	 * @param list<array{min_qty: int, discount_percent: float, label: string}> $tiers   Tiers sorted ASC by min_qty.
+	 * @return array{rows: list<array{price_min: float, price_max: float, saved_min: float, saved_max: float}>, base_min: float, base_max: float, lowest: float|null}
+	 */
+	public function display_prices( \WC_Product $product, array $tiers ): array {
+		if ( $product instanceof \WC_Product_Variable ) {
+			// Display prices (tax applied per variation), so no conversion below.
+			$prices   = $product->get_variation_prices( true );
+			$variants = array();
+
+			foreach ( $prices['price'] as $id => $current ) {
+				$variants[] = array( (float) ( $prices['regular_price'][ $id ] ?? 0 ), (float) $current );
+			}
+
+			$to_display = static fn( float $price ): float => $price;
+		} else {
+			$variants   = array( array( (float) $product->get_regular_price(), (float) $product->get_price() ) );
+			$to_display = static fn( float $price ): float => (float) wc_get_price_to_display( $product, array( 'price' => $price ) );
+		}
+
+		return self::tier_prices( $variants, $tiers, wc_get_price_decimals(), $to_display );
+	}
+
+	/**
+	 * Tier prices across product variants (pure, no WordPress calls).
+	 *
+	 * Mirrors apply_cart_discounts(): the tier discount is taken off the regular
+	 * price (the current price when there is none) and never raises the price
+	 * above the current one.
+	 *
+	 * @param list<array{0: float, 1: float}>                                   $variants   [regular, current] raw prices per variant.
+	 * @param list<array{min_qty: int, discount_percent: float, label: string}> $tiers      Tiers sorted ASC by min_qty.
+	 * @param int                                                               $decimals   Price decimals.
+	 * @param callable(float): float                                            $to_display Converts a raw price to a display price.
+	 * @return array{rows: list<array{price_min: float, price_max: float, saved_min: float, saved_max: float}>, base_min: float, base_max: float, lowest: float|null}
+	 */
+	public static function tier_prices( array $variants, array $tiers, int $decimals, callable $to_display ): array {
+		$rows     = array();
+		$base_all = array();
+
+		foreach ( $variants as $variant ) {
+			$base_all[] = $to_display( $variant[1] );
+		}
+
+		foreach ( $tiers as $tier ) {
+			$percent = (float) $tier['discount_percent'];
+			$prices  = array();
+			$saved   = array();
+
+			foreach ( $variants as $variant ) {
+				$current = $variant[1];
+				$base    = $variant[0] > 0 ? $variant[0] : $current;
+				$raw     = round( $base * ( 1.0 - $percent / 100.0 ), $decimals );
+
+				if ( $current > 0 && $raw > $current ) {
+					$raw = $current;
+				}
+
+				$price    = $to_display( $raw );
+				$prices[] = $price;
+				$saved[]  = round( $to_display( $base ) - $price, $decimals );
+			}
+
+			$rows[] = array(
+				'price_min' => $prices ? min( $prices ) : 0.0,
+				'price_max' => $prices ? max( $prices ) : 0.0,
+				'saved_min' => $saved ? min( $saved ) : 0.0,
+				'saved_max' => $saved ? max( $saved ) : 0.0,
+			);
+		}
+
+		$base_min = $base_all ? min( $base_all ) : 0.0;
+		$lowest   = $rows ? min( array_column( $rows, 'price_min' ) ) : null;
+
+		return array(
+			'rows'     => $rows,
+			'base_min' => $base_min,
+			'base_max' => $base_all ? max( $base_all ) : 0.0,
+			// Only a hint worth showing: a tier that actually goes below the price.
+			'lowest'   => null !== $lowest && $lowest > 0 && $lowest < $base_min ? $lowest : null,
+		);
+	}
+
+	/**
+	 * Quantity per product across the cart, variations counted under their parent.
+	 *
+	 * @param array<array-key, mixed> $contents Cart contents.
+	 * @return array<int, int> Product (or parent) id => total quantity.
+	 */
+	public static function group_quantities( array $contents ): array {
+		$totals = array();
+
+		foreach ( $contents as $item ) {
+			if ( ! is_array( $item ) ) {
+				continue;
+			}
+
+			$id            = (int) ( $item['product_id'] ?? 0 );
+			$totals[ $id ] = ( $totals[ $id ] ?? 0 ) + (int) ( $item['quantity'] ?? 0 );
+		}
+
+		return $totals;
+	}
+
+	/**
+	 * The quantity that picks a cart line's tier.
+	 *
+	 * `product_id` on a cart line is the parent for a variation, so 3 red and
+	 * 3 blue of one shirt reach a 5+ tier together.
+	 *
+	 * @param array<array-key, mixed> $item       Cart line.
+	 * @param array<int, int>         $quantities Output of group_quantities().
+	 * @return int
+	 */
+	public static function tier_quantity( array $item, array $quantities ): int {
+		$id = (int) ( $item['product_id'] ?? 0 );
+
+		return $id > 0 && isset( $quantities[ $id ] ) ? $quantities[ $id ] : (int) ( $item['quantity'] ?? 0 );
 	}
 
 	/**
