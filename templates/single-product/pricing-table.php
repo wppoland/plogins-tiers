@@ -6,6 +6,7 @@
  * @var list<array{min_qty: int, discount_percent: float, label: string}>    $tiers_tiers
  * @var string                                                               $tiers_heading       Optional table heading.
  * @var bool                                                                 $tiers_show_savings  Whether to render a savings column.
+ * @var array<string, mixed>                                                 $tiers_prices        Display prices from TiersService::display_prices().
  *
  * @package Tiers/Templates
  */
@@ -41,8 +42,16 @@ foreach ( $tiers_tiers as $tiers_idx => $tiers_row ) {
 		$tiers_best_i       = $tiers_idx;
 	}
 }
+
+// Display prices (incl. or excl. tax, as the shop shows them), worked out per
+// variation for a variable product. Where variations differ, a cell shows the
+// range until the shopper picks one.
+$tiers_rows      = isset( $tiers_prices['rows'] ) && is_array( $tiers_prices['rows'] ) ? $tiers_prices['rows'] : array();
+$tiers_base_min  = (float) ( $tiers_prices['base_min'] ?? 0 );
+$tiers_base_max  = (float) ( $tiers_prices['base_max'] ?? 0 );
+$tiers_fmt_range = static fn( float $min, float $max ): string => $min === $max ? wc_price( $min ) : wc_format_price_range( $min, $max );
 ?>
-<div class="tiers-pricing-table" aria-label="<?php esc_attr_e( 'Volume pricing', 'plogins-tiers' ); ?>">
+<div class="tiers-pricing-table" data-product-id="<?php echo esc_attr( (string) $tiers_product->get_id() ); ?>" aria-label="<?php esc_attr_e( 'Volume pricing', 'plogins-tiers' ); ?>"<?php echo $tiers_base_min === $tiers_base_max ? ' data-base-price="' . esc_attr( (string) $tiers_base_min ) . '"' : ''; ?>>
 	<?php if ( '' !== $tiers_heading ) : ?>
 		<p class="tiers-pricing-table__heading"><?php echo esc_html( $tiers_heading ); ?></p>
 	<?php endif; ?>
@@ -62,32 +71,16 @@ foreach ( $tiers_tiers as $tiers_idx => $tiers_row ) {
 		</thead>
 		<tbody>
 			<?php
-			$tiers_base_price = (float) $tiers_product->get_regular_price();
-			if ( $tiers_base_price <= 0 ) {
-				$tiers_base_price = (float) $tiers_product->get_price();
-			}
-			$tiers_current_price = (float) $tiers_product->get_price();
-
-			// Prices are shown the way the shop displays them (incl. or excl.
-			// tax), not as the raw stored amount, or a store that displays
-			// gross prices shows a net table next to a gross product price.
-			$tiers_display_base = (float) wc_get_price_to_display( $tiers_product, array( 'price' => $tiers_base_price ) );
-
 			foreach ( $tiers_tiers as $tiers_i => $tiers_tier ) :
 				$tiers_percent  = (float) $tiers_tier['discount_percent'];
-				$tiers_tier_raw = round( $tiers_base_price * ( 1.0 - $tiers_percent / 100.0 ), wc_get_price_decimals() );
-				// The cart never raises a price (TiersService::apply_cart_discounts),
-				// so a sale price below the tier price is what the shopper pays.
-				if ( $tiers_current_price > 0 && $tiers_tier_raw > $tiers_current_price ) {
-					$tiers_tier_raw = $tiers_current_price;
-				}
-				$tiers_tier_price = (float) wc_get_price_to_display( $tiers_product, array( 'price' => $tiers_tier_raw ) );
-				$tiers_saved      = round( $tiers_display_base - $tiers_tier_price, wc_get_price_decimals() );
-				$tiers_is_last    = ( count( $tiers_tiers ) - 1 === $tiers_i );
-				$tiers_next_min   = $tiers_is_last ? null : $tiers_tiers[ $tiers_i + 1 ]['min_qty'] - 1;
-				$tiers_is_best    = ( $tiers_i === $tiers_best_i && count( $tiers_tiers ) > 1 );
+				$tiers_row      = $tiers_rows[ $tiers_i ] ?? array();
+				$tiers_price_lo = (float) ( $tiers_row['price_min'] ?? 0 );
+				$tiers_price_hi = (float) ( $tiers_row['price_max'] ?? 0 );
+				$tiers_is_last  = ( count( $tiers_tiers ) - 1 === $tiers_i );
+				$tiers_next_min = $tiers_is_last ? null : $tiers_tiers[ $tiers_i + 1 ]['min_qty'] - 1;
+				$tiers_is_best  = ( $tiers_i === $tiers_best_i && count( $tiers_tiers ) > 1 );
 				?>
-				<tr<?php echo $tiers_is_best ? ' class="is-best-tier"' : ''; ?>>
+				<tr<?php echo $tiers_is_best ? ' class="is-best-tier"' : ''; ?> data-min-qty="<?php echo esc_attr( (string) $tiers_tier['min_qty'] ); ?>" data-percent="<?php echo esc_attr( (string) $tiers_percent ); ?>"<?php echo $tiers_price_lo === $tiers_price_hi ? ' data-unit-price="' . esc_attr( (string) $tiers_price_lo ) . '"' : ''; ?>>
 					<td>
 						<?php
 						if ( null !== $tiers_next_min ) {
@@ -129,12 +122,14 @@ foreach ( $tiers_tiers as $tiers_idx => $tiers_row ) {
 						?>
 						</span>
 					</td>
-					<td class="tiers-price"><?php echo wp_kses_post( wc_price( $tiers_tier_price ) ); ?></td>
+					<td class="tiers-price"><?php echo wp_kses_post( $tiers_fmt_range( $tiers_price_lo, $tiers_price_hi ) ); ?></td>
 					<?php if ( $tiers_show_savings ) : ?>
-						<td><?php echo wp_kses_post( wc_price( $tiers_saved ) ); ?></td>
+						<td class="tiers-saved"><?php echo wp_kses_post( $tiers_fmt_range( (float) ( $tiers_row['saved_min'] ?? 0 ), (float) ( $tiers_row['saved_max'] ?? 0 ) ) ); ?></td>
 					<?php endif; ?>
 				</tr>
 			<?php endforeach; ?>
 		</tbody>
 	</table>
+	<?php // Filled by assets/js/tiers-table.js as the quantity changes. Its height is reserved in CSS, so filling it shifts nothing. ?>
+	<p class="tiers-line-price" aria-live="polite"></p>
 </div>

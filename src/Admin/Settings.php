@@ -214,6 +214,14 @@ final class Settings implements HasHooks {
 		);
 
 		add_settings_field(
+			'loop_hint',
+			__( 'Shop price hint', 'plogins-tiers' ),
+			array( $this, 'render_loop_hint' ),
+			self::PAGE,
+			self::SECTION,
+		);
+
+		add_settings_field(
 			'tiers',
 			__( 'Pricing tiers', 'plogins-tiers' ),
 			array( $this, 'render_tiers_field' ),
@@ -335,6 +343,30 @@ final class Settings implements HasHooks {
 		$this->help_icon(
 			'tiers-tip-show-savings',
 			__( 'Adds a column showing the cash saved per unit at each tier. Concrete savings figures convert better than a percentage alone.', 'plogins-tiers' ),
+		);
+	}
+
+	/**
+	 * Render the loop_hint checkbox field.
+	 */
+	public function render_loop_hint(): void {
+		$options = (array) get_option( self::OPTION, array() );
+		$checked = (bool) ( $options['loop_hint'] ?? true );
+		?>
+		<label for="tiers_loop_hint">
+			<input
+				type="checkbox"
+				id="tiers_loop_hint"
+				name="<?php echo esc_attr( self::OPTION ); ?>[loop_hint]"
+				value="1"
+				<?php checked( $checked, true ); ?>
+			/>
+			<?php esc_html_e( 'Show the lowest volume price under product prices in the shop and category pages.', 'plogins-tiers' ); ?>
+		</label>
+		<?php
+		$this->help_icon(
+			'tiers-tip-loop-hint',
+			__( 'Adds a "From X in bulk" line under each price in product grids, where X is the price at the deepest tier. Product pages, the cart and the mini-cart are not changed.', 'plogins-tiers' ),
 		);
 	}
 
@@ -510,6 +542,7 @@ final class Settings implements HasHooks {
 			'table_heading'     => sanitize_text_field( (string) ( $raw['table_heading'] ?? '' ) ),
 			'show_savings'      => ! empty( $raw['show_savings'] ),
 			'cart_savings_note' => ! empty( $raw['cart_savings_note'] ),
+			'loop_hint'         => ! empty( $raw['loop_hint'] ),
 			'tiers'             => array(),
 		);
 

@@ -4,7 +4,7 @@ Tags: woocommerce, volume pricing, quantity discount, bulk pricing, tiered prici
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.20
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,19 +14,21 @@ Volume pricing tiers for WooCommerce. Set quantity discount bands and show a ser
 
 Tiers gives a WooCommerce store quantity-based pricing. You set the breakpoints, buy 5, save 5%; buy 10, save 10%, and the discount is taken off the line item the moment a shopper carts enough units. The same breakpoints are shown as a table on the product page so people can see the price they'd pay before they add to cart.
 
-The discount is calculated in PHP on `woocommerce_before_calculate_totals`, so the pricing logic ships no front-end JavaScript. The product-page table is a plain HTML `<table>` printed server-side with `<th scope>` and a `<caption>`, so it reads correctly to screen readers and doesn't shift the layout as the page loads.
+The discount is calculated in PHP on `woocommerce_before_calculate_totals`, so the pricing logic ships no front-end JavaScript. A small script without jQuery highlights the table row that matches the quantity box and shows the line total. The product-page table is a plain HTML `<table>` printed server-side with `<th scope>` and a `<caption>`, so it reads correctly to screen readers and doesn't shift the layout as the page loads.
 
-When a quantity matches more than one tier, the deepest qualifying tier applies, 12 units takes the "10+" price, not the "5+" price. Tiers never raises a price either, so a product that's already on sale keeps its lower price.
+When a quantity matches more than one tier, the deepest qualifying tier applies, 12 units takes the "10+" price, not the "5+" price. Variations of one product count together, so 3 red and 3 blue shirts reach a "5+" tier. Tiers never raises a price either, so a product that's already on sale keeps its lower price.
 
 Tiers declares compatibility with WooCommerce HPOS and the Cart/Checkout Blocks. It stores everything in a single `wp_options` row and creates no custom tables, so deleting the plugin leaves the database as it was.
 
 **What you get**
 
 * Any number of global pricing tiers, each a minimum quantity and a discount percentage (with an optional label)
-* Automatic discounting in the cart, with the highest matching tier winning
+* Automatic discounting in the cart, with the highest matching tier winning; variations of one product count toward the same tier
 * A pricing table on single product pages, with a choice of where it appears: product summary, before or after the add-to-cart form, the product meta area, or nowhere automatic
 * A `[tiers_table]` shortcode, a "Volume pricing table" Gutenberg block, and an Elementor "Volume pricing table" widget for dropping the table in by hand
 * An optional heading above the table and an optional "You save" column
+* The table row for the quantity in the box is highlighted, with the line total underneath; on a variable product the table shows the prices of the chosen variation
+* A "From X in bulk" line under prices in the shop and category grids, showing the deepest tier price (can be turned off)
 * An optional "You save" note under each discounted line in the cart
 * An admin tier builder that adds and removes rows in place, with a live preview of how each tier reads
 * Fully translatable: ships the `plogins-tiers.pot` template (text domain `plogins-tiers`), with Polish, German and Spanish delivered by the WordPress.org language pack
@@ -124,6 +126,12 @@ Tiers is developed in the open. The PHP, JS, and CSS you install are the same fi
 Plogins Tiers is fully translatable and ships the `plogins-tiers.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.1.0 =
+* New: shop and category grids show "From X in bulk" under the price, X being the deepest tier price as the shop displays prices (incl. or excl. tax). Product pages, the cart and the mini-cart are unchanged. It can be turned off under Shop price hint.
+* New: the pricing table highlights the row the quantity box reaches and shows the line total under it. The table still works without JavaScript.
+* New: variations of one product now count together toward a tier, so 3 red and 3 blue reach a 5+ tier. The cart "You save" note uses the same count.
+* Fixed: on a variable product the table based every price on the cheapest variation. It now shows the price range across variations, and the exact prices once a variation is chosen.
 
 = 1.0.20 =
 * Fixed: the product-page table showed prices without tax on a store that displays prices including tax, so it disagreed with the product price above it. It now follows the shop's tax display, and the cart "You save" note does the same.
