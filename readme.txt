@@ -4,7 +4,7 @@ Tags: woocommerce, volume pricing, quantity discount, bulk pricing, tiered prici
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,7 +42,7 @@ More free WooCommerce plugins from WPPoland:
 
 * [Plogins Waitlist](https://wordpress.org/plugins/plogins-waitlist/) - back-in-stock waitlist that emails shoppers the moment a product returns.
 * [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - fast AJAX product search and filtering for WooCommerce, with no jQuery.
-* [Polski for WooCommerce](https://wordpress.org/plugins/polski/) - Polish-market compliance: GPSR, Omnibus, GDPR, invoices and storefront modules.
+* [Polski for WooCommerce](https://wordpress.org/plugins/polski/) - tools for Polish-market rules: GPSR, Omnibus, GDPR, invoices and storefront modules. It does not make a shop compliant on its own.
 
 Browse the full catalogue at [plogins.com/](https://plogins.com/) .
 
@@ -126,6 +126,9 @@ Tiers is developed in the open. The PHP, JS, and CSS you install are the same fi
 Plogins Tiers is fully translatable and ships the `plogins-tiers.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.1.2 =
+* Readme: the Polski for WooCommerce cross-link no longer calls it "Polish-market compliance"; it describes tools for Polish-market rules that do not make a shop compliant on their own.
 
 = 1.1.1 =
 * Fixed: the "From X in bulk" shop hint did not show in block themes (such as Twenty Twenty-Five), whose shop grid is the Product Collection block.
