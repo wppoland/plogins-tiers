@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Plugins - Tiers &#8211; Tiered Pricing for WooCommerce - "
 "Stable (latest release)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plogins-tiers\n"
-"POT-Creation-Date: 2026-09-09T14:37:55+00:00\n"
+"POT-Creation-Date: 2026-10-23T12:16:18+00:00\n"
 "PO-Revision-Date: 2026-07-24 12:29:49+0000\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -40,39 +40,39 @@ msgid "https://wppoland.com"
 msgstr "https://wppoland.com"
 
 #. translators: 1: currency symbol, 2: yearly price
-#: src/Admin/ProUpsell.php:101
+#: src/Admin/ProUpsell.php:108
 #, php-format
 msgid "from %1$s%2$d/yr"
 msgstr "od %1$s%2$d/rok"
 
-#: src/Admin/ProUpsell.php:149
+#: src/Admin/ProUpsell.php:156
 msgid "Permission denied."
 msgstr "Brak uprawnień."
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:188
+#: src/Admin/ProUpsell.php:195
 #, php-format
 msgid "Do more with %s"
 msgstr "Zrób więcej z %s"
 
-#: src/Admin/ProUpsell.php:201 src/Admin/ProUpsell.php:232
+#: src/Admin/ProUpsell.php:208 src/Admin/ProUpsell.php:244
 msgid "Upgrade to PRO"
 msgstr "Przejdź na PRO"
 
-#: src/Admin/ProUpsell.php:203
+#: src/Admin/ProUpsell.php:210
 msgid "Dismiss this notice"
 msgstr "Ukryj ten komunikat"
 
-#: src/Admin/ProUpsell.php:222
+#: src/Admin/ProUpsell.php:234
 msgid "Unlock every PRO feature"
 msgstr "Odblokuj wszystkie funkcje PRO"
 
-#: src/Admin/ProUpsell.php:235
+#: src/Admin/ProUpsell.php:247
 msgid "one licence, every PRO feature"
 msgstr "jedna licencja, wszystkie funkcje PRO"
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:256
+#: src/Admin/ProUpsell.php:268
 #, php-format
 msgid "What %s adds"
 msgstr "Co dodaje %s"
@@ -85,15 +85,15 @@ msgstr "Ustawienia Tiers"
 msgid "Tiers"
 msgstr "Tiers"
 
-#: src/Admin/Settings.php:112 src/Admin/Settings.php:426
+#: src/Admin/Settings.php:112 src/Admin/Settings.php:458
 msgid "Remove"
 msgstr "Usuń"
 
-#: src/Admin/Settings.php:113 src/Admin/Settings.php:397
+#: src/Admin/Settings.php:113 src/Admin/Settings.php:429
 msgid "Minimum quantity"
 msgstr "Minimalna ilość"
 
-#: src/Admin/Settings.php:114 src/Admin/Settings.php:410
+#: src/Admin/Settings.php:114 src/Admin/Settings.php:442
 msgid "Discount percent"
 msgstr "Procent rabatu"
 
@@ -157,34 +157,38 @@ msgid "Cart savings note"
 msgstr "Informacja o oszczędnościach w koszyku"
 
 #: src/Admin/Settings.php:218
+msgid "Shop price hint"
+msgstr ""
+
+#: src/Admin/Settings.php:226
 msgid "Pricing tiers"
 msgstr "Progi cenowe"
 
-#: src/Admin/Settings.php:232
+#: src/Admin/Settings.php:240
 msgid "Product summary (below price)"
 msgstr "Podsumowanie produktu (pod ceną)"
 
-#: src/Admin/Settings.php:233
+#: src/Admin/Settings.php:241
 msgid "Before the add-to-cart form"
 msgstr "Przed formularzem dodawania do koszyka"
 
-#: src/Admin/Settings.php:234
+#: src/Admin/Settings.php:242
 msgid "After the add-to-cart form"
 msgstr "Po formularzu dodawania do koszyka"
 
-#: src/Admin/Settings.php:235
+#: src/Admin/Settings.php:243
 msgid "Product meta area"
 msgstr "Obszar metadanych produktu"
 
-#: src/Admin/Settings.php:236
+#: src/Admin/Settings.php:244
 msgid "Only where I place it (shortcode / block)"
 msgstr "Tylko tam, gdzie sam umieszczę (shortcode / blok)"
 
-#: src/Admin/Settings.php:255
+#: src/Admin/Settings.php:263
 msgid "Display a volume pricing table on single product pages."
 msgstr "Wyświetlaj tabelę cen ilościowych na stronach pojedynczych produktów."
 
-#: src/Admin/Settings.php:260
+#: src/Admin/Settings.php:268
 msgid ""
 "Shows shoppers the quantity breaks and the price they unlock at each level, "
 "a proven nudge to buy more. The discount still applies in the cart even with "
@@ -194,7 +198,7 @@ msgstr ""
 "sprawdzona zachęta do większych zakupów. Rabat działa w koszyku nawet przy "
 "tej opcji wyłączonej."
 
-#: src/Admin/Settings.php:281
+#: src/Admin/Settings.php:289
 msgid ""
 "Controls where the table is auto-inserted on the product page. Pick \"Only "
 "where I place it\" to position it yourself with the [tiers_table] shortcode "
@@ -204,7 +208,7 @@ msgstr ""
 "Wybierz „Tylko tam, gdzie sam umieszczę”, aby umieścić ją samodzielnie za "
 "pomocą shortcode'a [tiers_table] lub bloku Tabela cen ilościowych."
 
-#: src/Admin/Settings.php:285
+#: src/Admin/Settings.php:293
 msgid ""
 "Where the pricing table appears on the product page. Choose the last option "
 "to place it manually with the [tiers_table] shortcode or the \"Volume "
@@ -214,11 +218,11 @@ msgstr ""
 "aby umieścić ją ręcznie za pomocą shortcode'a [tiers_table] lub bloku "
 "„Tabela cen ilościowych”."
 
-#: src/Admin/Settings.php:303
+#: src/Admin/Settings.php:311
 msgid "e.g. Buy more, save more"
 msgstr "np. Kup więcej, oszczędź więcej"
 
-#: src/Admin/Settings.php:308
+#: src/Admin/Settings.php:316
 msgid ""
 "A short title rendered directly above the table, e.g. \"Buy more, save "
 "more\". Leave it blank to show just the table."
@@ -226,16 +230,16 @@ msgstr ""
 "Krótki tytuł wyświetlany bezpośrednio nad tabelą, np. „Kup więcej, oszczędź "
 "więcej”. Pozostaw puste, aby pokazać samą tabelę."
 
-#: src/Admin/Settings.php:312
+#: src/Admin/Settings.php:320
 msgid "Optional heading shown above the pricing table. Leave blank to hide it."
 msgstr ""
 "Opcjonalny nagłówek wyświetlany nad tabelą cen. Pozostaw puste, aby go ukryć."
 
-#: src/Admin/Settings.php:332
+#: src/Admin/Settings.php:340
 msgid "Add a \"You save\" column to the pricing table."
 msgstr "Dodaj kolumnę „Oszczędzasz” do tabeli cen."
 
-#: src/Admin/Settings.php:337
+#: src/Admin/Settings.php:345
 msgid ""
 "Adds a column showing the cash saved per unit at each tier. Concrete savings "
 "figures convert better than a percentage alone."
@@ -243,11 +247,24 @@ msgstr ""
 "Dodaje kolumnę pokazującą kwotę zaoszczędzoną na sztuce na każdym progu. "
 "Konkretne kwoty oszczędności konwertują lepiej niż sam procent."
 
-#: src/Admin/Settings.php:356
+#: src/Admin/Settings.php:364
+msgid ""
+"Show the lowest volume price under product prices in the shop and category "
+"pages."
+msgstr ""
+
+#: src/Admin/Settings.php:369
+msgid ""
+"Adds a \"From X in bulk\" line under each price in product grids, where X is "
+"the price at the deepest tier. Product pages, the cart and the mini-cart are "
+"not changed."
+msgstr ""
+
+#: src/Admin/Settings.php:388
 msgid "Show a per-line \"You save\" note under each discounted cart item."
 msgstr "Pokaż informację „Oszczędzasz” pod każdą rabatowaną pozycją w koszyku."
 
-#: src/Admin/Settings.php:361
+#: src/Admin/Settings.php:393
 msgid ""
 "Reassures shoppers in the cart by printing the exact amount saved under each "
 "qualifying line item. Reinforces the discount right before checkout."
@@ -256,7 +273,7 @@ msgstr ""
 "kwalifikującą się pozycją. Wzmacnia odczucie rabatu tuż przed finalizacją "
 "zamówienia."
 
-#: src/Admin/Settings.php:374
+#: src/Admin/Settings.php:406
 msgid ""
 "No tiers yet. Add your first quantity break below, for example, 10% off when "
 "a shopper buys 5 or more."
@@ -264,31 +281,31 @@ msgstr ""
 "Brak progów. Dodaj poniżej swój pierwszy próg ilościowy, na przykład 10% "
 "rabatu, gdy klient kupi 5 sztuk lub więcej."
 
-#: src/Admin/Settings.php:379
+#: src/Admin/Settings.php:411
 msgid "Min. quantity"
 msgstr "Min. ilość"
 
-#: src/Admin/Settings.php:380
+#: src/Admin/Settings.php:412
 msgid "Discount %"
 msgstr "Rabat %"
 
-#: src/Admin/Settings.php:381
+#: src/Admin/Settings.php:413
 msgid "Label (optional)"
 msgstr "Etykieta (opcjonalnie)"
 
-#: src/Admin/Settings.php:420
+#: src/Admin/Settings.php:452
 msgid "Tier label (optional)"
 msgstr "Etykieta progu (opcjonalnie)"
 
-#: src/Admin/Settings.php:435
+#: src/Admin/Settings.php:467
 msgid "+ Add tier"
 msgstr "+ Dodaj próg"
 
-#: src/Admin/Settings.php:440
+#: src/Admin/Settings.php:472
 msgid "Live preview"
 msgstr "Podgląd na żywo"
 
-#: src/Admin/Settings.php:447
+#: src/Admin/Settings.php:479
 msgid ""
 "The highest matching tier wins. E.g., buying 12 units gets the \"10+\" "
 "discount, not the \"5+\" discount."
@@ -296,7 +313,7 @@ msgstr ""
 "Wygrywa najwyższy pasujący próg. Np. zakup 12 sztuk daje rabat „10+”, a nie "
 "rabat „5+”."
 
-#: src/Admin/Settings.php:452
+#: src/Admin/Settings.php:484
 msgid ""
 "Minimum quantity is the smallest cart amount that unlocks the tier. Discount "
 "% is taken off the regular price. Label is optional copy a shopper sees "
@@ -323,60 +340,72 @@ msgstr "ID produktu"
 msgid "Leave 0 to use the current product on a product page."
 msgstr "Zostaw 0, aby użyć bieżącego produktu na stronie produktu."
 
+#. translators: 1: quantity, 2: formatted line total
+#: src/Service/TiersService.php:198
+#, php-format
+msgid "Total for %1$s: %2$s"
+msgstr ""
+
 #. translators: %s: formatted saved amount
-#: src/Service/TiersService.php:335
+#: src/Service/TiersService.php:391
 #, php-format
 msgid "You save %s"
 msgstr "Oszczędzasz %s"
 
-#: templates/single-product/pricing-table.php:27
+#. translators: %s: lowest price per unit with the deepest volume discount
+#: src/Service/TiersService.php:469
+#, php-format
+msgid "From %s in bulk"
+msgstr ""
+
+#: templates/single-product/pricing-table.php:28
 msgid "No volume discounts are available for this product yet."
 msgstr "Dla tego produktu nie ma jeszcze dostępnych rabatów ilościowych."
 
-#: templates/single-product/pricing-table.php:45
+#: templates/single-product/pricing-table.php:54
 msgid "Volume pricing"
 msgstr "Ceny ilościowe"
 
-#: templates/single-product/pricing-table.php:51
+#: templates/single-product/pricing-table.php:60
 msgid "Volume pricing tiers"
 msgstr "Progi cen ilościowych"
 
-#: templates/single-product/pricing-table.php:55
+#: templates/single-product/pricing-table.php:64
 msgid "Quantity"
 msgstr "Ilość"
 
-#: templates/single-product/pricing-table.php:56
+#: templates/single-product/pricing-table.php:65
 msgid "Discount"
 msgstr "Rabat"
 
-#: templates/single-product/pricing-table.php:57
+#: templates/single-product/pricing-table.php:66
 msgid "Price"
 msgstr "Cena"
 
-#: templates/single-product/pricing-table.php:59
+#: templates/single-product/pricing-table.php:68
 msgid "You save"
 msgstr "Oszczędzasz"
 
 #. translators: 1: min quantity, 2: max quantity
-#: templates/single-product/pricing-table.php:84
+#: templates/single-product/pricing-table.php:89
 #, php-format
 msgctxt "quantity range"
-msgid "%1$d, %2$d"
-msgstr "%1$d-%2$d"
+msgid "%1$d-%2$d"
+msgstr ""
 
 #. translators: %d: minimum quantity
-#: templates/single-product/pricing-table.php:91
+#: templates/single-product/pricing-table.php:96
 #, php-format
 msgctxt "quantity, no upper limit"
 msgid "%d+"
 msgstr "%d+"
 
-#: templates/single-product/pricing-table.php:98
+#: templates/single-product/pricing-table.php:109
 msgid "Best value"
 msgstr "Najlepsza wartość"
 
 #. translators: %s: discount percentage
-#: templates/single-product/pricing-table.php:108
+#: templates/single-product/pricing-table.php:119
 #, php-format
 msgid "%s%% off"
 msgstr "-%s%%"
@@ -435,6 +464,11 @@ msgstr "wolumen"
 msgctxt "block keyword"
 msgid "quantity"
 msgstr "ilość"
+
+#, php-format
+#~ msgctxt "quantity range"
+#~ msgid "%1$d, %2$d"
+#~ msgstr "%1$d-%2$d"
 
 #~ msgid "od %d zł/rok"
 #~ msgstr "od %d zł/rok"
