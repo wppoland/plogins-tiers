@@ -4,7 +4,7 @@ Tags: woocommerce, volume pricing, quantity discount, bulk pricing, tiered prici
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,20 +50,23 @@ Reporting a security issue: email hello@wppoland.com, and under our [coordinated
 
 == Tiers Pro ==
 
-Tiers Pro is a separate paid plugin that extends Tiers:
+Tiers Pro is a separate paid plugin that extends Tiers.
 
-| Feature | Free | Pro |
-|:--- |:---:|:---:|
-| Quantity/volume pricing | Yes | Yes |
-| Tier editor | Yes | Yes |
-| Server-rendered price table | Yes | Yes |
-| Best tier wins | Yes | Yes |
-| Table on or off | Yes | Yes |
-| Role and group pricing | - | Yes |
-| Per-product overrides | - | Yes |
-| Category pricing rules | - | Yes |
-| B2B wholesale | - | Yes |
-| Scheduled pricing | - | Yes |
+Included in Tiers:
+
+* Quantity/volume pricing
+* Tier editor
+* Server-rendered price table
+* Best tier wins
+* Table on or off
+
+Tiers Pro adds:
+
+* Role and group pricing
+* Per-product overrides
+* Category pricing rules
+* B2B wholesale
+* Scheduled pricing
 
 The free edition is not a trial and its features stay available without a time limit.
 
@@ -137,6 +140,10 @@ Tiers is developed in the open. The PHP, JS, and CSS you install are the same fi
 Plogins Tiers is fully translatable and ships the `plogins-tiers.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.1.4 =
+* The Upgrade to PRO links open the pricing page in the admin's language where plogins.com has one, and tell plogins.com which plugin the visit came from (utm_source, utm_medium and utm_campaign in the link). Nothing is sent from your site.
+* Readme: the PRO section lists what the free plugin includes and what the paid edition adds as two lists, which WordPress.org can display (it does not display tables).
 
 = 1.1.3 =
 * Readme only: a PRO section with links to the paid edition.
