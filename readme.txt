@@ -4,7 +4,7 @@ Tags: woocommerce, volume pricing, quantity discount, bulk pricing, tiered prici
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,18 +48,21 @@ Browse the full catalogue at [plogins.com/](https://plogins.com/) .
 
 Reporting a security issue: email hello@wppoland.com, and under our [coordinated disclosure policy](https://wppoland.com/en/security-policy/) we confirm within two business days, assess within five, and patch a critical issue within seven days of confirming it.
 
-== Plogins Tiers PRO ==
+== Tiers Pro ==
 
-The free edition gives every product global quantity tiers. **Plogins Tiers PRO** adds B2B and per-product control:
+Tiers Pro is a separate paid plugin that works on top of Tiers. It adds:
 
-* **Per-product overrides** - different tier ladders for specific products
-* **Role-based pricing** - prices by WordPress user role, or for guests
-* **Category pricing rules** - tiers scoped to product categories
-* **Scheduled pricing** - start and end dates for a tier ladder
+* Role and group pricing
+* Per-product overrides
+* Category pricing rules
+* B2B wholesale
+* Scheduled pricing
 
-Everything in the free edition stays free and open. Plogins Tiers PRO starts at 29 EUR per year, billed in EUR.
+The free edition is not a trial and its features stay available without a time limit.
 
-Compare editions and pricing: [plogins.com/plogins-tiers-pro/pricing/](https://plogins.com/plogins-tiers-pro/pricing/)
+* **Tiers Pro** - [plogins.com/plogins-tiers-pro/](https://plogins.com/plogins-tiers-pro/)
+* **Compare editions and pricing** - [plogins.com/plogins-tiers-pro/pricing/](https://plogins.com/plogins-tiers-pro/pricing/)
+* **PRO documentation** - [plogins.com/plogins-tiers-pro/docs/](https://plogins.com/plogins-tiers-pro/docs/)
 
 == Installation ==
 
@@ -77,6 +80,7 @@ Compare editions and pricing: [plogins.com/plogins-tiers-pro/pricing/](https://p
 * **Plugin page** - [plogins.com/tiers/](https://plogins.com/tiers/)
 * **Source code** - [github.com/wppoland/plogins-tiers](https://github.com/wppoland/plogins-tiers)
 * **Bug reports and feature requests** - [github.com/wppoland/plogins-tiers/issues](https://github.com/wppoland/plogins-tiers/issues)
+* **Tiers Pro** - [plogins.com/plogins-tiers-pro/](https://plogins.com/plogins-tiers-pro/)
 
 
 = Does Tiers require WooCommerce? =
@@ -126,6 +130,9 @@ Tiers is developed in the open. The PHP, JS, and CSS you install are the same fi
 Plogins Tiers is fully translatable and ships the `plogins-tiers.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.1.3 =
+* Readme only: a PRO section with links to the paid edition.
 
 = 1.1.2 =
 * Readme: the Polski for WooCommerce cross-link no longer calls it "Polish-market compliance"; it describes tools for Polish-market rules that do not make a shop compliant on their own.
