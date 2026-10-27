@@ -12,6 +12,8 @@ defined( 'ABSPATH' ) || exit;
 return [
 	'name'       => 'Tiers Pro',
 	'url'        => 'https://plogins.com/plogins-tiers-pro/pricing/',
+	'campaign'   => 'plogins-tiers',
+	'locales'    => ['pl', 'de', 'es'],
 	'sellable'   => true,
 	'price_from' => 29,
 	'currency'   => 'EUR',
