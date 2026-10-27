@@ -50,13 +50,20 @@ Reporting a security issue: email hello@wppoland.com, and under our [coordinated
 
 == Tiers Pro ==
 
-Tiers Pro is a separate paid plugin that works on top of Tiers. It adds:
+Tiers Pro is a separate paid plugin that extends Tiers:
 
-* Role and group pricing
-* Per-product overrides
-* Category pricing rules
-* B2B wholesale
-* Scheduled pricing
+| Feature | Free | Pro |
+|:--- |:---:|:---:|
+| Quantity/volume pricing | Yes | Yes |
+| Tier editor | Yes | Yes |
+| Server-rendered price table | Yes | Yes |
+| Best tier wins | Yes | Yes |
+| Table on or off | Yes | Yes |
+| Role and group pricing | - | Yes |
+| Per-product overrides | - | Yes |
+| Category pricing rules | - | Yes |
+| B2B wholesale | - | Yes |
+| Scheduled pricing | - | Yes |
 
 The free edition is not a trial and its features stay available without a time limit.
 
