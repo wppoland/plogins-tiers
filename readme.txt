@@ -4,7 +4,7 @@ Tags: woocommerce, volume pricing, quantity discount, bulk pricing, tiered prici
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,7 +34,7 @@ Tiers declares compatibility with WooCommerce HPOS and the Cart/Checkout Blocks.
 * Fully translatable: ships the `plogins-tiers.pot` template (text domain `plogins-tiers`), with Polish, German and Spanish delivered by the WordPress.org language pack
 * A `tiers_product_tiers` filter that lets Tiers PRO swap in per-product or role-based tiers
 
-**Documentation:** [plogins.com/tiers/docs/](https://plogins.com/tiers/docs/)
+**Documentation:** [plogins.com/plogins-tiers/docs/](https://plogins.com/plogins-tiers/docs/)
 
 = You may also like these plugins =
 
@@ -86,8 +86,8 @@ The free edition is not a trial and its features stay available without a time l
 
 = Documentation and links =
 
-* **Documentation** - [plogins.com/tiers/docs/](https://plogins.com/tiers/docs/)
-* **Plugin page** - [plogins.com/tiers/](https://plogins.com/tiers/)
+* **Documentation** - [plogins.com/plogins-tiers/docs/](https://plogins.com/plogins-tiers/docs/)
+* **Plugin page** - [plogins.com/plogins-tiers/](https://plogins.com/plogins-tiers/)
 * **Source code** - [github.com/wppoland/plogins-tiers](https://github.com/wppoland/plogins-tiers)
 * **Bug reports and feature requests** - [github.com/wppoland/plogins-tiers/issues](https://github.com/wppoland/plogins-tiers/issues)
 * **Tiers Pro** - [plogins.com/plogins-tiers-pro/](https://plogins.com/plogins-tiers-pro/)
@@ -140,6 +140,9 @@ Tiers is developed in the open. The PHP, JS, and CSS you install are the same fi
 Plogins Tiers is fully translatable and ships the `plogins-tiers.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.1.5 =
+* Changed: links point at the current plogins.com address.
 
 = 1.1.4 =
 * The Upgrade to PRO links open the pricing page in the admin's language where plogins.com has one, and tell plogins.com which plugin the visit came from (utm_source, utm_medium and utm_campaign in the link). Nothing is sent from your site.
