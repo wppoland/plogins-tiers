@@ -94,6 +94,9 @@ final class TiersService implements HasHooks {
 			// which fires neither loop hook: start at its price block instead.
 			add_filter( 'render_block_context', array( $this, 'start_block_loop_hint' ), 10, 2 );
 			add_filter( 'render_block_woocommerce/product-price', array( $this, 'stop_block_loop_hint' ) );
+
+			// The same hint in Tujo's quick-order table, when Tujo is active.
+			add_filter( 'rapid/product_price_html', array( $this, 'render_loop_hint' ), 10, 2 );
 		}
 
 		// Per-line savings note in the cart (display only).
@@ -480,7 +483,9 @@ final class TiersService implements HasHooks {
 	 * @return string
 	 */
 	public function render_loop_hint( string $price_html, \WC_Product $product ): string {
-		if ( '' === $price_html ) {
+		// No price shown (hidden by a catalog or quote plugin, or a notice in its
+		// place), or already hinted (a quick-order table inside a loop tile).
+		if ( ! str_contains( $price_html, 'woocommerce-Price-amount' ) || str_contains( $price_html, 'tiers-loop-hint' ) ) {
 			return $price_html;
 		}
 

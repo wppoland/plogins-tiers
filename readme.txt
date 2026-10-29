@@ -4,7 +4,7 @@ Tags: woocommerce, volume pricing, quantity discount, bulk pricing, tiered prici
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,6 +140,9 @@ Tiers is developed in the open. The PHP, JS, and CSS you install are the same fi
 Plogins Tiers is fully translatable and ships the `plogins-tiers.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.1.6 =
+* Added: with Tujo active, its quick-order table shows the "From X in bulk" volume price under each product price (the Shop price hint setting controls it). The hint is never added where the price is hidden or replaced by a notice.
 
 = 1.1.5 =
 * Changed: links point at the current plogins.com address.
