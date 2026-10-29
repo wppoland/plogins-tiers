@@ -366,7 +366,7 @@ final class Settings implements HasHooks {
 		<?php
 		$this->help_icon(
 			'tiers-tip-loop-hint',
-			__( 'Adds a "From X in bulk" line under each price in product grids, where X is the price at the deepest tier. Product pages, the cart and the mini-cart are not changed.', 'plogins-tiers' ),
+			__( 'Adds a "From X in bulk" line under each price in product grids and in Tujo quick-order forms, where X is the price at the deepest tier. Product pages, the cart and the mini-cart are not changed.', 'plogins-tiers' ),
 		);
 	}
 
