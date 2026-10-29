@@ -36,6 +36,10 @@ Tiers declares compatibility with WooCommerce HPOS and the Cart/Checkout Blocks.
 
 **Documentation:** [plogins.com/plogins-tiers/docs/](https://plogins.com/plogins-tiers/docs/)
 
+= Works with other Plogins plugins =
+
+* [Tujo - Quick Order for WooCommerce](https://plogins.com/tujo/) - the "Shop price hint" setting also shows "From X in bulk" under each price in the Tujo quick-order table.
+
 = You may also like these plugins =
 
 More free WooCommerce plugins from WPPoland:
@@ -117,6 +121,10 @@ The uninstall routine removes the `tiers_settings` option. No custom tables are 
 = Does it work with taxes? =
 Yes. Tiers modifies prices before WooCommerce's tax calculation, so WooCommerce's own tax logic applies to the discounted price.
 
+
+= Does it work with Tujo? =
+
+Yes. With Tujo active, the "Shop price hint" setting also adds the "From X in bulk" line under each price in the Tujo quick-order table. There is no extra setting, and the line never shows where the price is hidden.
 
 = Does this plugin work on WordPress Multisite? =
 
