@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tiers - Tiered Pricing for WooCommerce 0.2.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plogins-tiers\n"
-"POT-Creation-Date: 2026-10-23T12:16:18+00:00\n"
+"POT-Creation-Date: 2026-10-29T13:39:39+00:00\n"
 "PO-Revision-Date: 2026-07-07 00:00+0000\n"
 "Last-Translator: motylanogha <szatkowski.mariusz@gmail.com>\n"
 "Language-Team: German <de@li.org>\n"
@@ -41,39 +41,39 @@ msgid "https://wppoland.com"
 msgstr "https://wppoland.com"
 
 #. translators: 1: currency symbol, 2: yearly price
-#: src/Admin/ProUpsell.php:108
+#: src/Admin/ProUpsell.php:133
 #, php-format
 msgid "from %1$s%2$d/yr"
 msgstr "ab %1$s%2$d/Jahr"
 
-#: src/Admin/ProUpsell.php:156
+#: src/Admin/ProUpsell.php:181
 msgid "Permission denied."
 msgstr "Zugriff verweigert."
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:195
+#: src/Admin/ProUpsell.php:220
 #, php-format
 msgid "Do more with %s"
 msgstr "Mehr erreichen mit %s"
 
-#: src/Admin/ProUpsell.php:208 src/Admin/ProUpsell.php:244
+#: src/Admin/ProUpsell.php:233 src/Admin/ProUpsell.php:269
 msgid "Upgrade to PRO"
 msgstr "Auf PRO upgraden"
 
-#: src/Admin/ProUpsell.php:210
+#: src/Admin/ProUpsell.php:235
 msgid "Dismiss this notice"
 msgstr "Diesen Hinweis ausblenden"
 
-#: src/Admin/ProUpsell.php:234
+#: src/Admin/ProUpsell.php:259
 msgid "Unlock every PRO feature"
 msgstr "Alle PRO-Funktionen freischalten"
 
-#: src/Admin/ProUpsell.php:247
+#: src/Admin/ProUpsell.php:272
 msgid "one licence, every PRO feature"
 msgstr "eine Lizenz, alle PRO-Funktionen"
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:268
+#: src/Admin/ProUpsell.php:293
 #, php-format
 msgid "What %s adds"
 msgstr "Was %s hinzufügt"
@@ -256,9 +256,9 @@ msgstr ""
 
 #: src/Admin/Settings.php:369
 msgid ""
-"Adds a \"From X in bulk\" line under each price in product grids, where X is "
-"the price at the deepest tier. Product pages, the cart and the mini-cart are "
-"not changed."
+"Adds a \"From X in bulk\" line under each price in product grids and in Tujo "
+"quick-order forms, where X is the price at the deepest tier. Product pages, "
+"the cart and the mini-cart are not changed."
 msgstr ""
 
 #: src/Admin/Settings.php:388
@@ -342,19 +342,19 @@ msgid "Leave 0 to use the current product on a product page."
 msgstr ""
 
 #. translators: 1: quantity, 2: formatted line total
-#: src/Service/TiersService.php:198
+#: src/Service/TiersService.php:206
 #, php-format
 msgid "Total for %1$s: %2$s"
 msgstr ""
 
 #. translators: %s: formatted saved amount
-#: src/Service/TiersService.php:391
+#: src/Service/TiersService.php:399
 #, php-format
 msgid "You save %s"
 msgstr "Du sparst %s"
 
 #. translators: %s: lowest price per unit with the deepest volume discount
-#: src/Service/TiersService.php:469
+#: src/Service/TiersService.php:505
 #, php-format
 msgid "From %s in bulk"
 msgstr ""
@@ -415,19 +415,6 @@ msgstr "%s %% Rabatt"
 msgid "Tiers requires WooCommerce to be active."
 msgstr "Tiers erfordert, dass WooCommerce aktiv ist."
 
-#: blocks/tiers-table/index.js:25
-msgid "Product ID (0 = current product)"
-msgstr "Produkt-ID (0 = aktuelles Produkt)"
-
-#: blocks/tiers-table/index.js:37
-msgid "Volume pricing table"
-msgstr "Mengenpreistabelle"
-
-#: blocks/tiers-table/index.js:38
-msgid "The tier table renders on the front end for the selected product."
-msgstr ""
-"Die Rangtabelle wird im Frontend für das ausgewählte Produkt gerendert."
-
 #: blocks/tiers-table/block.json
 msgctxt "block title"
 msgid "Volume pricing table"
@@ -466,6 +453,16 @@ msgstr "menge"
 msgctxt "block keyword"
 msgid "quantity"
 msgstr "Menge"
+
+#~ msgid "Product ID (0 = current product)"
+#~ msgstr "Produkt-ID (0 = aktuelles Produkt)"
+
+#~ msgid "Volume pricing table"
+#~ msgstr "Mengenpreistabelle"
+
+#~ msgid "The tier table renders on the front end for the selected product."
+#~ msgstr ""
+#~ "Die Rangtabelle wird im Frontend für das ausgewählte Produkt gerendert."
 
 #, php-format
 #~ msgctxt "quantity range"
