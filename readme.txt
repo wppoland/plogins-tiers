@@ -18,7 +18,7 @@ The discount is calculated in PHP on `woocommerce_before_calculate_totals`, so t
 
 When a quantity matches more than one tier, the deepest qualifying tier applies, 12 units takes the "10+" price, not the "5+" price. Variations of one product count together, so 3 red and 3 blue shirts reach a "5+" tier. Tiers never raises a price either, so a product that's already on sale keeps its lower price.
 
-Tiers declares compatibility with WooCommerce HPOS and the Cart/Checkout Blocks. It stores everything in a single `wp_options` row and creates no custom tables, so deleting the plugin leaves the database as it was.
+Tiers declares compatibility with WooCommerce HPOS and the Cart/Checkout Blocks. It stores everything in a single `wp_options` row and creates no custom tables, so deleting the plugin removes that row and leaves no tables behind.
 
 **What you get**
 
@@ -116,7 +116,7 @@ Yes. Tiers modifies the cart line-item price before WooCommerce calculates total
 Discounts stop being applied and the pricing table no longer appears. Your settings are retained in the database.
 
 = What happens when I delete the plugin? =
-The uninstall routine removes the `tiers_settings` option. No custom tables are created, so your database is left clean.
+The uninstall routine removes the `tiers_settings` option, except while an add-on that stores its own data in that option is installed. No custom tables are created.
 
 = Does it work with taxes? =
 Yes. Tiers modifies prices before WooCommerce's tax calculation, so WooCommerce's own tax logic applies to the discounted price.
