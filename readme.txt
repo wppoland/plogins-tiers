@@ -4,7 +4,7 @@ Tags: woocommerce, volume pricing, quantity discount, bulk pricing, tiered prici
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.1.6
+Stable tag: 1.1.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ The discount is calculated in PHP on `woocommerce_before_calculate_totals`, so t
 
 When a quantity matches more than one tier, the deepest qualifying tier applies, 12 units takes the "10+" price, not the "5+" price. Variations of one product count together, so 3 red and 3 blue shirts reach a "5+" tier. Tiers never raises a price either, so a product that's already on sale keeps its lower price.
 
-Tiers declares compatibility with WooCommerce HPOS and the Cart/Checkout Blocks. It stores everything in a single `wp_options` row and creates no custom tables, so deleting the plugin leaves the database as it was.
+Tiers declares compatibility with WooCommerce HPOS and the Cart/Checkout Blocks. It stores everything in a single `wp_options` row and creates no custom tables, so deleting the plugin removes that row and leaves no tables behind.
 
 **What you get**
 
@@ -116,7 +116,7 @@ Yes. Tiers modifies the cart line-item price before WooCommerce calculates total
 Discounts stop being applied and the pricing table no longer appears. Your settings are retained in the database.
 
 = What happens when I delete the plugin? =
-The uninstall routine removes the `tiers_settings` option. No custom tables are created, so your database is left clean.
+The uninstall routine removes the `tiers_settings` option, except while an add-on that stores its own data in that option is installed. No custom tables are created.
 
 = Does it work with taxes? =
 Yes. Tiers modifies prices before WooCommerce's tax calculation, so WooCommerce's own tax logic applies to the discounted price.
@@ -148,6 +148,9 @@ Tiers is developed in the open. The PHP, JS, and CSS you install are the same fi
 Plogins Tiers is fully translatable and ships the `plogins-tiers.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.1.7 =
+* Fixed: deleting the plugin on a multisite network now removes its settings from every site, not only the main one, and keeps the tier settings while an add-on that stores its own settings there is still installed; whichever is deleted last removes them.
 
 = 1.1.6 =
 * Added: with Tujo active, its quick-order table shows the "From X in bulk" volume price under each product price (the Shop price hint setting controls it). The hint is never added where the price is hidden or replaced by a notice.
