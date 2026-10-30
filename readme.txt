@@ -150,7 +150,7 @@ Plogins Tiers is fully translatable and ships the `plogins-tiers.pot` template. 
 == Changelog ==
 
 = 1.1.7 =
-* Fixed: deleting the plugin on a multisite network now removes its settings from every site, not only the main one.
+* Fixed: deleting the plugin on a multisite network now removes its settings from every site, not only the main one, and keeps the tier settings while an add-on that stores its own settings there is still installed; whichever is deleted last removes them.
 
 = 1.1.6 =
 * Added: with Tujo active, its quick-order table shows the "From X in bulk" volume price under each product price (the Shop price hint setting controls it). The hint is never added where the price is hidden or replaced by a notice.
