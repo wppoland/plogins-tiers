@@ -58,6 +58,8 @@ final class Settings implements HasHooks {
 	public function registerHooks(): void {
 		add_action( 'admin_menu', array( $this, 'add_menu_page' ) );
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
+		// options.php checks manage_options unless the group says otherwise; the screen is for shop managers.
+		add_filter( 'option_page_capability_' . self::PAGE, static fn (): string => 'manage_woocommerce' );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
 		$this->proUpsell()->registerHooks();
 	}
