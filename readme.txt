@@ -4,7 +4,7 @@ Tags: woocommerce, volume pricing, quantity discount, bulk pricing, tiered prici
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -148,6 +148,9 @@ Tiers is developed in the open. The PHP, JS, and CSS you install are the same fi
 Plogins Tiers is fully translatable and ships the `plogins-tiers.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.1.8 =
+* Fixed: a shop manager could open the Tiers settings screen but every save failed with "Sorry, you are not allowed to manage options for this site." Saving now needs the same WooCommerce permission as opening the screen.
 
 = 1.1.7 =
 * Fixed: deleting the plugin on a multisite network now removes its settings from every site, not only the main one, and keeps the tier settings while an add-on that stores its own settings there is still installed; whichever is deleted last removes them.
