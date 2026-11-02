@@ -230,6 +230,35 @@ final class Settings implements HasHooks {
 			self::PAGE,
 			self::SECTION,
 		);
+
+		add_settings_section(
+			'tiers_ecosystem',
+			__( 'Ecosystem integrations', 'plogins-tiers' ),
+			'__return_false',
+			self::PAGE,
+		);
+
+		add_settings_field(
+			'integration_bundle',
+			__( 'Bundaro (Product Bundles)', 'plogins-tiers' ),
+			static function (): void {
+				if ( class_exists( '\\Bundle\\Plugin' ) ) {
+					echo '<p class="description" style="color:#007017;font-weight:600;">' . esc_html__(
+						'Bundaro is active. Pair quantity discounts with frequently-bought-together bundle discounts to raise average order value.',
+						'plogins-tiers',
+					) . '</p>';
+				} else {
+					$name = 'Bundaro - Product Bundles for WooCommerce';
+					echo '<p class="description">' . sprintf(
+						/* translators: %s: partner plugin name, linked to its search on the Add Plugins screen. */
+						esc_html__( 'Install %s to bundle complementary products together with special kit discounts.', 'plogins-tiers' ),
+						'<a href="' . esc_url( admin_url( 'plugin-install.php?s=' . rawurlencode( $name ) . '&tab=search&type=term' ) ) . '">' . esc_html( $name ) . '</a>'
+					) . '</p>';
+				}
+			},
+			self::PAGE,
+			'tiers_ecosystem',
+		);
 	}
 
 	/**
