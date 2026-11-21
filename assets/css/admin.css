@@ -109,7 +109,7 @@
 	border-color: #b32d2e;
 }
 
-#tiers-table input:invalid {
+#tiers-table input:user-invalid {
 	border-color: #d63638;
 	box-shadow: 0 0 0 1px #d63638;
 }

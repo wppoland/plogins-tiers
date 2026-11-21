@@ -116,7 +116,7 @@
 				return a.qty - b.qty;
 			});
 
-		host.innerHTML = '';
+		host.replaceChildren();
 
 		if (!data.length) {
 			var p = document.createElement('p');
