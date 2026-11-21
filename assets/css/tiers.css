@@ -175,18 +175,35 @@
 	}
 }
 
-/* Dark mode, only when the visitor prefers it. */
-@media (prefers-color-scheme: dark) {
+/* Dark mode, only when the page's color-scheme (set by the theme) is dark. */
+@supports (color: light-dark(white, black)) {
 	.tiers-pricing-table {
-		--tiers-border: rgba(255, 255, 255, 0.16);
-		--tiers-border-soft: rgba(255, 255, 255, 0.1);
-		--tiers-head-bg: rgba(255, 255, 255, 0.06);
-		--tiers-row-hover: rgba(255, 255, 255, 0.05);
-		--tiers-muted: #a8a8a8;
-		--tiers-accent: #2dd4bf;
-		--tiers-accent-ink: #5eead4;
-		--tiers-accent-bg: rgba(45, 212, 191, 0.1);
-		--tiers-accent-bg-strong: rgba(45, 212, 191, 0.16);
+		--tiers-border: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.16));
+		--tiers-border-soft: light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.1));
+		--tiers-head-bg: light-dark(rgba(0, 0, 0, 0.035), rgba(255, 255, 255, 0.06));
+		--tiers-row-hover: light-dark(rgba(0, 0, 0, 0.03), rgba(255, 255, 255, 0.05));
+		--tiers-muted: light-dark(#5a5a5a, #a8a8a8);
+		--tiers-accent: light-dark(#0f766e, #2dd4bf);
+		--tiers-accent-ink: light-dark(#0b5852, #5eead4);
+		--tiers-accent-bg: light-dark(rgba(15, 118, 110, 0.07), rgba(45, 212, 191, 0.1));
+		--tiers-accent-bg-strong: light-dark(rgba(15, 118, 110, 0.12), rgba(45, 212, 191, 0.16));
+	}
+}
+
+/* Fallback for browsers without light-dark(): keep the OS-based dark styling. */
+@supports not (color: light-dark(white, black)) {
+	@media (prefers-color-scheme: dark) {
+		.tiers-pricing-table {
+			--tiers-border: rgba(255, 255, 255, 0.16);
+			--tiers-border-soft: rgba(255, 255, 255, 0.1);
+			--tiers-head-bg: rgba(255, 255, 255, 0.06);
+			--tiers-row-hover: rgba(255, 255, 255, 0.05);
+			--tiers-muted: #a8a8a8;
+			--tiers-accent: #2dd4bf;
+			--tiers-accent-ink: #5eead4;
+			--tiers-accent-bg: rgba(45, 212, 191, 0.1);
+			--tiers-accent-bg-strong: rgba(45, 212, 191, 0.16);
+		}
 	}
 }
 
