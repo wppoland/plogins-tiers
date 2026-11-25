@@ -57,11 +57,24 @@ final class Settings implements HasHooks {
 	 */
 	public function registerHooks(): void {
 		add_action( 'admin_menu', array( $this, 'add_menu_page' ) );
+		add_filter( 'plugin_action_links_' . plugin_basename( \Tiers\PLUGIN_FILE ), array( $this, 'action_links' ) );
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		// options.php checks manage_options unless the group says otherwise; the screen is for shop managers.
 		add_filter( 'option_page_capability_' . self::PAGE, static fn (): string => 'manage_woocommerce' );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
 		$this->proUpsell()->registerHooks();
+	}
+
+	/**
+	 * Put a shortcut to the settings screen before Deactivate on the Plugins screen.
+	 *
+	 * @param array<int|string, string> $links Action links.
+	 * @return array<int|string, string>
+	 */
+	public function action_links( array $links ): array {
+		array_unshift( $links, sprintf( '<a href="%s">%s</a>', esc_url( admin_url( 'admin.php?page=' . self::PAGE ) ), esc_html__( 'Tiers Settings', 'plogins-tiers' ) ) );
+
+		return $links;
 	}
 
 	/**
