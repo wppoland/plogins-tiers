@@ -23,6 +23,8 @@ function add_settings_section(mixed ...$a): void {}
 function add_settings_field(mixed ...$a): void {}
 function __(string $s, string $d = ''): string { return $s; }
 function esc_html__(string $s, string $d = ''): string { return $s; }
+function plugin_basename(string $f): string { return basename($f); }
+define('Tiers\PLUGIN_FILE', __FILE__);
 
 require __DIR__ . '/../autoload.php';
 
